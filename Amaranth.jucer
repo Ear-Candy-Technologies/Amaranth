@@ -24,6 +24,9 @@
         <FILE id="QQAyR2" name="SynthVoice.h" compile="0" resource="0" file="Source/DSP/Synth/SynthVoice.h"/>
       </GROUP>
     </GROUP>
+    <GROUP id="{40D322C5-F9F8-9487-C505-19A88A627800}" name="Helpers">
+      <FILE id="FGDZAn" name="ParamsHelper.h" compile="0" resource="0" file="Source/Helpers/ParamsHelper.h"/>
+    </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
