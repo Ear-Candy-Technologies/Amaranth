@@ -16,6 +16,14 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="Yf3x8T" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
+    <GROUP id="{AD4778D4-80C8-371D-10BF-8A686916065A}" name="DSP">
+      <GROUP id="{6328ECBD-BBB6-DA3F-1A35-EDC033F236B0}" name="Synth">
+        <FILE id="ox2QCA" name="SynthSound.cpp" compile="1" resource="0" file="Source/DSP/Synth/SynthSound.cpp"/>
+        <FILE id="W9oDB4" name="SynthSound.h" compile="0" resource="0" file="Source/DSP/Synth/SynthSound.h"/>
+        <FILE id="K9vWtg" name="SynthVoice.cpp" compile="1" resource="0" file="Source/DSP/Synth/SynthVoice.cpp"/>
+        <FILE id="QQAyR2" name="SynthVoice.h" compile="0" resource="0" file="Source/DSP/Synth/SynthVoice.h"/>
+      </GROUP>
+    </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>

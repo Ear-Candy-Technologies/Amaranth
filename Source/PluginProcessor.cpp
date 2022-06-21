@@ -10,12 +10,30 @@ AmaranthAudioProcessor::AmaranthAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), apvt(*this, nullptr, "Parameters", createAPVT())
 #endif
 {
+    prepareSynth();
 }
 
 AmaranthAudioProcessor::~AmaranthAudioProcessor() {}
+
+void AmaranthAudioProcessor::prepareSynth()
+{
+    synth.addSound(new SynthSound());
+    
+    for (auto i = 0; i < 5; i++)
+        synth.addVoice (new SynthVoice());
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::createAPVT()
+{
+    juce::AudioProcessorValueTreeState::ParameterLayout params;
+    
+    
+    
+    return params;
+}
 
 const juce::String AmaranthAudioProcessor::getName() const
 {
@@ -73,7 +91,16 @@ const juce::String AmaranthAudioProcessor::getProgramName ([[maybe_unused]] int 
 
 void AmaranthAudioProcessor::changeProgramName ([[maybe_unused]] int index, [[maybe_unused]] const juce::String& newName) {}
 
-void AmaranthAudioProcessor::prepareToPlay ([[maybe_unused]] double sampleRate, [[maybe_unused]] int samplesPerBlock) {}
+void AmaranthAudioProcessor::prepareToPlay (double sampleRate, [[maybe_unused]] int samplesPerBlock)
+{
+    synth.setCurrentPlaybackSampleRate(sampleRate);
+    
+    for(int i = 0; i < synth.getNumVoices(); i++)
+    {
+        if(auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
+            voice->prepare(sampleRate, samplesPerBlock, getTotalNumInputChannels());
+    }
+}
 
 void AmaranthAudioProcessor::releaseResources() {}
 
@@ -104,7 +131,16 @@ void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<fl
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
-
+    
+    // Update parameters
+    for(int i = 0; i < synth.getNumVoices(); i++)
+    {
+        if(auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
+            voice->updateParameters(apvt);
+    }
+    
+    // Synth DSP
+    synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 }
 
 bool AmaranthAudioProcessor::hasEditor() const
