@@ -1,11 +1,4 @@
-#include "PluginProcessor.h"
-#include "PluginEditor.h"
-
-namespace Amaranth
-{
-    #include "./DSP/Synth/SynthSound.cpp"
-    #include "./DSP/Synth/SynthVoice.cpp"
-}
+#include "./Global_Includes.cpp"
 
 AmaranthAudioProcessor::AmaranthAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations

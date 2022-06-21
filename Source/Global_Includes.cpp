@@ -1,13 +1,18 @@
 /*
   ==============================================================================
 
-    ParamsHelper.h
+    Global_Include.cpp
     Created: 20 Jun 2022 10:14:54pm
     Author:  Jesús Valdez
 
   ==============================================================================
 */
 
-#pragma once
+#include "PluginProcessor.h"
+#include "PluginEditor.h"
 
-static const juce::String PARAMETERS = "Parameters";
+namespace Amaranth
+{
+    #include "./DSP/Synth/SynthSound.cpp"
+    #include "./DSP/Synth/SynthVoice.cpp"
+}

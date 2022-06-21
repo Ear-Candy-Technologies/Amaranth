@@ -7,6 +7,10 @@
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               cppLanguageStandard="17">
   <MAINGROUP id="alCdbK" name="Amaranth">
+    <FILE id="qTLx9e" name="Global_Includes.cpp" compile="1" resource="0"
+          file="Source/Global_Includes.cpp"/>
+    <FILE id="Ic3aQU" name="Global_Includes.h" compile="0" resource="0"
+          file="Source/Global_Includes.h"/>
     <GROUP id="{94DE3D09-3F2D-6F9B-DF54-4B874861E430}" name="Source">
       <FILE id="XkK8b5" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
