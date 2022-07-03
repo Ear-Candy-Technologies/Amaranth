@@ -11,3 +11,5 @@
 #pragma once
 
 static const juce::String PARAMETERS = "Parameters";
+
+static const juce::String GAIN_OSC = "GainOsc";

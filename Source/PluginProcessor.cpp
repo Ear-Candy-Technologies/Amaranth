@@ -1,4 +1,5 @@
-#include "./Global_Includes.cpp"
+#include "PluginProcessor.h"
+#include "PluginEditor.h"
 
 AmaranthAudioProcessor::AmaranthAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -9,7 +10,7 @@ AmaranthAudioProcessor::AmaranthAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       ), apvt(*this, nullptr, Amaranth::PARAMETERS, createAPVT())
+                       ), apvt(*this, nullptr, PARAMETERS, createAPVT())
 #endif
 {
     prepareSynth();
@@ -29,7 +30,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::crea
 {
     juce::AudioProcessorValueTreeState::ParameterLayout params;
     
-    
+    params.add(std::make_unique<juce::AudioParameterFloat>(GAIN_OSC, GAIN_OSC, 0.0f, 1.0f, 0.5f));
     
     return params;
 }
@@ -134,7 +135,7 @@ void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<fl
     // Update parameters
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if(auto voice = dynamic_cast<Amaranth::SynthVoice*>(synth.getVoice(i)))
+        if (auto voice = dynamic_cast<Amaranth::SynthVoice*>(synth.getVoice(i)))
             voice->updateParameters(apvt);
     }
     
