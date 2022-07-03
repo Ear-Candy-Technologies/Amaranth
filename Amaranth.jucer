@@ -7,6 +7,10 @@
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               cppLanguageStandard="17">
   <MAINGROUP id="alCdbK" name="Amaranth">
+    <FILE id="qTLx9e" name="Global_Includes.cpp" compile="1" resource="0"
+          file="Source/Global_Includes.cpp"/>
+    <FILE id="Ic3aQU" name="Global_Includes.h" compile="0" resource="0"
+          file="Source/Global_Includes.h"/>
     <GROUP id="{94DE3D09-3F2D-6F9B-DF54-4B874861E430}" name="Source">
       <FILE id="XkK8b5" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -23,6 +27,9 @@
         <FILE id="K9vWtg" name="SynthVoice.cpp" compile="1" resource="0" file="Source/DSP/Synth/SynthVoice.cpp"/>
         <FILE id="QQAyR2" name="SynthVoice.h" compile="0" resource="0" file="Source/DSP/Synth/SynthVoice.h"/>
       </GROUP>
+    </GROUP>
+    <GROUP id="{40D322C5-F9F8-9487-C505-19A88A627800}" name="Helpers">
+      <FILE id="FGDZAn" name="ParamsHelper.h" compile="0" resource="0" file="Source/Helpers/ParamsHelper.h"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>

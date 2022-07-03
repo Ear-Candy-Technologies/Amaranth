@@ -1,8 +1,5 @@
 #pragma once
-#include <JuceHeader.h>
-
-#include "./DSP/Synth/SynthSound.h"
-#include "./DSP/Synth/SynthVoice.h"
+#include "./Global_Includes.h"
 
 class AmaranthAudioProcessor  : public juce::AudioProcessor
 {
