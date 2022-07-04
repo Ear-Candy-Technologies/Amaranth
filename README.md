@@ -8,6 +8,8 @@ Dato curioso: El nombre Amaranth viene de juntar Amaranto (dulce mexicano) con l
 
 Este readme tiene como propósito ser la ruta para la contribución en Amaranth.
 
+[Guia de desarrollo](https://github.com/Ear-Candy-Technologies/Amaranth/blob/main/DeveloperGuide.md) (Leer antes de empezar a desarrollar)
+
 ## Dependencias
 
 ### JUCE
@@ -38,6 +40,8 @@ Amaranth is a free and open-source synthesizer developed in JUCE by the [Ear Can
 Fun Fact: The name Amaranth comes from joining Amaranto (mexican candy) with the word Synth.
 
 This readme is intended to be the path for Amaranth's contribution.
+
+[Developer Guide](https://github.com/Ear-Candy-Technologies/Amaranth/blob/main/DeveloperGuide.md) (read before you start developing)
 
 ## Dependencies
 
