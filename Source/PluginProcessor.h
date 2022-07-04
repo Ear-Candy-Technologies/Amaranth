@@ -1,6 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 
+#include "./Helpers/ParamsHelper.h"
 #include "./DSP/Synth/SynthSound.h"
 #include "./DSP/Synth/SynthVoice.h"
 

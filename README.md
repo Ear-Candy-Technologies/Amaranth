@@ -1,8 +1,8 @@
-# Amaranth (En desarrollo)
+# Amaranth Open Source Synth
 
 # Español
 
-Amaranth es un sintetizador libre y open-source desarrollado en JUCE por la comunidad de [Ear Candy Technologies](https://earcandytech.com/) con el objetivo de impulsar el desarrollo tecnológico en América Latina y comunidad de habla hispana principalmente. Cualquier persona es libre de descargar este proyecto y/o ayudar en el desarrollo del mismo. Si deseas ingresar a la comunidad de desarrollo por cualquier pregunta o duda o conectar con nosotros estamos en [Discord](https://discord.gg/WJvn7m2KwJ).
+Amaranth es un proyecto de sintetizador libre y open-source desarrollado en JUCE por la comunidad de [Ear Candy Technologies](https://earcandytech.com/) con el objetivo de impulsar el desarrollo tecnológico en América Latina y comunidad de habla hispana principalmente. Cualquier persona es libre de descargar este proyecto y/o ayudar en el desarrollo del mismo. Si deseas ingresar a la comunidad de desarrollo por cualquier pregunta o duda o conectar con nosotros estamos en [Discord](https://discord.gg/WJvn7m2KwJ).
 
 Dato curioso: El nombre Amaranth viene de juntar Amaranto (dulce mexicano) con la palabra Synth.
 

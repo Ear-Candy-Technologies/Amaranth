@@ -10,7 +10,7 @@ AmaranthAudioProcessor::AmaranthAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       ), apvt(*this, nullptr, "Parameters", createAPVT())
+                       ), apvt(*this, nullptr, PARAMETERS, createAPVT())
 #endif
 {
     prepareSynth();
@@ -20,17 +20,17 @@ AmaranthAudioProcessor::~AmaranthAudioProcessor() {}
 
 void AmaranthAudioProcessor::prepareSynth()
 {
-    synth.addSound(new SynthSound());
+    synth.addSound(new Amaranth::SynthSound());
     
     for (auto i = 0; i < 5; i++)
-        synth.addVoice (new SynthVoice());
+        synth.addVoice (new Amaranth::SynthVoice());
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::createAPVT()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout params;
     
-    
+    params.add(std::make_unique<juce::AudioParameterFloat>(GAIN_OSC, GAIN_OSC, 0.0f, 1.0f, 0.5f));
     
     return params;
 }
@@ -97,7 +97,7 @@ void AmaranthAudioProcessor::prepareToPlay (double sampleRate, [[maybe_unused]] 
     
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if(auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
+        if(auto voice = dynamic_cast<Amaranth::SynthVoice*>(synth.getVoice(i)))
             voice->prepare(sampleRate, samplesPerBlock, getTotalNumInputChannels());
     }
 }
@@ -135,7 +135,7 @@ void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<fl
     // Update parameters
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if(auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
+        if (auto voice = dynamic_cast<Amaranth::SynthVoice*>(synth.getVoice(i)))
             voice->updateParameters(apvt);
     }
     

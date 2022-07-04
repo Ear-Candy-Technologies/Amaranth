@@ -5,7 +5,7 @@
               companyWebsite="earcandytech.com" companyEmail="info@earcandytech.com"
               version="0.0.1" pluginFormats="buildAU,buildStandalone,buildVST,buildVST3"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
-              cppLanguageStandard="17">
+              cppLanguageStandard="17" displaySplashScreen="1">
   <MAINGROUP id="alCdbK" name="Amaranth">
     <GROUP id="{94DE3D09-3F2D-6F9B-DF54-4B874861E430}" name="Source">
       <FILE id="XkK8b5" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -23,6 +23,11 @@
         <FILE id="K9vWtg" name="SynthVoice.cpp" compile="1" resource="0" file="Source/DSP/Synth/SynthVoice.cpp"/>
         <FILE id="QQAyR2" name="SynthVoice.h" compile="0" resource="0" file="Source/DSP/Synth/SynthVoice.h"/>
       </GROUP>
+      <FILE id="aYaELU" name="Oscillator.cpp" compile="1" resource="0" file="Source/DSP/Oscillator.cpp"/>
+      <FILE id="Q443ah" name="Oscillator.h" compile="0" resource="0" file="Source/DSP/Oscillator.h"/>
+    </GROUP>
+    <GROUP id="{40D322C5-F9F8-9487-C505-19A88A627800}" name="Helpers">
+      <FILE id="FGDZAn" name="ParamsHelper.h" compile="0" resource="0" file="Source/Helpers/ParamsHelper.h"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
@@ -45,6 +50,7 @@
         <MODULEPATH id="juce_graphics" path="../../Documents/Programming/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../Documents/Programming/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../Documents/Programming/JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../Programming/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2022 targetFolder="Builds/VisualStudio2022">
@@ -65,6 +71,7 @@
         <MODULEPATH id="juce_graphics" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../Programming/JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
     <VS2019 targetFolder="Builds/VisualStudio2019">
@@ -85,6 +92,7 @@
         <MODULEPATH id="juce_graphics" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_gui_basics" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_gui_extra" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_dsp" path="../../../Programming/JUCE/modules"/>
       </MODULEPATHS>
     </VS2019>
   </EXPORTFORMATS>
@@ -98,6 +106,7 @@
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
