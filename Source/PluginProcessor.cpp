@@ -1,6 +1,12 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+namespace Amaranth
+{
+    #include "./DSP/Synth/SynthSound.cpp"
+    #include "./DSP/Synth/SynthVoice.cpp"
+}
+
 AmaranthAudioProcessor::AmaranthAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
@@ -10,7 +16,7 @@ AmaranthAudioProcessor::AmaranthAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       ), apvt(*this, nullptr, PARAMETERS, createAPVT())
+                       ), apvt(*this, nullptr, Amaranth::PARAMETERS, createAPVT())
 #endif
 {
     prepareSynth();
@@ -22,7 +28,7 @@ void AmaranthAudioProcessor::prepareSynth()
 {
     synth.addSound(new Amaranth::SynthSound());
     
-    for (auto i = 0; i < 5; i++)
+    for (auto i = 0; i < Amaranth::NUM_VOICES; i++)
         synth.addVoice (new Amaranth::SynthVoice());
 }
 
@@ -30,7 +36,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::crea
 {
     juce::AudioProcessorValueTreeState::ParameterLayout params;
     
-    params.add(std::make_unique<juce::AudioParameterFloat>(GAIN_OSC, GAIN_OSC, 0.0f, 1.0f, 0.5f));
+    params.add(std::make_unique<juce::AudioParameterFloat>(Amaranth::GAIN_OSC, Amaranth::GAIN_OSC, 0.0f, 1.0f, 0.5f));
     
     return params;
 }

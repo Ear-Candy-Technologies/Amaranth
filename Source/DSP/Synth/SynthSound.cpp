@@ -10,19 +10,16 @@
 
 #include "SynthSound.h"
 
-namespace Amaranth
+SynthSound::SynthSound() {}
+
+SynthSound::~SynthSound() {}
+
+bool SynthSound::appliesToNote ([[maybe_unused]] int midiNoteNumber)
 {
-    SynthSound::SynthSound() {}
+    return true;
+}
 
-    SynthSound::~SynthSound() {}
-
-    bool SynthSound::appliesToNote ([[maybe_unused]] int midiNoteNumber)
-    {
-        return true;
-    }
-
-    bool SynthSound::appliesToChannel ([[maybe_unused]] int midiChannel)
-    {
-        return true;
-    }
+bool SynthSound::appliesToChannel ([[maybe_unused]] int midiChannel)
+{
+    return true;
 }

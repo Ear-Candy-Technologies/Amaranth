@@ -48,9 +48,15 @@ void Oscillator::stopNote()
     adsr.noteOff();
 }
 
-void Oscillator::updateParameters (float inGain)
+void Oscillator::updateParameters (float inGain, float inAttack, float inDecay, float inSustain, float inRelease)
 {
     gain.setGainLinear(inGain);
+    
+    adsrParams.attack = inAttack;
+    adsrParams.decay = inDecay;
+    adsrParams.sustain = inSustain;
+    adsrParams.release = inRelease;
+    adsr.setParameters (adsrParams);
 }
 
 void Oscillator::processOsc (juce::dsp::ProcessContextReplacing<float> inContext, juce::AudioBuffer<float>& synthBuffer)
@@ -60,4 +66,3 @@ void Oscillator::processOsc (juce::dsp::ProcessContextReplacing<float> inContext
     
     adsr.applyEnvelopeToBuffer (synthBuffer, 0, synthBuffer.getNumSamples());
 }
-
