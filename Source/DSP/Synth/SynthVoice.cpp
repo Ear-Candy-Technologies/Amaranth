@@ -10,6 +10,7 @@
 
 #include "SynthVoice.h"
 
+// Include any class inside namespace (just cpp)
 namespace Amaranth
 {
     #include "../Oscillator.cpp"
@@ -59,7 +60,7 @@ void SynthVoice::prepare (double inSampleRate, int inSamplesPerBlock, int inNumC
 
 void SynthVoice::updateParameters([[maybe_unused]] juce::AudioProcessorValueTreeState& apvt)
 {
-    auto oscGain = apvt.getRawParameterValue(GAIN_OSC)->load();
+    auto oscGain = apvt.getRawParameterValue(GAIN_OSC_ID)->load();
     osc.updateParameters(oscGain, 0.8f, 0.8f, 1.0f, 1.5f);
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 
+// Include any class inside namespace (just h)
 namespace Amaranth
 {
     #include "./Helpers/ParamsHelper.h"
@@ -39,12 +40,13 @@ public:
     // Prepare Synth
     void prepareSynth();
     
-    // Audio Parameters
+    // Audio Parameters APVTS
     juce::AudioProcessorValueTreeState apvt;
     juce::AudioProcessorValueTreeState::ParameterLayout createAPVT();
 
 private:
     
+    // Global synth class
     juce::Synthesiser synth;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthAudioProcessor)

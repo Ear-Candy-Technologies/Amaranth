@@ -12,6 +12,7 @@
 #include <JuceHeader.h>
 #include "../../Helpers/ParamsHelper.h"
 
+// Include any class inside namespace (just h)
 namespace Amaranth
 {
     #include "../Oscillator.h"

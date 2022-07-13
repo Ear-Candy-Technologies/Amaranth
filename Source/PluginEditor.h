@@ -2,6 +2,12 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 
+// Include any class inside namespace
+namespace Amaranth
+{
+    
+}
+
 class AmaranthAudioProcessorEditor : public juce::AudioProcessorEditor
 {
 public:
