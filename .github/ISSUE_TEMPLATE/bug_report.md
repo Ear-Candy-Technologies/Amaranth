@@ -1,36 +1,36 @@
 ---
 name: Bug report
-about: Crea un reporte de algún bug que hayas encontrado
+about: Create a report of any bug you have found
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-**Describe el bug**
-Una descripción clara y concisa del bug que se encontró.
+**Describe the bug**
+A clear and concise description of the bug that was found.
 
-**Para reproducirlo...**
-Pasos para reproducir el bug:
-1. Ir a '...'
-2. Dar click en '....'
-3. Mover en '....'
-4. Ver error
+**To recreate ti...**
+Steps to recreate the bug:
+1. Go to '...'
+2. Click on '....'
+3. Move in '....'
+4. See error
 
-**Snippet del código**
-Copia aquí el error que estás obteniendo.
+**Code snippet**
+Copy here the error you are getting.
 
-**Comportamiento esperado**
-Una descripción del comportamiento correcto que estarías esperando.
+**Expected behavior**
+A description of the correct behavior that you would expect.
 
-**Capturas de pantalla**
-Si es necesario agregar captura de pantalla
+**Screenshots**
+If necessary add screenshot
 
-**Características del sistema:**
- - Sistema Operativo: [ej. macOS Monterey]
- - Versión [ej. 12.4]
- - DAW donde se probó: [ej. Ableton Live]
- - Formato compilado: [ej. VST3]
+**System caracteristics:**
+ - OS: [example. macOS Monterey]
+ - Version [ej. 12.4]
+ - DAW where it was tested: [ej. Ableton Live]
+ - Compiled format: [ej. VST3]
 
-**Información adicional**
-Agrega cualquier información extra aquí.
+**Additional Information**
+Add any extra information here.
