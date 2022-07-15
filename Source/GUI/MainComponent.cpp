@@ -22,7 +22,7 @@ MainComponent::~MainComponent()
 
 void MainComponent::paint (juce::Graphics& g)
 {
-    g.fillAll (juce::Colour (191, 41, 239));
+    g.fillAll (juce::Colours::dimgrey);
 
     g.setFont (25.0f);
     g.setColour (juce::Colours::white);
