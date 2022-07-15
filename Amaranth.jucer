@@ -26,6 +26,11 @@
       <FILE id="aYaELU" name="Oscillator.cpp" compile="1" resource="0" file="Source/DSP/Oscillator.cpp"/>
       <FILE id="Q443ah" name="Oscillator.h" compile="0" resource="0" file="Source/DSP/Oscillator.h"/>
     </GROUP>
+    <GROUP id="{FCAC4495-61AA-EC8E-8CAB-F49C3028E5E4}" name="GUI">
+      <FILE id="qE1u6s" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/GUI/MainComponent.cpp"/>
+      <FILE id="I9NVIU" name="MainComponent.h" compile="0" resource="0" file="Source/GUI/MainComponent.h"/>
+    </GROUP>
     <GROUP id="{40D322C5-F9F8-9487-C505-19A88A627800}" name="Helpers">
       <FILE id="FGDZAn" name="ParamsHelper.h" compile="0" resource="0" file="Source/Helpers/ParamsHelper.h"/>
     </GROUP>

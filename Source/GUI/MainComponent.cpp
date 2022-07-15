@@ -1,0 +1,35 @@
+/*
+  ==============================================================================
+
+    MainComponent.cpp
+    Created: 15 Jul 2022 11:54:57am
+    Author:  Rodolfo Ortiz
+
+  ==============================================================================
+*/
+
+#include "MainComponent.h"
+
+MainComponent::MainComponent()
+{
+    
+}
+
+MainComponent::~MainComponent()
+{
+    
+}
+
+void MainComponent::paint (juce::Graphics& g)
+{
+    g.fillAll (juce::Colour (191, 41, 239));
+
+    g.setFont (25.0f);
+    g.setColour (juce::Colours::white);
+    g.drawFittedText ("Amaranth", getLocalBounds(), juce::Justification::centred, 1);
+}
+
+void MainComponent::resized()
+{
+    
+}
