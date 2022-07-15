@@ -30,6 +30,10 @@
       <FILE id="qE1u6s" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/GUI/MainComponent.cpp"/>
       <FILE id="I9NVIU" name="MainComponent.h" compile="0" resource="0" file="Source/GUI/MainComponent.h"/>
+      <FILE id="nnSp2G" name="OscillatorComponent.cpp" compile="1" resource="0"
+            file="Source/GUI/OscillatorComponent.cpp"/>
+      <FILE id="jz7Dvx" name="OscillatorComponent.h" compile="0" resource="0"
+            file="Source/GUI/OscillatorComponent.h"/>
     </GROUP>
     <GROUP id="{40D322C5-F9F8-9487-C505-19A88A627800}" name="Helpers">
       <FILE id="FGDZAn" name="ParamsHelper.h" compile="0" resource="0" file="Source/Helpers/ParamsHelper.h"/>

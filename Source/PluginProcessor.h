@@ -37,8 +37,8 @@ public:
     void prepareSynth();
     
     // Audio Parameters APVTS
-    juce::AudioProcessorValueTreeState apvt;
-    juce::AudioProcessorValueTreeState::ParameterLayout createAPVT();
+    juce::AudioProcessorValueTreeState apvts;
+    juce::AudioProcessorValueTreeState::ParameterLayout createAPVTS();
 
 private:
     

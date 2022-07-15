@@ -1,8 +1,8 @@
 /*
   ==============================================================================
 
-    MainComponent.h
-    Created: 15 Jul 2022 11:54:57am
+    OscillatorComponent.h
+    Created: 15 Jul 2022 12:18:34pm
     Author:  Rodolfo Ortiz
 
   ==============================================================================
@@ -11,14 +11,13 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "OscillatorComponent.h"
 #include "../PluginProcessor.h"
 
-class MainComponent : public juce::Component
+class OscillatorComponent : public juce::Component
 {
 public:
-    MainComponent (AmaranthAudioProcessor&);
-    ~MainComponent() override;
+    OscillatorComponent (AmaranthAudioProcessor&);
+    ~OscillatorComponent() override;
     
     void paint (juce::Graphics&) override;
     void resized() override;
@@ -26,7 +25,9 @@ public:
 private:
     AmaranthAudioProcessor& processor;
     
-    OscillatorComponent oscillator_1 { processor };
+    juce::Slider gainSlider;
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> gainAttach;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscillatorComponent)
 };

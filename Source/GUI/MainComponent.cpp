@@ -10,9 +10,9 @@
 
 #include "MainComponent.h"
 
-MainComponent::MainComponent()
+MainComponent::MainComponent(AmaranthAudioProcessor& p) : processor(p)
 {
-    
+    addAndMakeVisible (oscillator_1);
 }
 
 MainComponent::~MainComponent()
@@ -31,5 +31,5 @@ void MainComponent::paint (juce::Graphics& g)
 
 void MainComponent::resized()
 {
-    
+    oscillator_1.setBoundsRelative (0.0f, 0.0f, 0.2f, 0.3f);
 }

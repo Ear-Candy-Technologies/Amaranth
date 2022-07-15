@@ -11,7 +11,7 @@ AmaranthAudioProcessor::AmaranthAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       ), apvt (*this, nullptr, "Parameters", createAPVT())
+                       ), apvts (*this, nullptr, "Parameters", createAPVTS())
 #endif
 {
     prepareSynth();
@@ -30,7 +30,7 @@ void AmaranthAudioProcessor::prepareSynth()
 }
 
 // Parameters user can move
-juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::createAPVT()
+juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::createAPVTS()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout params;
     
@@ -141,7 +141,7 @@ void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<fl
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
         if (auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
-            voice->updateParameters (apvt);
+            voice->updateParameters (apvts);
     }
     
     // Synth DSP
