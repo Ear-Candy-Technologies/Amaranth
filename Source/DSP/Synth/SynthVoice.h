@@ -11,12 +11,8 @@
 #pragma once
 #include <JuceHeader.h>
 #include "../../Helpers/ParamsHelper.h"
+#include "../Oscillator.h"
 
-// Include any class inside namespace (just h)
-namespace Amaranth
-{
-    #include "../Oscillator.h"
-}
 
 class SynthVoice : public juce::SynthesiserVoice
 {
@@ -44,7 +40,7 @@ class SynthVoice : public juce::SynthesiserVoice
         
     private:
     
-        Amaranth::Oscillator osc;
+        Oscillator osc;
     
         juce::AudioBuffer<float> synthBuffer;
     

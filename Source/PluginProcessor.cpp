@@ -1,12 +1,6 @@
+
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-
-// Include any class inside namespace (just cpp)
-namespace Amaranth
-{
-    #include "./DSP/Synth/SynthSound.cpp"
-    #include "./DSP/Synth/SynthVoice.cpp"
-}
 
 AmaranthAudioProcessor::AmaranthAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -17,7 +11,7 @@ AmaranthAudioProcessor::AmaranthAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       ), apvt(*this, nullptr, Amaranth::PARAMETERS, createAPVT())
+                       ), apvt(*this, nullptr, PARAMETERS, createAPVT())
 #endif
 {
     prepareSynth();
@@ -28,11 +22,11 @@ AmaranthAudioProcessor::~AmaranthAudioProcessor() {}
 void AmaranthAudioProcessor::prepareSynth()
 {
     // Add sound to synth
-    synth.addSound(new Amaranth::SynthSound());
+    synth.addSound(new SynthSound());
     
     // Add number of voices the synth will have
-    for (auto i = 0; i < Amaranth::NUM_VOICES; i++)
-        synth.addVoice (new Amaranth::SynthVoice());
+    for (auto i = 0; i < NUM_VOICES; i++)
+        synth.addVoice (new SynthVoice());
 }
 
 // Parameters user can move
@@ -40,7 +34,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::crea
 {
     juce::AudioProcessorValueTreeState::ParameterLayout params;
     
-    params.add(std::make_unique<juce::AudioParameterFloat>(Amaranth::GAIN_OSC_ID, Amaranth::GAIN_OSC_NAME, 0.0f, 1.0f, 0.5f));
+    params.add(std::make_unique<juce::AudioParameterFloat>(GAIN_OSC_ID, GAIN_OSC_NAME, 0.0f, 1.0f, 0.5f));
     
     return params;
 }
@@ -108,7 +102,7 @@ void AmaranthAudioProcessor::prepareToPlay (double sampleRate, [[maybe_unused]] 
     // Prepare objects inside main synth class per voice
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if(auto voice = dynamic_cast<Amaranth::SynthVoice*>(synth.getVoice(i)))
+        if(auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
             voice->prepare(sampleRate, samplesPerBlock, getTotalNumInputChannels());
     }
 }
@@ -146,7 +140,7 @@ void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<fl
     // Update synth parameters per voice
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if (auto voice = dynamic_cast<Amaranth::SynthVoice*>(synth.getVoice(i)))
+        if (auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
             voice->updateParameters(apvt);
     }
     

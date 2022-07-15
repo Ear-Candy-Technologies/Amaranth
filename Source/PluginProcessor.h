@@ -1,14 +1,10 @@
 #pragma once
+
 #include <JuceHeader.h>
 
-// Include any class inside namespace (just h)
-namespace Amaranth
-{
-    #include "./Helpers/ParamsHelper.h"
-
-    #include "./DSP/Synth/SynthSound.h"
-    #include "./DSP/Synth/SynthVoice.h"
-}
+#include "./Helpers/ParamsHelper.h"
+#include "./DSP/Synth/SynthSound.h"
+#include "./DSP/Synth/SynthVoice.h"
 
 class AmaranthAudioProcessor  : public juce::AudioProcessor
 {

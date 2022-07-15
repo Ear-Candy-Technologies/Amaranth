@@ -10,12 +10,6 @@
 
 #include "SynthVoice.h"
 
-// Include any class inside namespace (just cpp)
-namespace Amaranth
-{
-    #include "../Oscillator.cpp"
-}
-
 SynthVoice::SynthVoice() {}
 
 SynthVoice::~SynthVoice() {}
