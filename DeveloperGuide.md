@@ -44,3 +44,48 @@ Los commits deben estar compuestos de
 ### Reporte de Bugs
 
 Para realizar el reporte de algún bug que hayas encontrado y que quisieras exponer para que sea resuelto por ti o por la comunidad, dirígete a la sección de *Issues* y da click en la opción de *New Issue*, ahí encontrarás la plantilla de *Reporte de bug* dónde deberás de describir el bug como se pide.
+
+# English
+
+## Introduction
+
+This ReadMe contains all the rules and guidelines necessary for development and input within Amaranth. All the points below are based on C++ best practices and the [JUCE coding standards](https://juce.com/discover/stories/coding-standards) (we recommend taking these writing practices as the main basis for the development in Amaranth).
+
+If you have any questions that are not clarified in this ReadMe, you can solve them in the Ear Candy Technologies community of [Discord](https://discord.gg/WJvn7m2KwJ) within the #Amaranth channel.
+
+## Contributions
+
+### Code reviews
+
+At the time of making a Pull Request, your code will always be reviewed by the Ear Candy Technologies team in order to guarantee that there is no problem with the main project or that it has poorly implemented code. If it is necessary to make any changes, the person will be notified through the Pull Request with the corresponding comments. Taking all these rules into account can make response times more efficient.
+
+### Using GitHub
+
+1. There is going to be a [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd) where all the current issues and bugs of the project will be, you must choose an issue or bug from the backlog column, put your github user, the name of the branch you are going to create and pass it to the "In process" column.
+2. These issues will also be present in the GitHub repository.
+3. Subsequently, a branch must be opened based on *develop* with the name presented in the [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd). If you are going to work on an existing branch you will have to open another one from that one.
+4. At the end of your implementation, make the Pull Request and share its link on Discord so that it can be reviewed. If all is well, it will be accepted and the merge will be done. Then the branch where you worked will be deleted.
+5. If you have spent a long time on a single issue, it is recommended to do `git rebase` with *develop* so that conflicts do not occur at the time of the Pull Request.
+6. The issues proposed both in the Scrum Board and in GitHub are proposed by the Ear Candy Technologies team, however, we are totally open to new features and development proposals. For this, it is necessary to send a message notifying the ECT team and for the proposal to be accepted.
+
+### How to start my development?
+
+1. If a new class is going to be added, it must be divided into .h and .cpp files
+2. New files should always go in the corresponding folders of DSP, GUI, Utilities, etc. depending on its functionality.
+3. Any parameter that has to be added to the AudioProcessorValueTreeState, both the name and the ID, must be declared in the ParamsHelper.h file and follow the structure of the previously created parameters.
+4. When creating a new class, briefly comment in the .h file explaining what each declared method, function and/or variable is for (reference the *Oscillator* class for this).
+5. Any doubt about the development and/or structure of the project please ask on Discord.
+
+Note: For Windows users who use the copy step of the projucer, take into account not to upload the path you use on your personal computer to avoid future problems.
+
+### Commit messages
+
+The commits must be composed of
+
+```
+<short description of the changes made in the commit in a single line>
+```
+
+### Bug Report
+
+To report a bug that you have found and that you would like to expose so that it can be resolved by you or by the community, go to the *Issues* section and click on the *New Issue* option, there you will find the template. *Bug report* where you must describe the bug as requested.
