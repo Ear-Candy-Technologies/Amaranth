@@ -37,6 +37,10 @@ En la siguiente guía encontrarás los lineamientos para poder contribuir en Ama
 
 [Guia de desarrollo](https://github.com/Ear-Candy-Technologies/Amaranth/blob/main/DeveloperGuide.md) (Leer antes de empezar a desarrollar)
 
+[Amaranth: Guía de desarrollo](https://youtu.be/PP9uwYs85QU) (Ver antes de empezar a desarrollar)
+
+[Amaranth: Estructura de proyecto](https://youtu.be/fEX1hlQyEW4) (Ver antes de empezar a desarrollar)
+
 # English
 
 Amaranth is a free and open-source synthesizer developed in JUCE by the [Ear Candy Technologies](https://earcandytech.com/) community with the aim of promoting technological development in Latin America and mainly the Spanish-speaking community. Anyone is free to download this project and/or help in its development. If you want to enter the development community to ask any questions or just to connect with us, we are on [Discord](https://discord.gg/WJvn7m2KwJ).
@@ -74,3 +78,6 @@ In the next document you will find the guidelines to start contribuiting to Amar
 
 [Developer Guide](https://github.com/Ear-Candy-Technologies/Amaranth/blob/main/DeveloperGuide.md) (read before you start developing)
 
+[Amaranth: Guía de desarrollo](https://youtu.be/PP9uwYs85QU) (see before you start developing)
+
+[Amaranth: Estructura de proyecto](https://youtu.be/fEX1hlQyEW4) (see before you start developing)
