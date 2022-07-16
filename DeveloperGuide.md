@@ -1,4 +1,4 @@
-# Developing Guide
+# Developer Guide
 
 # Español
 
@@ -30,6 +30,8 @@ Al momento de hacer un Pull Request siempre se hará una revisión de tu código
 3. Cualquier parámetro que se tenga que añadir al AudioProcessorValueTreeState, tanto el nombre como el ID, se deben de declarar en el archivo ParamsHelper.h y seguir la estructura de los parámetros previamente creados.
 4. Al momento de crear una nueva clase se debe de comentar brevemente en el archivo .h explicando para qué es cada método, función y/o variable declarada (tomar de referencia la clase de *Oscilador* para esto).
 5. Cualquier duda de desarrollo y/o de estructura del proyecto favor de preguntar en Discord.
+
+Nota: Para los usuarios de Windows que utilicen el copy step del projucer tomar en cuenta de no subir el path que utilizan en su computadora personal para evitar futuros problemas.
 
 ### Mensajes de commits
 
