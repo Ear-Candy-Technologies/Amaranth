@@ -1,4 +1,4 @@
-# Amaranth Open Source Synth
+# Amaranth
 
 # Español
 
