@@ -25,7 +25,7 @@ void MainComponent::paint (juce::Graphics& g)
     g.fillAll (juce::Colours::dimgrey);
 
     g.setFont (25.0f);
-    g.setColour (juce::Colours::white);
+    g.setColour (juce::Colours::black);
     g.drawFittedText ("Amaranth", getLocalBounds(), juce::Justification::centred, 1);
 }
 
