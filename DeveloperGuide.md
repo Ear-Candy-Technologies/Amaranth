@@ -18,10 +18,11 @@ Al momento de hacer un Pull Request siempre se hará una revisión de tu código
 
 1. Se va a tener un [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd) donde estarán todos los issues y bugs actuales del proyecto, debes elegir algún issue o bug de la columna de backlog, colocar tu usuario de github, el nombre del branch que vas a crear y pasarlo a la columna de "En proceso".
 2. Estos issues tambien van a estar presentes en el repositorio de GitHub.
-3. Posteriormente se debe de abrir una branch que salga de *develop* con el nombre presentado en el [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd). Si vas a trabajar en una branch ya existente deberás de abrir otra a partir de esa.
-4. Al terminar tu implementación realiza el Pull Request y comparte el link del mismo en Discord para que sea revisado. Si todo está bien, se aceptará y se hará merge. Acto seguido se borrará el branch dónde trabajaste.
-5. Si llevas mucho tiempo en un solo issue es recomendable hacer `git rebase` con *develop* para que no sucedan conflictos al momento del Pull Request.
-6. Los issues propuestos tanto en el Scrum Board como en GitHub son propuestas por el equipo de Ear Candy Technologies, sin embargo, estamos totalmente abiertos a nuevos features y propuestas de desarrollo. Para esto, es necesario mandar mensaje notificando al equipo de ECT y que se acepte la propuesta.
+3. El desarrollador debe de crear un fork desde el proyecto principal.
+4. Posteriormente se debe de abrir una branch que salga de *develop* con el nombre presentado en el [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd). Si vas a trabajar en una branch ya existente deberás de abrir otra a partir de esa.
+5. Al terminar tu implementación realiza el Pull Request al proyecto original y comparte el link del mismo en Discord para que sea revisado. Si todo está bien, se aceptará y se hará merge.
+6. Si llevas mucho tiempo en un solo issue es recomendable hacer `git rebase` con *develop* para que no sucedan conflictos al momento del Pull Request.
+7. Los issues propuestos tanto en el Scrum Board como en GitHub son propuestas por el equipo de Ear Candy Technologies, sin embargo, estamos totalmente abiertos a nuevos features y propuestas de desarrollo. Para esto, es necesario mandar mensaje notificando al equipo de ECT y que se acepte la propuesta.
 
 ### ¿Cómo empezar mi desarrollo?
 
