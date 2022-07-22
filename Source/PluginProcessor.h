@@ -41,6 +41,8 @@ public:
     juce::AudioProcessorValueTreeState::ParameterLayout createAPVTS();
 
 private:
+
+    // Comentario from original repo
     
     // Global synth class
     juce::Synthesiser synth;
