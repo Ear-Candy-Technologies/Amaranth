@@ -16,13 +16,19 @@ Al momento de hacer un Pull Request siempre se hará una revisión de tu código
 
 ### Uso de GitHub
 
+#### Si no estas familiarizado con el uso de GitHub preparamos un video en YouTube para facilitarte un poco el uso de esta herramienta: https://youtu.be/oAkASvtDke0
+
 1. Se va a tener un [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd) donde estarán todos los issues y bugs actuales del proyecto, debes elegir algún issue o bug de la columna de backlog, colocar tu usuario de github, el nombre del branch que vas a crear y pasarlo a la columna de "En proceso".
 2. Estos issues tambien van a estar presentes en el repositorio de GitHub.
-3. El desarrollador debe de crear un fork desde el proyecto principal.
-4. Posteriormente se debe de abrir una branch que salga de *develop* con el nombre presentado en el [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd). Si vas a trabajar en una branch ya existente deberás de abrir otra a partir de esa.
-5. Al terminar tu implementación realiza el Pull Request al proyecto original y comparte el link del mismo en Discord para que sea revisado. Si todo está bien, se aceptará y se hará merge.
-6. Si llevas mucho tiempo en un solo issue es recomendable hacer `git rebase` con *develop* para que no sucedan conflictos al momento del Pull Request.
-7. Los issues propuestos tanto en el Scrum Board como en GitHub son propuestas por el equipo de Ear Candy Technologies, sin embargo, estamos totalmente abiertos a nuevos features y propuestas de desarrollo. Para esto, es necesario mandar mensaje notificando al equipo de ECT y que se acepte la propuesta.
+3. El desarrollador debe de crear un fork desde el proyecto principal para tener un copia del repositorio en su perfil.
+4. A continuación se debe de clonar el fork del repositorio `git clone https://github.com/your-user-name/Amaranth.git`
+5. Posteriormente se debe de abrir una branch que salga de *develop* con el nombre presentado en el [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd). Si vas a trabajar en una branch ya existente deberás de abrir otra a partir de esa.
+6. Realiza los commits y push correspondientes a los cambios que implementaste. 
+7. Al terminar tu implementación realiza el Pull Request al proyecto original y comparte el link del mismo en Discord para que sea revisado. Si todo está bien, se aceptará y se hará merge.
+8. Si llevas mucho tiempo en un solo issue es recomendable hacer `git rebase` con *develop* para que no sucedan conflictos al momento del Pull Request.
+9. Para poder sincronizar los cambios actuales del reposirotio original con tu fork debes de añadir un upstream con el siguiente comando `git remote add upstream https://github.com/Ear-Candy-Technologies/Amaranth.git`
+10. Para realizar los correspondientes pulls y obtener el estado actual del repositorio padre con realizar un pull de la siguiente forma es más que suficiente: `git pull upstream develop` (recuerda siempre actualizar la rama de develop).
+11. Los issues propuestos tanto en el Scrum Board como en GitHub son propuestas por el equipo de Ear Candy Technologies, sin embargo, estamos totalmente abiertos a nuevos features y propuestas de desarrollo. Para esto, es necesario mandar mensaje notificando al equipo de ECT y que se acepte la propuesta.
 
 ### ¿Cómo empezar mi desarrollo?
 
@@ -62,12 +68,19 @@ At the time of making a Pull Request, your code will always be reviewed by the E
 
 ### Using GitHub
 
+#### If you are not familiar with the use of GitHub, we have prepared a video on YouTube to make it a little easier for you: https://youtu.be/oAkASvtDke0
+
 1. There is going to be a [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd) where all the current issues and bugs of the project will be, you must choose an issue or bug from the backlog column, put your github user, the name of the branch you are going to create and pass it to the "In process" column.
 2. These issues will also be present in the GitHub repository.
-3. Subsequently, a branch must be opened based on *develop* with the name presented in the [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd). If you are going to work on an existing branch you will have to open another one from that one.
-4. At the end of your implementation, make the Pull Request and share its link on Discord so that it can be reviewed. If all is well, it will be accepted and the merge will be done. Then the branch where you worked will be deleted.
-5. If you have spent a long time on a single issue, it is recommended to do `git rebase` with *develop* so that conflicts do not occur at the time of the Pull Request.
-6. The issues proposed both in the Scrum Board and in GitHub are proposed by the Ear Candy Technologies team, however, we are totally open to new features and development proposals. For this, it is necessary to send a message notifying the ECT team and for the proposal to be accepted.
+3. The developer must create a fork from the main project to have a copy of the repository in his profile.
+4. Next, clone the repository fork `git clone https://github.com/your-user-name/Amaranth.git`
+5. Subsequently, a branch from *develop* must be opened with the name presented in the [Scrum Board](https://plum-citrus-d4f.notion.site/da4ed25887734268b30b65c37f3fa09f?v=7616b4897aba46cc94e2e9934c20e5fd). If you are going to work on an existing branch you will have to open another one from that one.
+6. Make the commits and push corresponding to the changes you implemented.
+7. At the end of your implementation, make the Pull Request to the original project and share it's link on Discord so that it can be reviewed. If all is well, it will be accepted and the merge will be done.
+8. If you have spent a long time on a single issue, it is recommended to do `git rebase` with *develop* so that conflicts do not occur at the time of the Pull Request.
+9. In order to synchronize the current changes from the original repository with your fork you must add an upstream with the following command `git remote add upstream https://github.com/Ear-Candy-Technologies/Amaranth.git`
+10. To perform the corresponding pulls and obtain the current state of the parent repository the following command is more than enough: `git pull upstream develop` (always remember to update the develop branch).
+11. The issues proposed both in the Scrum Board and in GitHub are proposed by the Ear Candy Technologies team, however, we are totally open to new features and development proposals. For this, it is necessary to send a message notifying the ECT team and for the proposal to be accepted.
 
 ### How to start my development?
 
