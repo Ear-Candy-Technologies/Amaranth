@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    SynthVoice.cpp
-    Created: 20 Jun 2022 10:14:54pm
-    Author:  Jesús Valdez
-
-  ==============================================================================
-*/
-
 #include "SynthVoice.h"
 
 SynthVoice::SynthVoice() {}
@@ -44,23 +34,23 @@ void SynthVoice::pitchWheelMoved ([[maybe_unused]] int newPitchWheelValue) {}
 void SynthVoice::prepare (double inSampleRate, int inSamplesPerBlock, int inNumChannels)
 {
     juce::dsp::ProcessSpec spec;
-    spec.sampleRate = inSampleRate;
-    spec.numChannels = static_cast<juce::uint32> (inNumChannels);
+    spec.sampleRate       = inSampleRate;
+    spec.numChannels      = static_cast<juce::uint32> (inNumChannels);
     spec.maximumBlockSize = static_cast<juce::uint32> (inSamplesPerBlock);
     
     osc.setOscFunction ( [](float x) { return std::sinf(x); } );
     osc.prepareOsc (spec);
 }
 
-void SynthVoice::updateParameters([[maybe_unused]] juce::AudioProcessorValueTreeState& apvt)
+void SynthVoice::updateParameters ([[maybe_unused]] juce::AudioProcessorValueTreeState& apvt)
 {
     auto oscGain = apvt.getRawParameterValue(GAIN_OSC_ID)->load();
-    osc.updateParameters(oscGain, 0.8f, 0.8f, 1.0f, 1.5f);
+    osc.updateParameters (oscGain, 0.8f, 0.8f, 1.0f, 1.5f);
 }
 
 void SynthVoice::renderNextBlock (juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples)
 {
-    if(!isVoiceActive())
+    if (!isVoiceActive())
         return;
     
     synthBuffer.setSize (outputBuffer.getNumChannels(), numSamples, false, false, true);
@@ -73,9 +63,9 @@ void SynthVoice::renderNextBlock (juce::AudioBuffer<float>& outputBuffer, int st
     
     for (int channel = 0; channel < outputBuffer.getNumChannels(); channel++)
     {
-        outputBuffer.addFrom(channel, startSample, synthBuffer, channel, 0, numSamples);
+        outputBuffer.addFrom (channel, startSample, synthBuffer, channel, 0, numSamples);
         
-        if(!osc.getIsActive())
+        if (!osc.getIsActive())
             clearCurrentNote();
     }
 }
