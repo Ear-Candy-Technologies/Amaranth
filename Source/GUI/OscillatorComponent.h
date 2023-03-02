@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    OscillatorComponent.h
-    Created: 15 Jul 2022 12:18:34pm
-    Author:  Rodolfo Ortiz
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include <JuceHeader.h>
@@ -16,13 +6,17 @@
 class OscillatorComponent : public juce::Component
 {
 public:
+    
     OscillatorComponent (AmaranthAudioProcessor&);
+    
     ~OscillatorComponent() override;
     
     void paint (juce::Graphics&) override;
+    
     void resized() override;
     
 private:
+    
     AmaranthAudioProcessor& processor;
     
     juce::Slider gainSlider;

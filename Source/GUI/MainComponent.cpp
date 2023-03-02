@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    MainComponent.cpp
-    Created: 15 Jul 2022 11:54:57am
-    Author:  Rodolfo Ortiz
-
-  ==============================================================================
-*/
-
 #include "MainComponent.h"
 
 MainComponent::MainComponent(AmaranthAudioProcessor& p) : processor(p)
@@ -15,17 +5,14 @@ MainComponent::MainComponent(AmaranthAudioProcessor& p) : processor(p)
     addAndMakeVisible (oscillator_1);
 }
 
-MainComponent::~MainComponent()
-{
-    
-}
+MainComponent::~MainComponent() {}
 
 void MainComponent::paint (juce::Graphics& g)
 {
-    g.fillAll (juce::Colours::dimgrey);
+    g.fillAll        (juce::Colours::darkviolet);
 
-    g.setFont (25.0f);
-    g.setColour (juce::Colours::white);
+    g.setFont        (25.0f);
+    g.setColour      (juce::Colours::white);
     g.drawFittedText ("Amaranth", getLocalBounds(), juce::Justification::centred, 1);
 }
 

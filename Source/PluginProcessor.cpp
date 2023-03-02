@@ -34,7 +34,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::crea
 {
     juce::AudioProcessorValueTreeState::ParameterLayout params;
     
-    params.add (std::make_unique<juce::AudioParameterFloat> (GAIN_OSC_ID, GAIN_OSC_NAME, 0.0f, 1.0f, 0.5f));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (GAIN_OSC_ID, 1), GAIN_OSC_NAME, 0.0f, 1.0f, 0.5f));
     
     return params;
 }

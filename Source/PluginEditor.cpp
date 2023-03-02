@@ -1,4 +1,3 @@
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -12,10 +11,7 @@ AmaranthAudioProcessorEditor::AmaranthAudioProcessorEditor (AmaranthAudioProcess
 
 AmaranthAudioProcessorEditor::~AmaranthAudioProcessorEditor() {}
 
-void AmaranthAudioProcessorEditor::paint (juce::Graphics& g)
-{
-
-}
+void AmaranthAudioProcessorEditor::paint (juce::Graphics& ) {}
 
 void AmaranthAudioProcessorEditor::resized()
 {

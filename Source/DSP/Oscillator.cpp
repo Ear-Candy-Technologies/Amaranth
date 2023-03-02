@@ -1,13 +1,3 @@
-/*
-  ==============================================================================
-
-    Oscillator.cpp
-    Created: 3 Jul 2022 1:55:42am
-    Author:  Jesús Valdez
-
-  ==============================================================================
-*/
-
 #include "Oscillator.h"
 
 Oscillator::Oscillator() {}
@@ -52,8 +42,8 @@ void Oscillator::updateParameters (float inGain, float inAttack, float inDecay, 
 {
     gain.setGainLinear(inGain);
     
-    adsrParams.attack = inAttack;
-    adsrParams.decay = inDecay;
+    adsrParams.attack  = inAttack;
+    adsrParams.decay   = inDecay;
     adsrParams.sustain = inSustain;
     adsrParams.release = inRelease;
     adsr.setParameters (adsrParams);
@@ -61,7 +51,7 @@ void Oscillator::updateParameters (float inGain, float inAttack, float inDecay, 
 
 void Oscillator::processOsc (juce::dsp::ProcessContextReplacing<float> inContext, juce::AudioBuffer<float>& synthBuffer)
 {
-    process (inContext);
+    process      (inContext);
     gain.process (inContext);
     
     adsr.applyEnvelopeToBuffer (synthBuffer, 0, synthBuffer.getNumSamples());
