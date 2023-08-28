@@ -1,4 +1,3 @@
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -21,15 +20,15 @@ AmaranthAudioProcessor::~AmaranthAudioProcessor() {}
 
 void AmaranthAudioProcessor::prepareSynth()
 {
-    // Add sound to synth
-    synth.addSound (new SynthSound());
+    /** Add sound to synth */
+    synth.addSound (new AmaranthSound());
     
-    // Add number of voices the synth will have
+    /** Add number of voices the synth will have */
     for (auto i = 0; i < NUM_VOICES; i++)
-        synth.addVoice (new SynthVoice());
+        synth.addVoice (new AmaranthVoice());
 }
 
-// Parameters user can move
+/** Parameters user can move */
 juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::createAPVTS()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout params;
@@ -97,13 +96,13 @@ void AmaranthAudioProcessor::changeProgramName ([[maybe_unused]] int index, [[ma
 
 void AmaranthAudioProcessor::prepareToPlay (double sampleRate, [[maybe_unused]] int samplesPerBlock)
 {
-    synth.setCurrentPlaybackSampleRate(sampleRate);
+    synth.setCurrentPlaybackSampleRate (sampleRate);
     
-    // Prepare objects inside main synth class per voice
+    /** Prepare objects inside main synth class per voice */
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if(auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
-            voice->prepare(sampleRate, samplesPerBlock, getTotalNumInputChannels());
+        if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
+            voice->prepare (sampleRate, samplesPerBlock, getTotalNumInputChannels());
     }
 }
 
@@ -137,15 +136,15 @@ void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<fl
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
-    // Update synth parameters per voice
+    /** Update synth parameters per voice */
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if (auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
+        if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
             voice->updateParameters (apvts);
     }
     
-    // Synth DSP
-    synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
+    keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
+    synth.renderNextBlock               (buffer, midiMessages, 0, buffer.getNumSamples());
 }
 
 bool AmaranthAudioProcessor::hasEditor() const

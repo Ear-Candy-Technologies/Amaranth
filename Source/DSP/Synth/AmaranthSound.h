@@ -1,13 +1,12 @@
 #pragma once
 #include <JuceHeader.h>
 
-class SynthSound : public juce::SynthesiserSound
+class AmaranthSound : public juce::SynthesiserSound
 {
 public:
     
-    SynthSound();
-    
-    ~SynthSound() override;
+    AmaranthSound();
+    ~AmaranthSound() override;
     
     bool appliesToNote ([[maybe_unused]] int midiNoteNumber) override;
     
@@ -15,5 +14,6 @@ public:
     
 private:
     
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthSound)
     
 };

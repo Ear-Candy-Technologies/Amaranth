@@ -3,13 +3,12 @@
 #include "../../Helpers/ParamsHelper.h"
 #include "../Oscillator.h"
 
-class SynthVoice : public juce::SynthesiserVoice
+class AmaranthVoice : public juce::SynthesiserVoice
 {
 public:
     
-    SynthVoice();
-    
-    ~SynthVoice() override;
+    AmaranthVoice();
+    ~AmaranthVoice() override;
     
     bool canPlaySound (juce::SynthesiserSound *) override;
     
@@ -33,4 +32,5 @@ private:
 
     juce::AudioBuffer<float> synthBuffer;
     
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthVoice)
 };

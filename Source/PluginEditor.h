@@ -14,6 +14,7 @@ public:
     void resized() override;
 
 private:
+    
     AmaranthAudioProcessor& audioProcessor;
     
     MainComponent mainComponent { audioProcessor };

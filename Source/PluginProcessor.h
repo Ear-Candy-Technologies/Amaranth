@@ -2,16 +2,17 @@
 
 #include <JuceHeader.h>
 
-#include "./Helpers/ParamsHelper.h"
-#include "./DSP/Synth/SynthSound.h"
-#include "./DSP/Synth/SynthVoice.h"
+#include "Helpers/ParamsHelper.h"
+#include "DSP/Synth/AmaranthSound.h"
+#include "DSP/Synth/AmaranthVoice.h"
 
-class AmaranthAudioProcessor  : public juce::AudioProcessor
+class AmaranthAudioProcessor : public juce::AudioProcessor
 {
 public:
     
     AmaranthAudioProcessor();
     ~AmaranthAudioProcessor() override;
+    
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
    #ifndef JucePlugin_PreferredChannelConfigurations
@@ -33,16 +34,17 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     
-    // Prepare Synth
     void prepareSynth();
     
-    // Audio Parameters APVTS
+    /** Audio Parameters */
     juce::AudioProcessorValueTreeState apvts;
     juce::AudioProcessorValueTreeState::ParameterLayout createAPVTS();
+    
+    /** Keyboard state */
+    juce::MidiKeyboardState keyboardState;
 
 private:
     
-    // Global synth class
     juce::Synthesiser synth;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthAudioProcessor)

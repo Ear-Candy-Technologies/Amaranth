@@ -1,18 +1,16 @@
 #include "Oscillator.h"
 
 Oscillator::Oscillator() {}
-
 Oscillator::~Oscillator() {}
 
 void Oscillator::prepareOsc (juce::dsp::ProcessSpec inSpec)
 {
-    prepare (inSpec);
-    
-    gain.prepare (inSpec);
-    
+    prepare            (inSpec);
+    gain.prepare       (inSpec);
     adsr.setSampleRate (inSpec.sampleRate);
-    adsrParams.attack = 0.8f;
-    adsrParams.decay = 0.8f;
+    
+    adsrParams.attack  = 0.8f;
+    adsrParams.decay   = 0.8f;
     adsrParams.sustain = 1.0f;
     adsrParams.release = 1.5f;
     adsr.setParameters (adsrParams);

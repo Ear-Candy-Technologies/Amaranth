@@ -1,25 +1,25 @@
-#include "SynthVoice.h"
+#include "AmaranthVoice.h"
 
-SynthVoice::SynthVoice() {}
+AmaranthVoice::AmaranthVoice() {}
 
-SynthVoice::~SynthVoice() {}
+AmaranthVoice::~AmaranthVoice() {}
 
-bool SynthVoice::canPlaySound (juce::SynthesiserSound* sound)
+bool AmaranthVoice::canPlaySound (juce::SynthesiserSound* sound)
 {
     return dynamic_cast<juce::SynthesiserSound*>(sound) != nullptr;
 }
 
-void SynthVoice::startNote (int midiNoteNumber,
-                            [[maybe_unused]] float velocity,
-                            [[maybe_unused]] juce::SynthesiserSound *sound,
-                            [[maybe_unused]] int currentPitchWheelPosition)
+void AmaranthVoice::startNote (int midiNoteNumber,
+                               [[maybe_unused]] float velocity,
+                               [[maybe_unused]] juce::SynthesiserSound *sound,
+                               [[maybe_unused]] int currentPitchWheelPosition)
 {
     auto frequency = static_cast<float>(juce::MidiMessage::getMidiNoteInHertz(midiNoteNumber));
     osc.setOscFreq (frequency);
     osc.startNote();
 }
 
-void SynthVoice::stopNote ([[maybe_unused]] float velocity, bool allowTailOff)
+void AmaranthVoice::stopNote ([[maybe_unused]] float velocity, bool allowTailOff)
 {
     osc.stopNote();
     
@@ -27,11 +27,11 @@ void SynthVoice::stopNote ([[maybe_unused]] float velocity, bool allowTailOff)
         clearCurrentNote();
 }
 
-void SynthVoice::controllerMoved ([[maybe_unused]] int controllerNumber, [[maybe_unused]] int newControllerValue) {}
+void AmaranthVoice::controllerMoved ([[maybe_unused]] int controllerNumber, [[maybe_unused]] int newControllerValue) {}
 
-void SynthVoice::pitchWheelMoved ([[maybe_unused]] int newPitchWheelValue) {}
+void AmaranthVoice::pitchWheelMoved ([[maybe_unused]] int newPitchWheelValue) {}
 
-void SynthVoice::prepare (double inSampleRate, int inSamplesPerBlock, int inNumChannels)
+void AmaranthVoice::prepare (double inSampleRate, int inSamplesPerBlock, int inNumChannels)
 {
     juce::dsp::ProcessSpec spec;
     spec.sampleRate       = inSampleRate;
@@ -42,13 +42,13 @@ void SynthVoice::prepare (double inSampleRate, int inSamplesPerBlock, int inNumC
     osc.prepareOsc (spec);
 }
 
-void SynthVoice::updateParameters ([[maybe_unused]] juce::AudioProcessorValueTreeState& apvt)
+void AmaranthVoice::updateParameters ([[maybe_unused]] juce::AudioProcessorValueTreeState& apvt)
 {
     auto oscGain = apvt.getRawParameterValue(GAIN_OSC_ID)->load();
     osc.updateParameters (oscGain, 0.8f, 0.8f, 1.0f, 1.5f);
 }
 
-void SynthVoice::renderNextBlock (juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples)
+void AmaranthVoice::renderNextBlock (juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples)
 {
     if (!isVoiceActive())
         return;

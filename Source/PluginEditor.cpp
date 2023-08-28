@@ -1,8 +1,6 @@
-#include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-AmaranthAudioProcessorEditor::AmaranthAudioProcessorEditor (AmaranthAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+AmaranthAudioProcessorEditor::AmaranthAudioProcessorEditor (AmaranthAudioProcessor& p) : AudioProcessorEditor (&p), audioProcessor (p)
 {
     addAndMakeVisible (mainComponent);
     
