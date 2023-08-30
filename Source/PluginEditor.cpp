@@ -4,7 +4,7 @@ AmaranthAudioProcessorEditor::AmaranthAudioProcessorEditor (AmaranthAudioProcess
 {
     addAndMakeVisible (mainComponent);
     
-    setSize (1100, 750);
+    setSize (1100, 600);
 }
 
 AmaranthAudioProcessorEditor::~AmaranthAudioProcessorEditor() {}

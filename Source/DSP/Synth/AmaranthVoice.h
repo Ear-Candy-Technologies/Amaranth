@@ -1,6 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
-#include "../../Helpers/ParamsHelper.h"
+
+#include "../../Parameters/Parameters.h"
 #include "../Oscillator.h"
 
 class AmaranthVoice : public juce::SynthesiserVoice

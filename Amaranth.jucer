@@ -28,23 +28,71 @@
       <FILE id="aYaELU" name="Oscillator.cpp" compile="1" resource="0" file="Source/DSP/Oscillator.cpp"/>
       <FILE id="Q443ah" name="Oscillator.h" compile="0" resource="0" file="Source/DSP/Oscillator.h"/>
     </GROUP>
-    <GROUP id="{FCAC4495-61AA-EC8E-8CAB-F49C3028E5E4}" name="GUI">
-      <GROUP id="{2C3AC59F-0D49-10BA-DFA3-01874E3A15E1}" name="Components">
-        <FILE id="Sm3nXI" name="KeyboardComponent.cpp" compile="1" resource="0"
-              file="Source/GUI/Components/KeyboardComponent.cpp"/>
-        <FILE id="hFzSmx" name="KeyboardComponent.h" compile="0" resource="0"
-              file="Source/GUI/Components/KeyboardComponent.h"/>
-        <FILE id="QgPyDM" name="OscillatorComponent.cpp" compile="1" resource="0"
-              file="Source/GUI/Components/OscillatorComponent.cpp"/>
-        <FILE id="afdTer" name="OscillatorComponent.h" compile="0" resource="0"
-              file="Source/GUI/Components/OscillatorComponent.h"/>
+    <GROUP id="{F206067C-741E-664C-F6F9-B408CDFEC3ED}" name="Components">
+      <GROUP id="{0562825A-DA4D-016E-83E0-0DF4A9A8FA17}" name="Header">
+        <FILE id="y5mgUc" name="HeaderComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Header/HeaderComponent.cpp"/>
+        <FILE id="kFhtw6" name="HeaderComponent.h" compile="0" resource="0"
+              file="Source/Components/Header/HeaderComponent.h"/>
       </GROUP>
-      <FILE id="qE1u6s" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/GUI/MainComponent.cpp"/>
-      <FILE id="I9NVIU" name="MainComponent.h" compile="0" resource="0" file="Source/GUI/MainComponent.h"/>
+      <GROUP id="{982CF549-925A-8461-BB58-7454DB049D60}" name="Keyboard">
+        <FILE id="RjJ4hn" name="KeyboardComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Keyboard/KeyboardComponent.cpp"/>
+        <FILE id="wS9f5M" name="KeyboardComponent.h" compile="0" resource="0"
+              file="Source/Components/Keyboard/KeyboardComponent.h"/>
+      </GROUP>
+      <GROUP id="{34304406-2E89-2CCE-F0C4-5288CC53AF9D}" name="Oscillator">
+        <FILE id="SWBBtg" name="OscillatorComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Oscillator/OscillatorComponent.cpp"/>
+        <FILE id="mHDLQF" name="OscillatorComponent.h" compile="0" resource="0"
+              file="Source/Components/Oscillator/OscillatorComponent.h"/>
+      </GROUP>
+      <GROUP id="{32FFCB18-4523-CE12-1EA0-37D3BC189D51}" name="Envelope">
+        <FILE id="RiFpdf" name="EnvelopeComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Envelope/EnvelopeComponent.cpp"/>
+        <FILE id="hktWhH" name="EnvelopeComponent.h" compile="0" resource="0"
+              file="Source/Components/Envelope/EnvelopeComponent.h"/>
+      </GROUP>
+      <GROUP id="{22395A7D-0EB4-0BBE-275D-F963F81F08F2}" name="Filter">
+        <FILE id="HLlfGH" name="FilterComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Filter/FilterComponent.cpp"/>
+        <FILE id="J2tuvz" name="FilterComponent.h" compile="0" resource="0"
+              file="Source/Components/Filter/FilterComponent.h"/>
+      </GROUP>
+      <GROUP id="{56D151A9-90F0-7224-E719-4374A9014F17}" name="Delay">
+        <FILE id="ksx2cu" name="DelayComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Delay/DelayComponent.cpp"/>
+        <FILE id="sRgu4J" name="DelayComponent.h" compile="0" resource="0"
+              file="Source/Components/Delay/DelayComponent.h"/>
+      </GROUP>
+      <GROUP id="{D27BD668-C0AA-8F58-8543-D86105AD4296}" name="Distortion">
+        <FILE id="WIjVci" name="DistortionComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Distortion/DistortionComponent.cpp"/>
+        <FILE id="Opeb31" name="DistortionComponent.h" compile="0" resource="0"
+              file="Source/Components/Distortion/DistortionComponent.h"/>
+      </GROUP>
+      <GROUP id="{A2B7D785-E444-3B45-B1A3-CD091AD761BE}" name="Reverb">
+        <FILE id="fkrMuD" name="ReverbComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Reverb/ReverbComponent.cpp"/>
+        <FILE id="yu9tl5" name="ReverbComponent.h" compile="0" resource="0"
+              file="Source/Components/Reverb/ReverbComponent.h"/>
+      </GROUP>
+      <GROUP id="{DF145EEC-77C2-5676-71A6-7FC8DDA88E5D}" name="Meters">
+        <FILE id="AgkAgz" name="MetersComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Meters/MetersComponent.cpp"/>
+        <FILE id="akc7lw" name="MetersComponent.h" compile="0" resource="0"
+              file="Source/Components/Meters/MetersComponent.h"/>
+      </GROUP>
+      <FILE id="ZLIp8Z" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/Components/MainComponent.cpp"/>
+      <FILE id="Im7GaY" name="MainComponent.h" compile="0" resource="0" file="Source/Components/MainComponent.h"/>
+    </GROUP>
+    <GROUP id="{2BBA755B-60FB-7F55-1443-641DD5424AF1}" name="Parameters">
+      <FILE id="bhvDPt" name="Parameters.cpp" compile="1" resource="0" file="Source/Parameters/Parameters.cpp"/>
+      <FILE id="Zhxhqx" name="Parameters.h" compile="0" resource="0" file="Source/Parameters/Parameters.h"/>
     </GROUP>
     <GROUP id="{40D322C5-F9F8-9487-C505-19A88A627800}" name="Helpers">
-      <FILE id="FGDZAn" name="ParamsHelper.h" compile="0" resource="0" file="Source/Helpers/ParamsHelper.h"/>
+      <FILE id="FQuWmq" name="Globals.h" compile="0" resource="0" file="Source/Helpers/Globals.h"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
