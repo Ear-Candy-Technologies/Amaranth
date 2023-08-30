@@ -30,8 +30,8 @@ private:
     
     HeaderComponent headerComponent     { processor };
     
-    OscillatorComponent oscillator_1    { processor };
-    OscillatorComponent oscillator_2    { processor };
+    OscillatorComponent oscillator_1    { processor, ID::Oscillator::One };
+    OscillatorComponent oscillator_2    { processor, ID::Oscillator::Two };
     FilterComponent filterComponent;
     EnvelopeComponent envelopeComponent;
     

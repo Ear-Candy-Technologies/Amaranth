@@ -117,7 +117,7 @@ bool AmaranthAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts)
 }
 #endif
 
-void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<float>& buffer, [[maybe_unused]] juce::MidiBuffer& midiMessages)
+void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
@@ -126,15 +126,20 @@ void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<fl
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
+    updateParameters();
+    
+    synth.renderNextBlock               (buffer, midiMessages, 0, buffer.getNumSamples());
+    keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
+}
+
+void AmaranthAudioProcessor::updateParameters()
+{
     /** Update synth parameters per voice */
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
         if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
             voice->updateParameters (apvts);
     }
-    
-    keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
-    synth.renderNextBlock               (buffer, midiMessages, 0, buffer.getNumSamples());
 }
 
 bool AmaranthAudioProcessor::hasEditor() const

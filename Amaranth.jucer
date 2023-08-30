@@ -4,7 +4,7 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="Ear Candy Technologies"
               companyWebsite="earcandytech.com" companyEmail="info@earcandytech.com"
               version="0.0.1" pluginFormats="buildAU,buildStandalone,buildVST,buildVST3"
-              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn"
               cppLanguageStandard="17" displaySplashScreen="1">
   <MAINGROUP id="alCdbK" name="Amaranth">
     <GROUP id="{94DE3D09-3F2D-6F9B-DF54-4B874861E430}" name="Source">

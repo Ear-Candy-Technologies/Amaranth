@@ -37,6 +37,7 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     
     void prepareSynth();
+    void updateParameters();
     
     /** Audio Parameters */
     juce::AudioProcessorValueTreeState apvts;

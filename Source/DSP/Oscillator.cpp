@@ -38,7 +38,7 @@ void Oscillator::stopNote()
 
 void Oscillator::updateParameters (float inGain, float inAttack, float inDecay, float inSustain, float inRelease)
 {
-    gain.setGainLinear(inGain);
+    gain.setGainDecibels (inGain);
     
     adsrParams.attack  = inAttack;
     adsrParams.decay   = inDecay;
