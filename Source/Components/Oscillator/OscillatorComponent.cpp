@@ -6,7 +6,7 @@ OscillatorComponent::OscillatorComponent (AmaranthAudioProcessor& p) : processor
     gainSlider.setTextBoxStyle (juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 50, 30);
     addAndMakeVisible          (gainSlider);
     
-    gainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (processor.apvts, ID::GAIN_OSC_ID, gainSlider);
+    gainAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (processor.apvts, ID::OSC_ONE_GAIN, gainSlider);
 }
 
 OscillatorComponent::~OscillatorComponent() {}
