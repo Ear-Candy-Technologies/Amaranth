@@ -29,17 +29,17 @@ void MainComponent::paint (juce::Graphics& g)
 
 void MainComponent::resized()
 {
-    headerComponent.setBoundsRelative   (0.0f, 0.0f, 1.0f, 0.1f);
+    headerComponent.setBoundsRelative   (Sizes::headerBounds);
     
-    oscillator_1.setBoundsRelative      (0.0f, 0.1f, 0.5f, 0.2f);
-    oscillator_2.setBoundsRelative      (0.0f, 0.3f, 0.5f, 0.2f);
-    filterComponent.setBoundsRelative   (0.0f, 0.5f, 0.5f, 0.2f);
-    envelopeComponent.setBoundsRelative (0.0f, 0.7f, 0.5f, 0.2f);
+    oscillator_1.setBoundsRelative      (Sizes::oscOnebounds);
+    oscillator_2.setBoundsRelative      (Sizes::oscTwobounds);
+    filterComponent.setBoundsRelative   (Sizes::filterBounds);
+    envelopeComponent.setBoundsRelative (Sizes::envelopeBounds);
     
-    distortionComponent.setBoundsRelative (0.5f, 0.1f, 0.1f, 0.8f);
-    reverbComponent.setBoundsRelative     (0.6f, 0.1f, 0.1f, 0.8f);
-    delayComponent.setBoundsRelative      (0.7f, 0.1f, 0.1f, 0.8f);
+    distortionComponent.setBoundsRelative (Sizes::distortionBounds);
+    reverbComponent.setBoundsRelative     (Sizes::reverbBounds);
+    delayComponent.setBoundsRelative      (Sizes::delayBounds);
     
-    metersComponent.setBoundsRelative   (0.8f, 0.1f, 0.2f, 0.8f);
-    keyboardComponent.setBoundsRelative (0.0f, 0.9f, 1.0f, 0.1f);
+    metersComponent.setBoundsRelative   (Sizes::metersBounds);
+    keyboardComponent.setBoundsRelative (Sizes::keyboardBounds);
 }

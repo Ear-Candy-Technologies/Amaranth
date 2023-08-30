@@ -11,6 +11,7 @@
 #include "Meters/MetersComponent.h"
 #include "Keyboard/KeyboardComponent.h"
 
+#include "../Helpers/Sizes.h"
 #include "../PluginProcessor.h"
 
 class MainComponent : public juce::Component
