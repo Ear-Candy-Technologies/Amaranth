@@ -44,7 +44,7 @@ void AmaranthVoice::prepare (double inSampleRate, int inSamplesPerBlock, int inN
 
 void AmaranthVoice::updateParameters ([[maybe_unused]] juce::AudioProcessorValueTreeState& apvt)
 {
-    auto oscGain = apvt.getRawParameterValue(GAIN_OSC_ID)->load();
+    auto oscGain = apvt.getRawParameterValue(ID::OSC_ONE_GAIN)->load();
     osc.updateParameters (oscGain, 0.8f, 0.8f, 1.0f, 1.5f);
 }
 

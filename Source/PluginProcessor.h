@@ -2,7 +2,9 @@
 
 #include <JuceHeader.h>
 
-#include "Helpers/ParamsHelper.h"
+#include "Parameters/Parameters.h"
+#include "Helpers/Globals.h"
+
 #include "DSP/Synth/AmaranthSound.h"
 #include "DSP/Synth/AmaranthVoice.h"
 
@@ -35,10 +37,10 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     
     void prepareSynth();
+    void updateParameters();
     
     /** Audio Parameters */
     juce::AudioProcessorValueTreeState apvts;
-    juce::AudioProcessorValueTreeState::ParameterLayout createAPVTS();
     
     /** Keyboard state */
     juce::MidiKeyboardState keyboardState;
