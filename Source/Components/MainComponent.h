@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include "Header/HeaderComponent.h"
+#include "Master/MasterComponent.h"
 #include "Oscillator/OscillatorComponent.h"
 #include "Filter/FilterComponent.h"
 #include "Envelope/EnvelopeComponent.h"
@@ -30,7 +31,8 @@ private:
     
     AmaranthAudioProcessor& processor;
     
-    HeaderComponent headerComponent     { processor };
+    HeaderComponent headerComponent { processor };
+    MasterComponent masterComponent { processor };
     
     OscillatorComponent oscillator_1    { processor, ID::Oscillator::One };
     OscillatorComponent oscillator_2    { processor, ID::Oscillator::Two };
@@ -39,7 +41,7 @@ private:
     
     DistortionComponent distortionComponent;
     ReverbComponent reverbComponent     { processor };
-    DelayComponent delayComponent;
+    DelayComponent delayComponent       { processor };
     
     MetersComponent metersComponent;
     KeyboardComponent keyboardComponent { processor.keyboardState };

@@ -1,8 +1,9 @@
 #include "MainComponent.h"
 
-MainComponent::MainComponent(AmaranthAudioProcessor& p) : processor(p)
+MainComponent::MainComponent (AmaranthAudioProcessor& p) : processor(p)
 {
     addAndMakeVisible (headerComponent);
+    addAndMakeVisible (masterComponent);
     
     addAndMakeVisible (oscillator_1);
     addAndMakeVisible (oscillator_2);
@@ -35,6 +36,7 @@ void MainComponent::paint (juce::Graphics& g)
 void MainComponent::resized()
 {
     headerComponent.setBoundsRelative   (Sizes::headerBounds);
+    masterComponent.setBoundsRelative   (Sizes::masterBounds);
     
     oscillator_1.setBoundsRelative      (Sizes::oscOnebounds);
     oscillator_2.setBoundsRelative      (Sizes::oscTwobounds);

@@ -11,9 +11,10 @@
 #include "Reverb.h"
 
 Reverb::Reverb() {}
+
 Reverb::~Reverb() {}
 
-void Reverb::setReverbParamters(float roomSize, float damping, float mix, float width, float freezeMode)
+void Reverb::setReverbParamters (float roomSize, float damping, float mix, float width, float freezeMode)
 {
     reverbParameters.roomSize = roomSize;
     reverbParameters.damping = damping;
@@ -23,7 +24,7 @@ void Reverb::setReverbParamters(float roomSize, float damping, float mix, float 
     reverbParameters.freezeMode = freezeMode;
 }
 
-void Reverb::prepare(juce::dsp::ProcessSpec spec)
+void Reverb::prepare (juce::dsp::ProcessSpec spec)
 {
     reverb.reset();
     reverb.prepare(spec);
@@ -31,7 +32,7 @@ void Reverb::prepare(juce::dsp::ProcessSpec spec)
 }
 
 
-void Reverb::process(juce::AudioBuffer<float>& buffer)
+void Reverb::process (juce::AudioBuffer<float>& buffer)
 {
     reverb.setParameters (reverbParameters);
     juce::dsp::AudioBlock<float> block(buffer);

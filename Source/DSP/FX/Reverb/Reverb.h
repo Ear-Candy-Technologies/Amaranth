@@ -7,13 +7,17 @@
 
   ==============================================================================
 */
+
 #include <JuceHeader.h>
 #pragma once
+
 class Reverb
 {
 public:
+    
     Reverb();
     ~Reverb();
+    
     void setReverbParamters (float roomSize   = 0.5f,
                              float damping    = 0.5f,
                              float mix        = 0.33f,
@@ -25,6 +29,7 @@ public:
     void process (juce::AudioBuffer<float>& buffer);
 
 private:
+    
     juce::dsp::Reverb reverb;
     
     juce::dsp::Reverb::Parameters reverbParameters;
