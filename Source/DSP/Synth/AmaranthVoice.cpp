@@ -45,7 +45,7 @@ void AmaranthVoice::prepare (juce::dsp::ProcessSpec& spec)
     adsrParams.release = 1.0f;
     adsr.setParameters (adsrParams);
     
-    oscOne.prepare (spec, [](float x) { return std::sinf (2.0f * juce::MathConstants<float>::pi * x); });
+    oscOne.prepare (spec, [](float x) { return x <= 0.5f ? 1.0f : -1.0f; });
     oscTwo.prepare (spec, [](float x) { return x <= 0.5f ? 1.0f : -1.0f; });
 }
 

@@ -56,15 +56,15 @@ namespace ID
     /** Ranges */
     static const juce::NormalisableRange<float> gainRange   (-60.0f,  12.0f,  1.0f, 1.0f); // Gain (dB)
     static const juce::NormalisableRange<float> panRange    (0.0f,    juce::MathConstants<float>::halfPi, 0.01f, 1.0f); // Pan
-    static const juce::NormalisableRange<float> detuneRange (-60.0f,  12.0f,  1.0f, 1.0f); // Detune
-    static const juce::NormalisableRange<float> widthRange  (-100.0f, 100.0f, 1.0f, 1.0f); // Width
-    static const juce::NormalisableRange<float> phaseRange  (-180.0f, 180.0f, 1.0f, 1.0f); // Phase
+    static const juce::NormalisableRange<float> detuneRange (0.0f,    1.0f,   0.01f, 1.0f); // Detune
+    static const juce::NormalisableRange<float> widthRange  (0.0f,    1.0f,   0.01f, 1.0f); // Width
+    static const juce::NormalisableRange<float> phaseRange  (-180.0f, 180.0f, 1.0f,  1.0f); // Phase
     static const juce::NormalisableRange<float> adsrRange   (0.0f,    1.0f,   0.01f, 1.0f); // ADSR
 
     /** Default value */
     static constexpr float gainDefault   { 0.0f };
     static constexpr float panDefault    { juce::MathConstants<float>::halfPi/2.0f };
-    static constexpr float detuneDefault { 0.0f };
+    static constexpr float detuneDefault { 0.5f };
     static constexpr float widthDefault  { 0.0f };
     static constexpr float phaseDefault  { 0.0f };
     static constexpr float adsrDefault   { 0.5f };

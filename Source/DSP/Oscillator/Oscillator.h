@@ -1,51 +1,8 @@
 #pragma once
 #include <JuceHeader.h>
 #include "Pan.h"
+#include "StereoWidth.h"
 #include "../../Parameters/Parameters.h"
-
-/*class Oscillator : public juce::dsp::Oscillator<float>
-{
-public:
-
-    Oscillator (juce::AudioProcessorValueTreeState& apvts, ID::Oscillator);
-    ~Oscillator();
-    
-    struct Parameters
-    {
-        float gain = 0.0f;
-        float freq = 100.0f;
-        float pan  = juce::MathConstants<float>::halfPi;
-        
-        juce::ADSR::Parameters adsr;
-        
-        std::function<NumericType(NumericType)> function;
-    };
-    
-    void prepareOscillator (juce::dsp::ProcessSpec inSpec, const std::function<NumericType(NumericType)> inFunction);
-    
-    void updateParameters();
-    
-    void processOscillator (juce::dsp::ProcessContextReplacing<float>& inContext, juce::AudioBuffer<float>& synthBuffer);
-    void processOscillator (juce::dsp::ProcessContextReplacing<float>& inContext);
-    
-    void setFunction (const std::function<NumericType(NumericType)>& inFunction);
-    void setFreq     (float inFreq);
-    void setGain     (float inGain);
-    void setPan      (float inPan);
-
-private:
-    
-    ID::Oscillator oscillatorID;
-    juce::StringArray ids;
-
-    juce::dsp::Gain<float> gain;
-    Pan pan;
-    
-    Parameters parameters;
-    juce::AudioProcessorValueTreeState& apvts;
-    
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Oscillator)
-};*/
 
 class Oscillator
 {
@@ -56,9 +13,10 @@ public:
     
     struct Parameters
     {
-        float gain = 0.0f;
-        float freq = 100.0f;
-        float pan  = juce::MathConstants<float>::halfPi;
+        float gain  = 0.0f;
+        float freq  = 100.0f;
+        float pan   = juce::MathConstants<float>::halfPi;
+        float width = 0.0f;
         
         juce::ADSR::Parameters adsr;
         
@@ -79,6 +37,7 @@ public:
     void setFreq     (float inFreq);
     void setGain     (float inGain);
     void setPan      (float inPan);
+    void setWidth    (float inWidth);
     
 private:
     
@@ -89,11 +48,18 @@ private:
     
     juce::dsp::Gain<float> gain;
     Pan pan;
+    StereoWidth stereoWidth;
     
     /** Parameters */
     Parameters parameters;
     juce::AudioProcessorValueTreeState& apvts;
     
-    float samplerate { 0.0f };
-    float fase[2]    { 0.0f };
+    float detuneRelations[6] = {
+        1.0f,
+        1.01991221f,
+        0.98047643f,
+        0.93711560f,
+        0.88997686f,
+        1.06216538f
+    };
 };
