@@ -31,8 +31,12 @@
               file="Source/DSP/Synth/AmaranthVoice.cpp"/>
         <FILE id="QQAyR2" name="AmaranthVoice.h" compile="0" resource="0" file="Source/DSP/Synth/AmaranthVoice.h"/>
       </GROUP>
-      <FILE id="aYaELU" name="Oscillator.cpp" compile="1" resource="0" file="Source/DSP/Oscillator.cpp"/>
-      <FILE id="Q443ah" name="Oscillator.h" compile="0" resource="0" file="Source/DSP/Oscillator.h"/>
+      <GROUP id="{3E1A1BEB-E9DD-99CA-FD99-B1D88CCD240F}" name="Oscillator">
+        <FILE id="w4eqBw" name="Oscillator.cpp" compile="1" resource="0" file="Source/DSP/Oscillator/Oscillator.cpp"/>
+        <FILE id="TQlpY1" name="Oscillator.h" compile="0" resource="0" file="Source/DSP/Oscillator/Oscillator.h"/>
+        <FILE id="gfMS8B" name="Pan.h" compile="0" resource="0" file="Source/DSP/Oscillator/Pan.h"/>
+        <FILE id="Ke6yGm" name="StereoWidth.h" compile="0" resource="0" file="Source/DSP/Oscillator/StereoWidth.h"/>
+      </GROUP>
     </GROUP>
     <GROUP id="{F206067C-741E-664C-F6F9-B408CDFEC3ED}" name="Components">
       <GROUP id="{0562825A-DA4D-016E-83E0-0DF4A9A8FA17}" name="Header">

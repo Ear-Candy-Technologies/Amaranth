@@ -6,7 +6,6 @@ OscillatorComponent::OscillatorComponent (AmaranthAudioProcessor& p, ID::Oscilla
     prepareSlider (panSlider,    getOscillatorID (ID::OscillatorSection::Pan),    panAttach);
     prepareSlider (detuneSlider, getOscillatorID (ID::OscillatorSection::Detune), detuneAttach);
     prepareSlider (widthSlider,  getOscillatorID (ID::OscillatorSection::Width),  widthAttach);
-    prepareSlider (phaseSlider,  getOscillatorID (ID::OscillatorSection::Phase),  phaseAttach);
 }
 
 OscillatorComponent::~OscillatorComponent() {}
@@ -15,19 +14,14 @@ void OscillatorComponent::paint (juce::Graphics& g)
 {
     g.fillAll              (juce::Colours::darkviolet.contrasting());
     g.drawRoundedRectangle (5, 5, getWidth() - 10, getHeight() - 10, 10, 1);
-    
-    g.setFont        (25.0f);
-    g.setColour      (juce::Colours::black);
-    g.drawFittedText ("Oscillator", getLocalBounds(), juce::Justification::centred, 1);
 }
 
 void OscillatorComponent::resized()
 {
-    gainSlider.setBoundsRelative   (0.0f, 0.0f, 0.2f, 1.0f);
-    panSlider.setBoundsRelative    (0.2f, 0.0f, 0.2f, 1.0f);
-    detuneSlider.setBoundsRelative (0.4f, 0.0f, 0.2f, 1.0f);
-    widthSlider.setBoundsRelative  (0.6f, 0.0f, 0.2f, 1.0f);
-    phaseSlider.setBoundsRelative  (0.8f, 0.0f, 0.2f, 1.0f);
+    gainSlider.setBoundsRelative   (0.0f,  0.0f, 0.25f, 1.0f);
+    panSlider.setBoundsRelative    (0.25f, 0.0f, 0.25f, 1.0f);
+    detuneSlider.setBoundsRelative (0.5f,  0.0f, 0.25f, 1.0f);
+    widthSlider.setBoundsRelative  (0.75f, 0.0f, 0.25f, 1.0f);
 }
 
 void OscillatorComponent::prepareSlider (juce::Slider& slider, juce::String sliderID, std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach)
@@ -62,10 +56,6 @@ juce::String OscillatorComponent::getOscillatorID (ID::OscillatorSection oscilla
             case ID::OscillatorSection::Width:
                 finalID = ID::OSC_ONE_WIDTH;
                 break;
-                
-            case ID::OscillatorSection::Phase:
-                finalID = ID::OSC_ONE_PHASE;
-                break;
         }
     }
     
@@ -87,10 +77,6 @@ juce::String OscillatorComponent::getOscillatorID (ID::OscillatorSection oscilla
                 
             case ID::OscillatorSection::Width:
                 finalID = ID::OSC_TWO_WIDTH;
-                break;
-                
-            case ID::OscillatorSection::Phase:
-                finalID = ID::OSC_TWO_PHASE;
                 break;
         }
     }
