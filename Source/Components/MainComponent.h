@@ -39,7 +39,7 @@ private:
     FilterComponent filterComponent;
     EnvelopeComponent envelopeComponent;
     
-    DistortionComponent distortionComponent;
+    DistortionComponent distortionComponent  { processor };
     ReverbComponent reverbComponent          { processor };
     DelayComponent delayComponent            { processor };
     
