@@ -24,7 +24,7 @@ void OscillatorComponent::resized()
 {
     gainSlider.setBoundsRelative   (0.075f,  0.275f, 0.225f, 0.6f);
     panSlider.setBoundsRelative    (0.3f,    0.275f, 0.225f, 0.6f);
-    detuneSlider.setBoundsRelative (0.525f,  0.275f, 0.225f, 0.6f);
+    detuneSlider.setBoundsRelative (0.54f,  0.275f, 0.225f, 0.6f);
     widthSlider.setBoundsRelative  (0.775f,  0.275f, 0.225f, 0.6f);
 }
 
