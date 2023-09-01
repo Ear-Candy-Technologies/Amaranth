@@ -38,7 +38,8 @@ void AmaranthVoice::prepare (juce::dsp::ProcessSpec& spec)
 {
     adsr.setSampleRate (spec.sampleRate);
     
-    juce::ADSR::Parameters adsrParams;
+    filters.prepare (spec);
+    
     adsrParams.attack  = 0.0f;
     adsrParams.decay   = 0.0f;
     adsrParams.sustain = 1.0f;
@@ -54,6 +55,19 @@ void AmaranthVoice::prepare (juce::dsp::ProcessSpec& spec)
 
 void AmaranthVoice::updateParameters()
 {
+    filterParameters.highpassFreq = *apvts.getRawParameterValue (ID::FILTER_HIGHPASS);
+    filterParameters.lowpassFreq = *apvts.getRawParameterValue (ID::FILTER_LOWPASS);
+    filterParameters.highpassResonance = *apvts.getRawParameterValue (ID::FILTER_HIGHPASS_RES);
+    filterParameters.lowpassResonance  = *apvts.getRawParameterValue (ID::FILTER_LOWPASS_RES);
+    
+    filters.updateFilters (filterParameters);
+    
+    adsrParams.attack  = *apvts.getRawParameterValue (ID::ATTACK);
+    adsrParams.decay   = *apvts.getRawParameterValue (ID::DECAY);
+    adsrParams.sustain = *apvts.getRawParameterValue (ID::SUSTAIN);
+    adsrParams.release = *apvts.getRawParameterValue (ID::RELEASE);
+    adsr.setParameters (adsrParams);
+    
     oscOne.updateParameters();
     oscTwo.updateParameters();
 }
@@ -76,6 +90,9 @@ void AmaranthVoice::renderNextBlock (juce::AudioBuffer<float>& outputBuffer, int
     oscTwo.process (oscTwoBuffer);
     
     sumOscillators();
+    
+    filters.processHighPass (synthBuffer);
+    filters.processLowPass (synthBuffer);
     
     adsr.applyEnvelopeToBuffer (synthBuffer, 0, synthBuffer.getNumSamples());
     

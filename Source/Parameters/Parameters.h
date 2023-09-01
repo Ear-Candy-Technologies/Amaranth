@@ -65,6 +65,22 @@ namespace ID
 
     static constexpr float phaseDefault  { 0.0f };
 
+    /** Filters */
+    static const juce::String FILTER_HIGHPASS = "Highpass";
+    static const juce::String FILTER_LOWPASS  = "Lowpass";
+    static const juce::String FILTER_HIGHPASS_RES  = "HighpassResonance";
+    static const juce::String FILTER_LOWPASS_RES   = "LowpassResonance";
+    
+    static const juce::NormalisableRange<float> highpassFilterRange (20.0f, 20000.0f,  0.01f, 0.3f);
+    static const juce::NormalisableRange<float> lowpassFilterRange  (20.0f, 20000.0f,  0.01f, 0.3f);
+    static const juce::NormalisableRange<float> highpassResonanceRange (0.0f, 1.0f, 0.01f, 1.0f);
+    static const juce::NormalisableRange<float> lowpassResonanceRange  (0.0f, 1.0f, 0.01f, 1.0f);
+    
+    static constexpr float highpassFilterDefault { 20.0f };
+    static constexpr float lowpassFilterDefault  { 20000.0f };
+    static constexpr float highpassResonanceDefault { 0.0f };
+    static constexpr float lowpassResonanceDefault  { 0.0f };
+
     /** FX */
     /** Reverb */
     static const juce::String FX_RB_ROOM_SIZE    = "RoomSize";
@@ -104,7 +120,6 @@ namespace ID
     static constexpr float masterDefault { -12.0f };
 
     static constexpr float adsrDefault   { 0.5f };
-
 }
 
 /** Parameters user can move */
