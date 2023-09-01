@@ -27,7 +27,7 @@ void ADSRComponent::resized()
 {
     attackSlider.setBoundsRelative   (0.075f,  0.275f, 0.225f, 0.6f);
     decaySlider.setBoundsRelative    (0.3f,    0.275f, 0.225f, 0.6f);
-    sustainSlider.setBoundsRelative  (0.525f,  0.275f, 0.225f, 0.6f);
+    sustainSlider.setBoundsRelative  (0.54f,  0.275f, 0.225f, 0.6f);
     releaseSlider.setBoundsRelative  (0.775f,  0.275f, 0.225f, 0.6f);
 }
 

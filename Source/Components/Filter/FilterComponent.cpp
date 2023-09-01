@@ -27,7 +27,7 @@ void FilterComponent::resized()
 {
     highpassSlider.setBoundsRelative (0.075f,  0.275f, 0.225f, 0.6f);
     highpassResonanceSlider.setBoundsRelative (0.3f,    0.275f, 0.225f, 0.6f);
-    lowpassSlider.setBoundsRelative (0.525f,  0.275f, 0.225f, 0.6f);
+    lowpassSlider.setBoundsRelative (0.54f,  0.275f, 0.225f, 0.6f);
     lowpassResonanceSlider.setBoundsRelative (0.775f,  0.275f, 0.225f, 0.6f);}
 
 void FilterComponent::prepareSlider (juce::Slider& slider, juce::String sliderID,
