@@ -2,13 +2,13 @@
 #include <JuceHeader.h>
 
 #include "../../Parameters/Parameters.h"
-#include "../Oscillator.h"
+#include "../Oscillator/Oscillator.h"
 
 class AmaranthVoice : public juce::SynthesiserVoice
 {
 public:
     
-    AmaranthVoice();
+    AmaranthVoice (juce::AudioProcessorValueTreeState&);
     ~AmaranthVoice() override;
     
     bool canPlaySound (juce::SynthesiserSound *) override;
@@ -21,15 +21,17 @@ public:
     
     void pitchWheelMoved (int newPitchWheelValue) override;
     
-    void prepare (double inSampleRate, int inSamplesPerBlock, int inNumChannels);
+    void prepare (juce::dsp::ProcessSpec&);
     
-    void updateParameters (juce::AudioProcessorValueTreeState& apvt);
+    void updateParameters();
     
     void renderNextBlock (juce::AudioBuffer<float> &outputBuffer, int startSample, int numSamples) override;
     
 private:
+    
+    juce::AudioProcessorValueTreeState& apvts;
 
-    Oscillator osc;
+    Oscillator osc { apvts };
 
     juce::AudioBuffer<float> synthBuffer;
     

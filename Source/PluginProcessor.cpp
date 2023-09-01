@@ -25,7 +25,7 @@ void AmaranthAudioProcessor::prepareSynth()
     
     /** Add number of voices the synth will have */
     for (auto i = 0; i < NUM_VOICES; i++)
-        synth.addVoice (new AmaranthVoice());
+        synth.addVoice (new AmaranthVoice (apvts));
 }
 
 const juce::String AmaranthAudioProcessor::getName() const
@@ -84,15 +84,20 @@ const juce::String AmaranthAudioProcessor::getProgramName ([[maybe_unused]] int 
 
 void AmaranthAudioProcessor::changeProgramName ([[maybe_unused]] int index, [[maybe_unused]] const juce::String& newName) {}
 
-void AmaranthAudioProcessor::prepareToPlay (double sampleRate, [[maybe_unused]] int samplesPerBlock)
+void AmaranthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
+    juce::dsp::ProcessSpec spec;
+    spec.sampleRate       = sampleRate;
+    spec.numChannels      = static_cast<juce::uint32> (getTotalNumOutputChannels());
+    spec.maximumBlockSize = static_cast<juce::uint32> (samplesPerBlock);
+    
     synth.setCurrentPlaybackSampleRate (sampleRate);
     
     /** Prepare objects inside main synth class per voice */
     for (int i = 0; i < synth.getNumVoices(); i++)
     {
         if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
-            voice->prepare (sampleRate, samplesPerBlock, getTotalNumInputChannels());
+            voice->prepare (spec);
     }
 }
 
@@ -138,7 +143,7 @@ void AmaranthAudioProcessor::updateParameters()
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
         if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
-            voice->updateParameters (apvts);
+            voice->updateParameters();
     }
 }
 
