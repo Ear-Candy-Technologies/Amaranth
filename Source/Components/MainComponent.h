@@ -14,6 +14,8 @@
 #include "../Helpers/Sizes.h"
 #include "../PluginProcessor.h"
 
+#include "../LookAndFeel/FilmStripKnob.h"
+
 class MainComponent : public juce::Component
 {
 public:
@@ -36,11 +38,14 @@ private:
     EnvelopeComponent envelopeComponent;
     
     DistortionComponent distortionComponent;
-    ReverbComponent reverbComponent     {processor};
+    ReverbComponent reverbComponent     { processor };
     DelayComponent delayComponent;
     
     MetersComponent metersComponent;
     KeyboardComponent keyboardComponent { processor.keyboardState };
+    
+    const juce::Image knobImage = juce::ImageFileFormat::loadFrom (BinaryData::Clean_Small_BW_Knob_png, BinaryData::Clean_Small_BW_Knob_pngSize);
+    FilmStripKnob filmStripKnob { knobImage };
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

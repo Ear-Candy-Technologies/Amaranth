@@ -14,7 +14,9 @@ void MetersComponent::paint (juce::Graphics& g)
     
     g.setFont        (25.0f);
     g.setColour      (juce::Colours::black);
-    g.drawFittedText ("Meters", getLocalBounds(), juce::Justification::centred, 1);
+    
+    juce::Rectangle<int> title { 0, 0, getWidth(), (int) (getHeight() * 0.1f) };
+    g.drawFittedText ("Meters", title, juce::Justification::centred, 1);
 }
 
 void MetersComponent::resized() {}

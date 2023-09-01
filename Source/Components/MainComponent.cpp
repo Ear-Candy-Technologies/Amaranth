@@ -15,9 +15,14 @@ MainComponent::MainComponent(AmaranthAudioProcessor& p) : processor(p)
     
     addAndMakeVisible (metersComponent);
     addAndMakeVisible (keyboardComponent);
+    
+    setLookAndFeel (&filmStripKnob);
 }
 
-MainComponent::~MainComponent() {}
+MainComponent::~MainComponent()
+{
+    setLookAndFeel (nullptr);
+}
 
 void MainComponent::paint (juce::Graphics& g)
 {
