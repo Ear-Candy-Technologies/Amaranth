@@ -36,7 +36,7 @@ private:
     EnvelopeComponent envelopeComponent;
     
     DistortionComponent distortionComponent;
-    ReverbComponent reverbComponent;
+    ReverbComponent reverbComponent     {processor};
     DelayComponent delayComponent;
     
     MetersComponent metersComponent;

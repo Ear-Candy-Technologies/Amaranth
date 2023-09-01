@@ -62,7 +62,31 @@ namespace ID
     static constexpr float gainDefault   { 0.0f };
     static constexpr float detuneDefault { 0.5f };
     static constexpr float widthDefault  { 0.0f };
+
+    static constexpr float phaseDefault  { 0.0f };
+
+    /** FX */
+    /** Reverb */
+    static const juce::String FX_RB_ROOM_SIZE    = "RoomSize";
+    static const juce::String FX_RB_DAMPING      = "Damping";
+    static const juce::String FX_RB_MIX          = "Mix";
+    static const juce::String FX_RB_WIDTH        = "Width";
+    static const juce::String FX_RB_FEEDBACK     = "Feedback";
+
+    static const juce::NormalisableRange<float> fxRbRoomSizeRange (0.0f,  1.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxRbDampingRange  (0.0f,  1.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxRbMixRange   (0.0f,  1.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxRbWidthRange    (0.0f,  1.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxRbFeedbackRange (0.0f,  1.0f,  0.01f, 1.0f);
+
+    static constexpr float fxRbRoomSizeDefault { 0.5f };
+    static constexpr float fxRbDampingDefault  { 0.5f };
+    static constexpr float fxRbMixDefault   { 0.33f };
+    static constexpr float fxRbWidthDefault    { 0.45f };
+    static constexpr float fxRbFeedbackDefault { 0.0f };
+
     static constexpr float adsrDefault   { 0.5f };
+
 }
 
 /** Parameters user can move */

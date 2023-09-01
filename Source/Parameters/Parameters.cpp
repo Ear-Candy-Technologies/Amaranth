@@ -24,5 +24,15 @@ juce::AudioProcessorValueTreeState::ParameterLayout createParameters()
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::SUSTAIN,  1),   ID::SUSTAIN,  ID::adsrRange, ID::adsrDefault));
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::RELEASE,  1),   ID::RELEASE,  ID::adsrRange, ID::adsrDefault));
     
+    /** FX */
+    /** Reverb */
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_RB_ROOM_SIZE,   1), ID::FX_RB_ROOM_SIZE,   ID::fxRbRoomSizeRange,   ID::fxRbRoomSizeDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_RB_DAMPING,   1), ID::FX_RB_DAMPING,   ID::fxRbDampingRange,   ID::fxRbDampingDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_RB_MIX,   1), ID::FX_RB_MIX,   ID::fxRbMixRange,   ID::fxRbMixDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_RB_WIDTH,   1), ID::FX_RB_WIDTH,   ID::fxRbWidthRange,   ID::fxRbWidthDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_RB_FEEDBACK,   1), ID::FX_RB_FEEDBACK,   ID::fxRbFeedbackRange,   ID::fxRbFeedbackDefault));
+    
     return params;
 }
+
+

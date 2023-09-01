@@ -8,6 +8,8 @@
 #include "DSP/Synth/AmaranthSound.h"
 #include "DSP/Synth/AmaranthVoice.h"
 
+#include "DSP/FX/Reverb/Reverb.h"
+
 class AmaranthAudioProcessor : public juce::AudioProcessor
 {
 public:
@@ -48,6 +50,9 @@ public:
 private:
     
     juce::Synthesiser synth;
+    
+    // FX stage
+    Reverb reverb;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthAudioProcessor)
 };

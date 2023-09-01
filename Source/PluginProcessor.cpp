@@ -99,6 +99,14 @@ void AmaranthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
         if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
             voice->prepare (spec);
     }
+    
+    juce::dsp::ProcessSpec spec{};
+    spec.sampleRate = sampleRate;
+    spec.maximumBlockSize = (juce::uint32) samplesPerBlock;
+    spec.numChannels = (juce::uint32) getTotalNumInputChannels();
+
+    // FX Stage
+    reverb.prepare (spec);
 }
 
 void AmaranthAudioProcessor::releaseResources() {}
@@ -135,6 +143,10 @@ void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     
     updateParameters();
     synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
+  
+      // FX Stage
+    reverb.process (buffer);
+
 }
 
 void AmaranthAudioProcessor::updateParameters()
@@ -145,6 +157,16 @@ void AmaranthAudioProcessor::updateParameters()
         if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
             voice->updateParameters();
     }
+    
+    /** FX Stage **/
+    /** Reverb **/
+    float rbRoomSize = *apvts.getRawParameterValue (ID::FX_RB_ROOM_SIZE);
+    float rbDamping = *apvts.getRawParameterValue (ID::FX_RB_DAMPING);
+    float rbMix = *apvts.getRawParameterValue (ID::FX_RB_MIX);
+    float rbWidth = *apvts.getRawParameterValue (ID::FX_RB_WIDTH);
+    float rbFeedback = *apvts.getRawParameterValue (ID::FX_RB_FEEDBACK);
+    
+    reverb.setReverbParamters (rbRoomSize, rbDamping, rbMix, rbWidth, rbFeedback);
 }
 
 bool AmaranthAudioProcessor::hasEditor() const
