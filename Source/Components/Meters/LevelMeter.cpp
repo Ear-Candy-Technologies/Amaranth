@@ -24,15 +24,18 @@ void LevelMeter::paint (juce::Graphics& g)
     {
         const auto level = valueSupplier();
         auto bounds      = getLocalBounds().toFloat().reduced (1.0f);
-            
+        
+        g.setColour (juce::Colours::white);
+        g.fillAll();
+                   
         g.setColour (juce::Colours::black);
-        g.fillRect  (bounds);
+        g.drawRoundedRectangle (5, 5, getWidth() - 10, getHeight() - 10, 10, 1);
         
         if (level > -60.0f)
         {
             g.setGradientFill (gradient);
             const auto scaledY = juce::jmap (level, -60.0f, 6.0f, 0.0f, static_cast<float> (getHeight()));
-            g.fillRect (bounds.removeFromBottom(scaledY));
+            g.fillRoundedRectangle (bounds.removeFromBottom(scaledY).reduced(5, 5), 10);
         }
     }
 }

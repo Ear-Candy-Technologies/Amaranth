@@ -13,7 +13,7 @@
 #include "LevelMeter.h"
 #include "../../PluginProcessor.h"
 
-class MetersComponent  : public juce::Component
+class MetersComponent : public juce::Component, public juce::Timer
 {
 public:
     
@@ -22,6 +22,8 @@ public:
 
     void paint (juce::Graphics&) override;
     void resized() override;
+    
+    void timerCallback() override;
 
 private:
     
@@ -29,6 +31,8 @@ private:
     
     LevelMeter levelMeterL;
     LevelMeter levelMeterR;
+    
+    juce::AudioVisualiserComponent audioVisualiserComponent { 2 };
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MetersComponent)
 };

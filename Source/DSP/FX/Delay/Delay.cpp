@@ -65,7 +65,7 @@ float Delay::getInterpolatedSample (int channel, float inDelayTimeInSamples)
     if (index_y0 <= 0)
         index_y0 += maxBufferSize;
     
-    int index_y1 = readPosition;
+    int index_y1 = (int)readPosition;
     if (index_y1 > maxBufferSize)
         index_y1 -= maxBufferSize;
     

@@ -52,6 +52,7 @@ public:
     
     // Analyzer
     LevelMeterAnalyzer levelMeterAnalyzer;
+    juce::AudioBuffer<float> helperBuffer;
 
 private:
     

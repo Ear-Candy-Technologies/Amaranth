@@ -2,14 +2,23 @@
 
 MetersComponent::MetersComponent (AmaranthAudioProcessor& p) : processor (p)
 {
+    addAndMakeVisible (audioVisualiserComponent);
+    
     addAndMakeVisible (levelMeterL);
     levelMeterL.setValueFunction ({ [&] { return processor.levelMeterAnalyzer.getRMSValue(0); }});
      
     addAndMakeVisible (levelMeterR);
     levelMeterR.setValueFunction ({ [&] { return processor.levelMeterAnalyzer.getRMSValue(1); }});
+    
+    audioVisualiserComponent.setBufferSize (256);
+    audioVisualiserComponent.setColours    (juce::Colours::darkviolet.contrasting(), juce::Colours::black);
+    startTimerHz (60);
 }
 
-MetersComponent::~MetersComponent() {}
+MetersComponent::~MetersComponent()
+{
+    stopTimer();
+}
 
 void MetersComponent::paint (juce::Graphics& g)
 {
@@ -24,7 +33,13 @@ void MetersComponent::paint (juce::Graphics& g)
 }
 
 void MetersComponent::resized()
+{    
+    audioVisualiserComponent.setBoundsRelative (0.05f, 0.125f, 0.89f, 0.2f);
+    levelMeterL.setBoundsRelative (0.5f - 0.3f, 0.325f, 0.3f, 0.65f);
+    levelMeterR.setBoundsRelative (0.5f, 0.325f, 0.3f, 0.65f);
+}
+
+void MetersComponent::timerCallback()
 {
-    levelMeterL.setBoundsRelative (0.5f - 0.3f, 0.15f, 0.3f, 0.8f);
-    levelMeterR.setBoundsRelative (0.5f, 0.15f, 0.3f, 0.8f);
+    audioVisualiserComponent.pushBuffer (processor.helperBuffer);
 }

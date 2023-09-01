@@ -153,6 +153,7 @@ void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     
     // Analyzers
     levelMeterAnalyzer.process (buffer);
+    helperBuffer.makeCopyOf    (buffer);
 }
 
 void AmaranthAudioProcessor::updateParameters()
