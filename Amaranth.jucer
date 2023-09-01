@@ -17,6 +17,10 @@
       <FILE id="Yf3x8T" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
     <GROUP id="{AD4778D4-80C8-371D-10BF-8A686916065A}" name="DSP">
+      <GROUP id="{B3C010EE-96F7-2C1D-C90F-D904486F1C7B}" name="Filters">
+        <FILE id="n5gK0K" name="Filters.cpp" compile="1" resource="0" file="Source/DSP/Filters/Filters.cpp"/>
+        <FILE id="LxJ21y" name="Filters.h" compile="0" resource="0" file="Source/DSP/Filters/Filters.h"/>
+      </GROUP>
       <GROUP id="{DCA38940-AE4B-4C0D-8091-0E0FE31831FD}" name="FX">
         <GROUP id="{E5F15D71-34BD-F9E2-EAB0-F241D5DBD93A}" name="Reverb">
           <FILE id="MlqHp7" name="Reverb.cpp" compile="1" resource="0" file="Source/DSP/FX/Reverb/Reverb.cpp"/>

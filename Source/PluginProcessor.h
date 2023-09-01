@@ -8,6 +8,7 @@
 #include "DSP/Synth/AmaranthSound.h"
 #include "DSP/Synth/AmaranthVoice.h"
 
+#include "DSP/Filters/Filters.h"
 #include "DSP/FX/Reverb/Reverb.h"
 
 class AmaranthAudioProcessor : public juce::AudioProcessor
