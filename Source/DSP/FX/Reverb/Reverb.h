@@ -14,7 +14,21 @@ class Reverb
 public:
     Reverb();
     ~Reverb();
+    void setReverbParamters (float roomSize   = 0.5f,
+                             float damping    = 0.5f,
+                             float wetLevel   = 0.33f,
+                             float dryLevel   = 0.4f,
+                             float width      = 1.0f,
+                             float freezeMode = 0.0f);
+
+    void prepare (juce::dsp::ProcessSpec spec);
+
+    void process (juce::AudioBuffer<float>& buffer);
+
 private:
+    juce::dsp::Reverb reverb;
+    
+    juce::dsp::Reverb::Parameters reverbParameters;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Reverb)
 };
