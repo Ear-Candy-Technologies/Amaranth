@@ -30,15 +30,15 @@ private:
     
     AmaranthAudioProcessor& processor;
     
-    HeaderComponent headerComponent     { processor };
+    HeaderComponent headerComponent { processor };
     
-    OscillatorComponent oscillator_1    { processor, ID::Oscillator::One };
-    OscillatorComponent oscillator_2    { processor, ID::Oscillator::Two };
+    OscillatorComponent oscillator_1 { processor, ID::Oscillator::One };
+    OscillatorComponent oscillator_2 { processor, ID::Oscillator::Two };
     FilterComponent filterComponent;
-    ADSRComponent envelopeComponent;
+    ADSRComponent envelopeComponent { processor };
     
     DistortionComponent distortionComponent;
-    ReverbComponent reverbComponent     { processor };
+    ReverbComponent reverbComponent {processor};
     DelayComponent delayComponent;
     
     MetersComponent metersComponent;

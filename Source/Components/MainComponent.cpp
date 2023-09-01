@@ -1,6 +1,6 @@
 #include "MainComponent.h"
 
-MainComponent::MainComponent(AmaranthAudioProcessor& p) : processor(p)
+MainComponent::MainComponent (AmaranthAudioProcessor& p) : processor(p)
 {
     addAndMakeVisible (headerComponent);
     
