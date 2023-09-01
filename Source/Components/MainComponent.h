@@ -39,7 +39,7 @@ private:
     
     DistortionComponent distortionComponent;
     ReverbComponent reverbComponent     { processor };
-    DelayComponent delayComponent;
+    DelayComponent delayComponent       { processor };
     
     MetersComponent metersComponent;
     KeyboardComponent keyboardComponent { processor.keyboardState };
