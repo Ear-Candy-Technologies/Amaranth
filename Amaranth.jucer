@@ -22,6 +22,10 @@
           <FILE id="MlqHp7" name="Reverb.cpp" compile="1" resource="0" file="Source/DSP/FX/Reverb/Reverb.cpp"/>
           <FILE id="JcecwA" name="Reverb.h" compile="0" resource="0" file="Source/DSP/FX/Reverb/Reverb.h"/>
         </GROUP>
+        <GROUP id="{966D6C93-295F-CEC7-5A02-56607FBB00F9}" name="Delay">
+          <FILE id="j3Lbxr" name="Delay.cpp" compile="1" resource="0" file="Source/DSP/FX/Delay/Delay.cpp"/>
+          <FILE id="UIbXiv" name="Delay.h" compile="0" resource="0" file="Source/DSP/FX/Delay/Delay.h"/>
+        </GROUP>
       </GROUP>
       <GROUP id="{6328ECBD-BBB6-DA3F-1A35-EDC033F236B0}" name="Synth">
         <FILE id="ox2QCA" name="AmaranthSound.cpp" compile="1" resource="0"

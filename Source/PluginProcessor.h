@@ -9,6 +9,7 @@
 #include "DSP/Synth/AmaranthVoice.h"
 
 #include "DSP/FX/Reverb/Reverb.h"
+#include "DSP/FX/Delay/Delay.h"
 
 class AmaranthAudioProcessor : public juce::AudioProcessor
 {
@@ -53,6 +54,7 @@ private:
     
     // FX stage
     Reverb reverb;
+    Delay delay;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthAudioProcessor)
 };

@@ -101,7 +101,8 @@ void AmaranthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     }
 
     // FX Stage
-    reverb.prepare (spec);
+    reverb.prepare      (spec);
+    delay.setSampleRate (sampleRate);
 }
 
 void AmaranthAudioProcessor::releaseResources() {}
@@ -141,7 +142,7 @@ void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
   
       // FX Stage
     reverb.process (buffer);
-
+    delay.process  (buffer);
 }
 
 void AmaranthAudioProcessor::updateParameters()
@@ -156,12 +157,18 @@ void AmaranthAudioProcessor::updateParameters()
     /** FX Stage **/
     /** Reverb **/
     float rbRoomSize = *apvts.getRawParameterValue (ID::FX_RB_ROOM_SIZE);
-    float rbDamping = *apvts.getRawParameterValue (ID::FX_RB_DAMPING);
-    float rbMix = *apvts.getRawParameterValue (ID::FX_RB_MIX);
-    float rbWidth = *apvts.getRawParameterValue (ID::FX_RB_WIDTH);
+    float rbDamping  = *apvts.getRawParameterValue (ID::FX_RB_DAMPING);
+    float rbMix      = *apvts.getRawParameterValue (ID::FX_RB_MIX);
+    float rbWidth    = *apvts.getRawParameterValue (ID::FX_RB_WIDTH);
     float rbFeedback = *apvts.getRawParameterValue (ID::FX_RB_FEEDBACK);
     
     reverb.setReverbParamters (rbRoomSize, rbDamping, rbMix, rbWidth, rbFeedback);
+    
+    /** Delay **/
+    float delMix      = *apvts.getRawParameterValue (ID::FX_DEL_MIX);
+    float delTime     = *apvts.getRawParameterValue (ID::FX_DEL_TIME);
+    float delFeedback = *apvts.getRawParameterValue (ID::FX_DEL_FEEDBACK);
+    delay.updateParameter (delTime, delFeedback, delMix);
 }
 
 bool AmaranthAudioProcessor::hasEditor() const
