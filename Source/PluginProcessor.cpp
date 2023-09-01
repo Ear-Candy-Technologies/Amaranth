@@ -24,8 +24,8 @@ void AmaranthAudioProcessor::prepareSynth()
     synth.addSound (new AmaranthSound());
     
     /** Add number of voices the synth will have */
-    for (auto i = 0; i < NUM_VOICES; i++)
-        synth.addVoice (new AmaranthVoice (apvts));
+    synth.addVoice (new AmaranthVoice (apvts));
+    //synth.addVoice (new AmaranthVoice (apvts));
 }
 
 const juce::String AmaranthAudioProcessor::getName() const
@@ -96,7 +96,7 @@ void AmaranthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     /** Prepare objects inside main synth class per voice */
     for (int i = 0; i < synth.getNumVoices(); i++)
     {
-        if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
+        if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
             voice->prepare (spec);
     }
 }
@@ -142,7 +142,7 @@ void AmaranthAudioProcessor::updateParameters()
     /** Update synth parameters per voice */
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
+        if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
             voice->updateParameters();
     }
 }

@@ -36,12 +36,16 @@ namespace ID
     static const juce::String OSC_ONE_WIDTH   = "OscOneWidth";
     static const juce::String OSC_ONE_PHASE   = "OscOnePhase";
 
+    static const juce::StringArray OSC_ONE { OSC_ONE_GAIN, OSC_ONE_PAN, OSC_ONE_DETUNE, OSC_ONE_WIDTH, OSC_ONE_PHASE };
+
     /** Osc Two */
     static const juce::String OSC_TWO_GAIN    = "OscTwoGain";
     static const juce::String OSC_TWO_PAN     = "OscTwoPan";
     static const juce::String OSC_TWO_DETUNE  = "OscTwoDetune";
     static const juce::String OSC_TWO_WIDTH   = "OscTwoWidth";
     static const juce::String OSC_TWO_PHASE   = "OscTwoPhase";
+
+    static const juce::StringArray OSC_TWO { OSC_TWO_GAIN, OSC_TWO_PAN, OSC_TWO_DETUNE, OSC_TWO_WIDTH, OSC_TWO_PHASE };
 
     /** ADSR */
     static const juce::String ATTACK  = "Attack";

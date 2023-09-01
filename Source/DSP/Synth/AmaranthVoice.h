@@ -11,9 +11,10 @@ public:
     AmaranthVoice (juce::AudioProcessorValueTreeState&);
     ~AmaranthVoice() override;
     
-    bool canPlaySound (juce::SynthesiserSound *) override;
+    bool canPlaySound (juce::SynthesiserSound*) override;
     
     void startNote (int midiNoteNumber, float velocity, juce::SynthesiserSound *sound, int currentPitchWheelPosition) override;
+    void updateOscillators (float currentFrequency);
     
     void stopNote (float velocity, bool allowTailOff) override;
     
@@ -27,13 +28,21 @@ public:
     
     void renderNextBlock (juce::AudioBuffer<float> &outputBuffer, int startSample, int numSamples) override;
     
+    void sumOscillators();
+    
 private:
     
     juce::AudioProcessorValueTreeState& apvts;
 
-    Oscillator osc { apvts };
+    Oscillator oscOne { apvts, ID::Oscillator::One };
+    Oscillator oscTwo { apvts, ID::Oscillator::Two };
 
     juce::AudioBuffer<float> synthBuffer;
+    
+    juce::AudioBuffer<float> oscOneBuffer;
+    juce::AudioBuffer<float> oscTwoBuffer;
+    
+    juce::ADSR adsr;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthVoice)
 };
