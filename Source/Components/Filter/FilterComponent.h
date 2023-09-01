@@ -32,12 +32,18 @@ private:
     
     juce::Slider highpassSlider;
     juce::Slider lowpassSlider;
+    juce::Slider highpassResonanceSlider;
+    juce::Slider lowpassResonanceSlider;
     
     juce::Label highpassLabel;
     juce::Label lowpassLabel;
+    juce::Label highpassResonanceLabel;
+    juce::Label lowpassResonanceLabel;
     
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> highpassAttach;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> lowpassAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> highpassResonanceAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> lowpassResonanceAttach;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FilterComponent)
 };
