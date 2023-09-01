@@ -23,8 +23,8 @@ public:
     void resized() override;
     
     void prepareSlider (juce::Slider& slider, juce::String sliderID,
-                        std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach);
-
+                        std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,
+                        juce::Label& label, juce::String labelText);
 
 private:
     
@@ -34,6 +34,11 @@ private:
     juce::Slider decaySlider;
     juce::Slider sustainSlider;
     juce::Slider releaseSlider;
+    
+    juce::Label attackLabel;
+    juce::Label decayLabel;
+    juce::Label sustainLabel;
+    juce::Label releaseLabel;
     
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> attackAttach;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> decayAttach;

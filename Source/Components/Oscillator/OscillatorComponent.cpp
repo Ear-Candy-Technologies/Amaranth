@@ -28,7 +28,8 @@ void OscillatorComponent::resized()
     widthSlider.setBoundsRelative  (0.775f,  0.275f, 0.225f, 0.6f);
 }
 
-void OscillatorComponent::prepareSlider (juce::Slider& slider, juce::String sliderID, std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,
+void OscillatorComponent::prepareSlider (juce::Slider& slider, juce::String sliderID,
+                                         std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,
                                          juce::Label& label, juce::String labelText)
 {
     slider.setSliderStyle  (juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);

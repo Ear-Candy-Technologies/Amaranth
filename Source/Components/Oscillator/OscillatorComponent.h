@@ -25,7 +25,8 @@ public:
     
     juce::String getOscillatorID (ID::OscillatorSection oscillatorSection);
     
-    void prepareSlider (juce::Slider& slider, juce::String sliderID, std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,
+    void prepareSlider (juce::Slider& slider, juce::String sliderID,
+                        std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,
                         juce::Label& label, juce::String labelText);
     
 private:
