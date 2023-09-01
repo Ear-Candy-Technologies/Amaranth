@@ -17,9 +17,7 @@ public:
         float freq  = 100.0f;
         float pan   = juce::MathConstants<float>::halfPi;
         float width = 0.0f;
-        
-        juce::ADSR::Parameters adsr;
-        
+                
         std::function<float(float)> function;
     };
     

@@ -38,7 +38,6 @@ void AmaranthVoice::prepare (juce::dsp::ProcessSpec& spec)
 {
     adsr.setSampleRate (spec.sampleRate);
     
-    juce::ADSR::Parameters adsrParams;
     adsrParams.attack  = 0.0f;
     adsrParams.decay   = 0.0f;
     adsrParams.sustain = 1.0f;
@@ -51,6 +50,12 @@ void AmaranthVoice::prepare (juce::dsp::ProcessSpec& spec)
 
 void AmaranthVoice::updateParameters()
 {
+    adsrParams.attack  = *apvts.getRawParameterValue (ID::ATTACK);
+    adsrParams.decay   = *apvts.getRawParameterValue (ID::DECAY);
+    adsrParams.sustain = *apvts.getRawParameterValue (ID::SUSTAIN);
+    adsrParams.release = *apvts.getRawParameterValue (ID::RELEASE);
+    adsr.setParameters (adsrParams);
+    
     oscOne.updateParameters();
     oscTwo.updateParameters();
 }

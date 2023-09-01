@@ -19,10 +19,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout createParameters()
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::OSC_TWO_WIDTH,  1), ID::OSC_TWO_WIDTH,  ID::widthRange,  ID::widthDefault));
     
     /** ADSR */
-    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::ATTACK,    1),  ID::ATTACK,   ID::adsrRange, ID::adsrDefault));
-    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::DECAY, 1),      ID::DECAY,    ID::adsrRange, ID::adsrDefault));
-    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::SUSTAIN,  1),   ID::SUSTAIN,  ID::adsrRange, ID::adsrDefault));
-    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::RELEASE,  1),   ID::RELEASE,  ID::adsrRange, ID::adsrDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::ATTACK,  1), ID::ATTACK,  ID::adsrRange, ID::adsrDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::DECAY,   1), ID::DECAY,   ID::adsrRange, ID::adsrDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::SUSTAIN, 1), ID::SUSTAIN, ID::adsrRange, ID::adsrDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::RELEASE, 1), ID::RELEASE, ID::adsrRange, ID::adsrDefault));
     
     /** FX */
     /** Reverb */
