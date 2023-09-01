@@ -2,10 +2,10 @@
 
 OscillatorComponent::OscillatorComponent (AmaranthAudioProcessor& p, ID::Oscillator inNumOSC) : processor(p), currentOscillator (inNumOSC)
 {
-    prepareSlider (gainSlider,   getOscillatorID (ID::OscillatorSection::Gain),  gainAttach);
-    prepareSlider (panSlider,    getOscillatorID (ID::OscillatorSection::Pan),    panAttach);
-    prepareSlider (detuneSlider, getOscillatorID (ID::OscillatorSection::Detune), detuneAttach);
-    prepareSlider (widthSlider,  getOscillatorID (ID::OscillatorSection::Width),  widthAttach);
+    prepareSlider (gainSlider,   getOscillatorID (ID::OscillatorSection::Gain),  gainAttach, gainLabel, "Gain");
+    prepareSlider (panSlider,    getOscillatorID (ID::OscillatorSection::Pan),    panAttach, panLabel, "Pan");
+    prepareSlider (detuneSlider, getOscillatorID (ID::OscillatorSection::Detune), detuneAttach, detuneLabel, "Detune");
+    prepareSlider (widthSlider,  getOscillatorID (ID::OscillatorSection::Width),  widthAttach, widthLabel, "Width");
 }
 
 OscillatorComponent::~OscillatorComponent() {}
@@ -14,21 +14,32 @@ void OscillatorComponent::paint (juce::Graphics& g)
 {
     g.fillAll              (juce::Colours::darkviolet.contrasting());
     g.drawRoundedRectangle (5, 5, getWidth() - 10, getHeight() - 10, 10, 1);
+    
+    g.setFont      (18.0f);
+    g.addTransform (juce::AffineTransform::rotation (-juce::MathConstants<float>::halfPi, getWidth() * 0.5f, getHeight() * 0.5f));
+    g.drawText     ("Oscillator", 5, - getWidth()/2 + 20, getWidth(), getHeight(), juce::Justification::centred);
 }
 
 void OscillatorComponent::resized()
 {
-    gainSlider.setBoundsRelative   (0.0f,  0.0f, 0.25f, 1.0f);
-    panSlider.setBoundsRelative    (0.25f, 0.0f, 0.25f, 1.0f);
-    detuneSlider.setBoundsRelative (0.5f,  0.0f, 0.25f, 1.0f);
-    widthSlider.setBoundsRelative  (0.75f, 0.0f, 0.25f, 1.0f);
+    gainSlider.setBoundsRelative   (0.075f,  0.275f, 0.225f, 0.6f);
+    panSlider.setBoundsRelative    (0.3f,    0.275f, 0.225f, 0.6f);
+    detuneSlider.setBoundsRelative (0.525f,  0.275f, 0.225f, 0.6f);
+    widthSlider.setBoundsRelative  (0.775f,  0.275f, 0.225f, 0.6f);
 }
 
-void OscillatorComponent::prepareSlider (juce::Slider& slider, juce::String sliderID, std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach)
+void OscillatorComponent::prepareSlider (juce::Slider& slider, juce::String sliderID, std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,
+                                         juce::Label& label, juce::String labelText)
 {
     slider.setSliderStyle  (juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
     slider.setTextBoxStyle (juce::Slider::TextEntryBoxPosition::NoTextBox, false, 0, 0);
     addAndMakeVisible      (slider);
+    
+    label.setJustificationType  (juce::Justification::centred);
+    label.setText               (labelText, juce::dontSendNotification);
+    label.attachToComponent     (&slider, false);
+    label.setColour             (juce::Label::ColourIds::textColourId, juce::Colours::black);
+    addAndMakeVisible           (label);
     
     attach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (processor.apvts, sliderID, slider);
 }

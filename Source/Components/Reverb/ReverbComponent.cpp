@@ -18,15 +18,21 @@ void ReverbComponent::paint (juce::Graphics& g)
 {
     g.fillAll              (juce::Colours::darkviolet.contrasting());
     g.drawRoundedRectangle (5, 5, getWidth() - 10, getHeight() - 10, 10, 1);
+    
+    g.setFont        (20.0f);
+    g.setColour      (juce::Colours::black);
+    
+    juce::Rectangle<int> title { 0, 0, getWidth(), (int) (getHeight() * 0.1f) };
+    g.drawFittedText ("Reverb", title, juce::Justification::centred, 1);
 }
 
 void ReverbComponent::resized()
 {
-    roomSizeSlider.setBoundsRelative    (0.0f, 0.06f, 1.0f, 0.125f);
-    dampingSlider.setBoundsRelative     (0.0f, 0.25f, 1.0f, 0.125f);
-    mixSlider.setBoundsRelative         (0.0f, 0.45f, 1.0f, 0.125f);
-    widthSlider.setBoundsRelative       (0.0f, 0.65f, 1.0f, 0.125f);
-    feedbackSlider.setBoundsRelative    (0.0f, 0.85f, 1.0f, 0.125f);
+    roomSizeSlider.setBoundsRelative    (0.0f, 0.15f, 1.0f, 0.15f);
+    //dampingSlider.setBoundsRelative     (0.0f, 0.36f, 1.0f, 0.15f);
+    widthSlider.setBoundsRelative       (0.0f, 0.36f, 1.0f, 0.15f);
+    feedbackSlider.setBoundsRelative    (0.0f, 0.58f, 1.0f, 0.15f);
+    mixSlider.setBoundsRelative         (0.0f, 0.8f, 1.0f, 0.15f);
 }
 
 void ReverbComponent::prepareSlider (juce::Slider& slider, juce::String sliderID, std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,

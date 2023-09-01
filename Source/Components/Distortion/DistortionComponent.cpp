@@ -14,7 +14,9 @@ void DistortionComponent::paint (juce::Graphics& g)
     
     g.setFont        (20.0f);
     g.setColour      (juce::Colours::black);
-    g.drawFittedText ("Distortion", getLocalBounds(), juce::Justification::centred, 1);
+    
+    juce::Rectangle<int> title { 0, 0, getWidth(), (int) (getHeight() * 0.1f) };
+    g.drawFittedText ("Distortion", title, juce::Justification::centred, 1);
 }
 
 void DistortionComponent::resized() {}

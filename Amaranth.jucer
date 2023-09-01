@@ -101,9 +101,16 @@
       <FILE id="bhvDPt" name="Parameters.cpp" compile="1" resource="0" file="Source/Parameters/Parameters.cpp"/>
       <FILE id="Zhxhqx" name="Parameters.h" compile="0" resource="0" file="Source/Parameters/Parameters.h"/>
     </GROUP>
+    <GROUP id="{1E8187D9-377C-8183-B150-40D9D6277EA7}" name="LookAndFeel">
+      <FILE id="HICzHv" name="FilmStripKnob.h" compile="0" resource="0" file="Source/LookAndFeel/FilmStripKnob.h"/>
+    </GROUP>
     <GROUP id="{40D322C5-F9F8-9487-C505-19A88A627800}" name="Helpers">
       <FILE id="FQuWmq" name="Globals.h" compile="0" resource="0" file="Source/Helpers/Globals.h"/>
       <FILE id="YuJYIN" name="Sizes.h" compile="0" resource="0" file="Source/Helpers/Sizes.h"/>
+    </GROUP>
+    <GROUP id="{C29AB5A7-3707-392F-2442-E76E42B60061}" name="Assets">
+      <FILE id="szcF5T" name="Clean_Small_BW_Knob.png" compile="0" resource="1"
+            file="Assets/Clean_Small_BW_Knob.png"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
