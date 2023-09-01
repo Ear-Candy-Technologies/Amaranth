@@ -102,7 +102,7 @@ void AmaranthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
 
     // FX Stage
     reverb.prepare      (spec);
-    delay.setSampleRate (sampleRate);
+    delay.setSampleRate ((float) sampleRate);
 }
 
 void AmaranthAudioProcessor::releaseResources() {}
@@ -140,9 +140,13 @@ void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     updateParameters();
     synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
   
-      // FX Stage
+    // FX Stage
     reverb.process (buffer);
     delay.process  (buffer);
+    
+    // Master
+    float masterValue = *apvts.getRawParameterValue (ID::MASTER);
+    buffer.applyGain (juce::Decibels::decibelsToGain (masterValue));
 }
 
 void AmaranthAudioProcessor::updateParameters()

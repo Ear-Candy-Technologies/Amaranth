@@ -37,6 +37,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout createParameters()
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_DEL_TIME, 1),     ID::FX_DEL_TIME,    ID::fxDelTimeRange,   ID::fxDelTimeDefault));
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_DEL_FEEDBACK, 1), ID::FX_DEL_FEEDBACK, ID::fxDelFeedbackRange,   ID::fxDelFeedbackDefault));
     
+    /** Master */
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::MASTER, 1), ID::MASTER, ID::masterRange, ID::masterDefault));
+    
     return params;
 }
 

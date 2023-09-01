@@ -98,6 +98,11 @@ namespace ID
     static constexpr float fxDelFeedbackDefault  { 0.5f };
     static constexpr float fxDelMixDefault       { 0.33f };
 
+    /** Master */
+    static const juce::String MASTER = "Master";
+    static const juce::NormalisableRange<float> masterRange (-60.0f,  12.0f,   1.0f, 1.0f); // Gain (dB)
+    static constexpr float masterDefault { -12.0f };
+
     static constexpr float adsrDefault   { 0.5f };
 
 }
