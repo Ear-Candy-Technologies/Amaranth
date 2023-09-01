@@ -21,6 +21,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout createParameters()
     /** Filter */
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FILTER_HIGHPASS, 1), ID::FILTER_HIGHPASS, ID::highpassFilterRange, ID::highpassFilterDefault));
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FILTER_LOWPASS,  1), ID::FILTER_LOWPASS,  ID::lowpassFilterRange,  ID::lowpassFilterDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FILTER_HIGHPASS_RES, 1), ID::FILTER_HIGHPASS_RES, ID::highpassResonanceRange, ID::highpassResonanceDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FILTER_LOWPASS_RES,  1), ID::FILTER_LOWPASS_RES,  ID::lowpassResonanceRange,  ID::lowpassResonanceDefault));
     
     /** ADSR */
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::ATTACK,  1), ID::ATTACK,  ID::adsrRange, ID::adsrDefault));

@@ -24,7 +24,7 @@ public:
     void processLowPass (juce::AudioBuffer<float>& buffer);
     
     /** Update filters parameters */
-    void updateFilters (Filters::Parameters newParameters);
+    void updateFilters (Filters::Parameters& newParameters);
     
 private:
     
@@ -33,5 +33,5 @@ private:
     
     Filters::Parameters filtersParameters;
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Filters)
+//    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Filters)
 };

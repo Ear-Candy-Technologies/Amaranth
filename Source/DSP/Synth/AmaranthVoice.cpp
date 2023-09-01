@@ -53,6 +53,11 @@ void AmaranthVoice::prepare (juce::dsp::ProcessSpec& spec)
 void AmaranthVoice::updateParameters()
 {
     filterParameters.highpassFreq = *apvts.getRawParameterValue (ID::FILTER_HIGHPASS);
+    filterParameters.lowpassFreq = *apvts.getRawParameterValue (ID::FILTER_LOWPASS);
+    filterParameters.highpassResonance = *apvts.getRawParameterValue (ID::FILTER_HIGHPASS_RES);
+    filterParameters.lowpassResonance  = *apvts.getRawParameterValue (ID::FILTER_LOWPASS_RES);
+    
+    filters.updateFilters (filterParameters);
     
     adsrParams.attack  = *apvts.getRawParameterValue (ID::ATTACK);
     adsrParams.decay   = *apvts.getRawParameterValue (ID::DECAY);

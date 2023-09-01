@@ -8,11 +8,13 @@ void Filters::prepare (juce::dsp::ProcessSpec& inSpec)
 {
     // Prepare highPass filter
     highpassFilter.prepare (inSpec);
+    highpassFilter.setMode (juce::dsp::LadderFilterMode::HPF24);
     highpassFilter.setCutoffFrequencyHz (filtersParameters.highpassFreq);
     highpassFilter.setResonance (filtersParameters.highpassResonance);
     
     // Prepare lowPass filter
     lowpassFilter.prepare (inSpec);
+    lowpassFilter.setMode (juce::dsp::LadderFilterMode::LPF24);
     lowpassFilter.setCutoffFrequencyHz (filtersParameters.lowpassFreq);
     lowpassFilter.setResonance (filtersParameters.lowpassResonance);
 }
@@ -31,13 +33,13 @@ void Filters::processLowPass (juce::AudioBuffer<float>& buffer)
     lowpassFilter.process (context);
 }
 
-void Filters::updateFilters (Filters::Parameters newParameters)
+void Filters::updateFilters (Filters::Parameters& newParameters)
 {
     // Update highPass filter
     highpassFilter.setCutoffFrequencyHz (newParameters.highpassFreq);
-    highpassFilter.setResonance(newParameters.highpassResonance);
+    highpassFilter.setResonance (newParameters.highpassResonance);
     
     // Update lowPass filter
-    lowpassFilter.setCutoffFrequencyHz (newParameters.highpassFreq);
-    lowpassFilter.setResonance(newParameters.highpassResonance);
+    lowpassFilter.setCutoffFrequencyHz (newParameters.lowpassFreq);
+    lowpassFilter.setResonance (newParameters.lowpassResonance);
 }
