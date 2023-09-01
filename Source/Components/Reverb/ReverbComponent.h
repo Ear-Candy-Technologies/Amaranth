@@ -9,25 +9,24 @@
 */
 
 #pragma once
-
 #include <JuceHeader.h>
 #include "../../PluginProcessor.h"
 
-//==============================================================================
-/*
-*/
 class ReverbComponent  : public juce::Component
 {
 public:
-    ReverbComponent(AmaranthAudioProcessor&);
+    
+    ReverbComponent (AmaranthAudioProcessor&);
     ~ReverbComponent() override;
 
     void paint (juce::Graphics&) override;
     void resized() override;
     
-    void addSlider();
+    void prepareSlider (juce::Slider& slider, juce::String sliderID, std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,
+                        juce::Label& label, juce::String inLabel);
 
 private:
+    
     AmaranthAudioProcessor& processor;
     
     juce::Slider roomSizeSlider;
