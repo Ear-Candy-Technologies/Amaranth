@@ -99,11 +99,6 @@ void AmaranthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
         if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
             voice->prepare (spec);
     }
-    
-    juce::dsp::ProcessSpec spec{};
-    spec.sampleRate = sampleRate;
-    spec.maximumBlockSize = (juce::uint32) samplesPerBlock;
-    spec.numChannels = (juce::uint32) getTotalNumInputChannels();
 
     // FX Stage
     reverb.prepare (spec);
