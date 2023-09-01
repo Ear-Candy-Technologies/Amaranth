@@ -9,6 +9,9 @@
 #include "DSP/Synth/AmaranthVoice.h"
 
 #include "DSP/FX/Reverb/Reverb.h"
+#include "DSP/FX/Delay/Delay.h"
+
+#include "DSP/Analyzers/LevelMeterAnalyzer.h"
 
 class AmaranthAudioProcessor : public juce::AudioProcessor
 {
@@ -46,6 +49,10 @@ public:
     
     /** Keyboard state */
     juce::MidiKeyboardState keyboardState;
+    
+    // Analyzer
+    LevelMeterAnalyzer levelMeterAnalyzer;
+    juce::AudioBuffer<float> helperBuffer;
 
 private:
     
@@ -53,6 +60,7 @@ private:
     
     // FX stage
     Reverb reverb;
+    Delay delay;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthAudioProcessor)
 };

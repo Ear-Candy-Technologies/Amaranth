@@ -39,7 +39,7 @@ void Oscillator::process (juce::AudioBuffer<float>& buffer)
     osc.process         (context);
     gain.process        (context);
     pan.process         (buffer, parameters.pan);
-    stereoWidth.process (buffer, parameters.width);
+    //stereoWidth.process (buffer, parameters.width);
 }
 
 void Oscillator::setFunction (const std::function<float(float)>& inFunction)

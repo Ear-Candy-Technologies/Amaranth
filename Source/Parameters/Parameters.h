@@ -97,9 +97,27 @@ namespace ID
 
     static constexpr float fxRbRoomSizeDefault { 0.5f };
     static constexpr float fxRbDampingDefault  { 0.5f };
-    static constexpr float fxRbMixDefault   { 0.33f };
+    static constexpr float fxRbMixDefault      { 0.33f };
     static constexpr float fxRbWidthDefault    { 0.45f };
     static constexpr float fxRbFeedbackDefault { 0.0f };
+
+    /** Delay */
+    static const juce::String FX_DEL_TIME     = "Time";
+    static const juce::String FX_DEL_FEEDBACK = "DelFeedback";
+    static const juce::String FX_DEL_MIX      = "DelMix";
+
+    static const juce::NormalisableRange<float> fxDelTimeRange      (0.0f,  1.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxDelFeedbackRange  (0.0f,  1.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxdelMixRange       (0.0f,  1.0f,  0.01f, 1.0f);
+
+    static constexpr float fxDelTimeDefault      { 0.5f };
+    static constexpr float fxDelFeedbackDefault  { 0.5f };
+    static constexpr float fxDelMixDefault       { 0.33f };
+
+    /** Master */
+    static const juce::String MASTER = "Master";
+    static const juce::NormalisableRange<float> masterRange (-60.0f,  12.0f,   1.0f, 1.0f); // Gain (dB)
+    static constexpr float masterDefault { -12.0f };
 
     static constexpr float adsrDefault   { 0.5f };
 }

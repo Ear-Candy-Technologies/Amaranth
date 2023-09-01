@@ -26,6 +26,10 @@
           <FILE id="MlqHp7" name="Reverb.cpp" compile="1" resource="0" file="Source/DSP/FX/Reverb/Reverb.cpp"/>
           <FILE id="JcecwA" name="Reverb.h" compile="0" resource="0" file="Source/DSP/FX/Reverb/Reverb.h"/>
         </GROUP>
+        <GROUP id="{966D6C93-295F-CEC7-5A02-56607FBB00F9}" name="Delay">
+          <FILE id="j3Lbxr" name="Delay.cpp" compile="1" resource="0" file="Source/DSP/FX/Delay/Delay.cpp"/>
+          <FILE id="UIbXiv" name="Delay.h" compile="0" resource="0" file="Source/DSP/FX/Delay/Delay.h"/>
+        </GROUP>
       </GROUP>
       <GROUP id="{6328ECBD-BBB6-DA3F-1A35-EDC033F236B0}" name="Synth">
         <FILE id="ox2QCA" name="AmaranthSound.cpp" compile="1" resource="0"
@@ -40,6 +44,10 @@
         <FILE id="TQlpY1" name="Oscillator.h" compile="0" resource="0" file="Source/DSP/Oscillator/Oscillator.h"/>
         <FILE id="gfMS8B" name="Pan.h" compile="0" resource="0" file="Source/DSP/Oscillator/Pan.h"/>
         <FILE id="Ke6yGm" name="StereoWidth.h" compile="0" resource="0" file="Source/DSP/Oscillator/StereoWidth.h"/>
+      </GROUP>
+      <GROUP id="{D4FEEC46-C006-B7DB-76DD-2720C7CFC295}" name="Analyzers">
+        <FILE id="IAlThh" name="LevelMeterAnalyzer.h" compile="0" resource="0"
+              file="Source/DSP/Analyzers/LevelMeterAnalyzer.h"/>
       </GROUP>
     </GROUP>
     <GROUP id="{F206067C-741E-664C-F6F9-B408CDFEC3ED}" name="Components">
@@ -90,7 +98,15 @@
         <FILE id="yu9tl5" name="ReverbComponent.h" compile="0" resource="0"
               file="Source/Components/Reverb/ReverbComponent.h"/>
       </GROUP>
+      <GROUP id="{4415E153-8500-720F-543D-5F9C01AC7347}" name="Master">
+        <FILE id="v7UAv5" name="MasterComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Master/MasterComponent.cpp"/>
+        <FILE id="Y1XrWE" name="MasterComponent.h" compile="0" resource="0"
+              file="Source/Components/Master/MasterComponent.h"/>
+      </GROUP>
       <GROUP id="{DF145EEC-77C2-5676-71A6-7FC8DDA88E5D}" name="Meters">
+        <FILE id="gAzlqi" name="LevelMeter.cpp" compile="1" resource="0" file="Source/Components/Meters/LevelMeter.cpp"/>
+        <FILE id="LuyWMs" name="LevelMeter.h" compile="0" resource="0" file="Source/Components/Meters/LevelMeter.h"/>
         <FILE id="AgkAgz" name="MetersComponent.cpp" compile="1" resource="0"
               file="Source/Components/Meters/MetersComponent.cpp"/>
         <FILE id="akc7lw" name="MetersComponent.h" compile="0" resource="0"

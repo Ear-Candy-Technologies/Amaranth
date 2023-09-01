@@ -1,6 +1,6 @@
 #include "ReverbComponent.h"
 
-ReverbComponent::ReverbComponent(AmaranthAudioProcessor& p): processor(p)
+ReverbComponent::ReverbComponent(AmaranthAudioProcessor& p) : processor(p)
 {
     prepareSlider (roomSizeSlider,  ID::FX_RB_ROOM_SIZE, roomSizeAttach,    roomSizeLabel,  "Room");
     prepareSlider (dampingSlider,   ID::FX_RB_DAMPING,   dampingAttach,     dampingLabel,   "Damping");

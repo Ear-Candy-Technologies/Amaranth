@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include "Header/HeaderComponent.h"
+#include "Master/MasterComponent.h"
 #include "Oscillator/OscillatorComponent.h"
 #include "Filter/FilterComponent.h"
 #include "ADSR/ADSRComponent.h"
@@ -31,17 +32,18 @@ private:
     AmaranthAudioProcessor& processor;
     
     HeaderComponent headerComponent { processor };
+    MasterComponent masterComponent { processor };
     
     OscillatorComponent oscillator_1 { processor, ID::Oscillator::One };
     OscillatorComponent oscillator_2 { processor, ID::Oscillator::Two };
     FilterComponent filterComponent { processor };
     ADSRComponent envelopeComponent { processor };
     
-    DistortionComponent distortionComponent;
-    ReverbComponent reverbComponent {processor};
-    DelayComponent delayComponent;
+    DistortionComponent distortionComponent  { processor };
+    ReverbComponent reverbComponent          { processor };
+    DelayComponent delayComponent            { processor };
     
-    MetersComponent metersComponent;
+    MetersComponent metersComponent     { processor };
     KeyboardComponent keyboardComponent { processor.keyboardState };
     
     const juce::Image knobImage = juce::ImageFileFormat::loadFrom (BinaryData::Clean_Small_BW_Knob_png, BinaryData::Clean_Small_BW_Knob_pngSize);
