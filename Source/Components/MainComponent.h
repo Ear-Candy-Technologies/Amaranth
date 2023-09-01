@@ -40,10 +40,10 @@ private:
     EnvelopeComponent envelopeComponent;
     
     DistortionComponent distortionComponent;
-    ReverbComponent reverbComponent     { processor };
-    DelayComponent delayComponent       { processor };
+    ReverbComponent reverbComponent          { processor };
+    DelayComponent delayComponent            { processor };
     
-    MetersComponent metersComponent;
+    MetersComponent metersComponent     { processor };
     KeyboardComponent keyboardComponent { processor.keyboardState };
     
     const juce::Image knobImage = juce::ImageFileFormat::loadFrom (BinaryData::Clean_Small_BW_Knob_png, BinaryData::Clean_Small_BW_Knob_pngSize);

@@ -11,6 +11,8 @@
 #include "DSP/FX/Reverb/Reverb.h"
 #include "DSP/FX/Delay/Delay.h"
 
+#include "DSP/Analyzers/LevelMeterAnalyzer.h"
+
 class AmaranthAudioProcessor : public juce::AudioProcessor
 {
 public:
@@ -47,6 +49,9 @@ public:
     
     /** Keyboard state */
     juce::MidiKeyboardState keyboardState;
+    
+    // Analyzer
+    LevelMeterAnalyzer levelMeterAnalyzer;
 
 private:
     

@@ -41,6 +41,10 @@
         <FILE id="gfMS8B" name="Pan.h" compile="0" resource="0" file="Source/DSP/Oscillator/Pan.h"/>
         <FILE id="Ke6yGm" name="StereoWidth.h" compile="0" resource="0" file="Source/DSP/Oscillator/StereoWidth.h"/>
       </GROUP>
+      <GROUP id="{D4FEEC46-C006-B7DB-76DD-2720C7CFC295}" name="Analyzers">
+        <FILE id="IAlThh" name="LevelMeterAnalyzer.h" compile="0" resource="0"
+              file="Source/DSP/Analyzers/LevelMeterAnalyzer.h"/>
+      </GROUP>
     </GROUP>
     <GROUP id="{F206067C-741E-664C-F6F9-B408CDFEC3ED}" name="Components">
       <GROUP id="{0562825A-DA4D-016E-83E0-0DF4A9A8FA17}" name="Header">
@@ -98,6 +102,8 @@
               file="Source/Components/Master/MasterComponent.h"/>
       </GROUP>
       <GROUP id="{DF145EEC-77C2-5676-71A6-7FC8DDA88E5D}" name="Meters">
+        <FILE id="gAzlqi" name="LevelMeter.cpp" compile="1" resource="0" file="Source/Components/Meters/LevelMeter.cpp"/>
+        <FILE id="LuyWMs" name="LevelMeter.h" compile="0" resource="0" file="Source/Components/Meters/LevelMeter.h"/>
         <FILE id="AgkAgz" name="MetersComponent.cpp" compile="1" resource="0"
               file="Source/Components/Meters/MetersComponent.cpp"/>
         <FILE id="akc7lw" name="MetersComponent.h" compile="0" resource="0"
