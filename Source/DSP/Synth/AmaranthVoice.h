@@ -3,6 +3,8 @@
 
 #include "../../Parameters/Parameters.h"
 #include "../Oscillator/Oscillator.h"
+#include "../Filters/Filters.h"
+
 
 class AmaranthVoice : public juce::SynthesiserVoice
 {
@@ -41,6 +43,9 @@ private:
     
     juce::AudioBuffer<float> oscOneBuffer;
     juce::AudioBuffer<float> oscTwoBuffer;
+    
+    Filters filters;
+    Filters::Parameters filterParameters;
     
     juce::ADSR adsr;
     juce::ADSR::Parameters adsrParams;

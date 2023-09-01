@@ -68,12 +68,18 @@ namespace ID
     /** Filters */
     static const juce::String FILTER_HIGHPASS = "Highpass";
     static const juce::String FILTER_LOWPASS  = "Lowpass";
+    static const juce::String FILTER_HIGHPAS_RES  = "HighpassResonance";
+    static const juce::String FILTER_LOWPASS_RES  = "LowpassResonance";
     
     static const juce::NormalisableRange<float> highpassFilterRange (20.0f, 20000.0f,  0.01f, 1.0f);
     static const juce::NormalisableRange<float> lowpassFilterRange  (20.0f, 20000.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> highpassResonanceRange (0.0f, 1.0f, 0.01f, 1.0f);
+    static const juce::NormalisableRange<float> lowpassResonanceRange  (0.0f, 1.0f, 0.01f, 1.0f);
     
     static constexpr float highpassFilterDefault { 20.0f };
     static constexpr float lowpassFilterDefault  { 20000.0f };
+    static constexpr float highpassResonanceDefault { 0.0f };
+    static constexpr float lowpassResonanceDefault  { 0.0f };
 
     /** FX */
     /** Reverb */
