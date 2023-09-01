@@ -26,7 +26,6 @@ namespace ID
         Pan    = 1,
         Detune = 2,
         Width  = 3,
-        Phase  = 4
     };
 
     /** Osc One  */
@@ -34,28 +33,36 @@ namespace ID
     static const juce::String OSC_ONE_PAN     = "OscOnePan";
     static const juce::String OSC_ONE_DETUNE  = "OscOneDetune";
     static const juce::String OSC_ONE_WIDTH   = "OscOneWidth";
-    static const juce::String OSC_ONE_PHASE   = "OscOnePhase";
+
+    static const juce::StringArray OSC_ONE { OSC_ONE_GAIN, OSC_ONE_PAN, OSC_ONE_DETUNE, OSC_ONE_WIDTH };
 
     /** Osc Two */
     static const juce::String OSC_TWO_GAIN    = "OscTwoGain";
     static const juce::String OSC_TWO_PAN     = "OscTwoPan";
     static const juce::String OSC_TWO_DETUNE  = "OscTwoDetune";
     static const juce::String OSC_TWO_WIDTH   = "OscTwoWidth";
-    static const juce::String OSC_TWO_PHASE   = "OscTwoPhase";
+
+    static const juce::StringArray OSC_TWO { OSC_TWO_GAIN, OSC_TWO_PAN, OSC_TWO_DETUNE, OSC_TWO_WIDTH };
+
+    /** ADSR */
+    static const juce::String ATTACK  = "Attack";
+    static const juce::String DECAY   = "Decay";
+    static const juce::String SUSTAIN = "Sustain";
+    static const juce::String RELEASE = "Release";
 
     /** Ranges */
-    static const juce::NormalisableRange<float> gainRange   (-60.0f,  12.0f,  1.0f, 1.0f); // Gain (dB)
-    static const juce::NormalisableRange<float> panRange    (-100.0f, 100.0f, 1.0f, 1.0f); // Pan
-    static const juce::NormalisableRange<float> detuneRange (-60.0f,  12.0f,  1.0f, 1.0f); // Detune
-    static const juce::NormalisableRange<float> widthRange  (-100.0f, 100.0f, 1.0f, 1.0f); // Width
-    static const juce::NormalisableRange<float> phaseRange  (-180.0f, 180.0f, 1.0f, 1.0f); // Phase
+    static const float PI = juce::MathConstants<float>::pi;
+    static const juce::NormalisableRange<float> gainRange   (-60.0f,  12.0f,   1.0f, 1.0f); // Gain (dB)
+    static const juce::NormalisableRange<float> panRange    (0.0f,    PI/2.0f, 0.01f, 1.0f); // Pan
+    static const juce::NormalisableRange<float> detuneRange (0.0f,    1.0f,    0.01f, 1.0f); // Detune
+    static const juce::NormalisableRange<float> widthRange  (0.0f,    1.0f,    0.01f, 1.0f); // Width
+    static const juce::NormalisableRange<float> adsrRange   (0.0f,    1.0f,    0.01f, 1.0f); // ADSR
 
     /** Default value */
     static constexpr float gainDefault   { 0.0f };
-    static constexpr float panDefault    { 0.0f };
-    static constexpr float detuneDefault { 0.0f };
+    static constexpr float detuneDefault { 0.5f };
     static constexpr float widthDefault  { 0.0f };
-    static constexpr float phaseDefault  { 0.0f };
+    static constexpr float adsrDefault   { 0.5f };
 }
 
 /** Parameters user can move */

@@ -24,8 +24,8 @@ void AmaranthAudioProcessor::prepareSynth()
     synth.addSound (new AmaranthSound());
     
     /** Add number of voices the synth will have */
-    for (auto i = 0; i < NUM_VOICES; i++)
-        synth.addVoice (new AmaranthVoice());
+    for (int i = 0; i < NUM_VOICES; i++)
+        synth.addVoice (new AmaranthVoice (apvts));
 }
 
 const juce::String AmaranthAudioProcessor::getName() const
@@ -84,15 +84,20 @@ const juce::String AmaranthAudioProcessor::getProgramName ([[maybe_unused]] int 
 
 void AmaranthAudioProcessor::changeProgramName ([[maybe_unused]] int index, [[maybe_unused]] const juce::String& newName) {}
 
-void AmaranthAudioProcessor::prepareToPlay (double sampleRate, [[maybe_unused]] int samplesPerBlock)
+void AmaranthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
+    juce::dsp::ProcessSpec spec;
+    spec.sampleRate       = sampleRate;
+    spec.numChannels      = static_cast<juce::uint32> (getTotalNumOutputChannels());
+    spec.maximumBlockSize = static_cast<juce::uint32> (samplesPerBlock);
+    
     synth.setCurrentPlaybackSampleRate (sampleRate);
     
     /** Prepare objects inside main synth class per voice */
     for (int i = 0; i < synth.getNumVoices(); i++)
     {
-        if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
-            voice->prepare (sampleRate, samplesPerBlock, getTotalNumInputChannels());
+        if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
+            voice->prepare (spec);
     }
 }
 
@@ -126,10 +131,10 @@ void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
-    updateParameters();
-    
-    synth.renderNextBlock               (buffer, midiMessages, 0, buffer.getNumSamples());
     keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
+    
+    updateParameters();
+    synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
 }
 
 void AmaranthAudioProcessor::updateParameters()
@@ -137,8 +142,8 @@ void AmaranthAudioProcessor::updateParameters()
     /** Update synth parameters per voice */
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if (auto voice = dynamic_cast<AmaranthVoice*>(synth.getVoice(i)))
-            voice->updateParameters (apvts);
+        if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
+            voice->updateParameters();
     }
 }
 

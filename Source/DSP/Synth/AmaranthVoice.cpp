@@ -1,6 +1,6 @@
 #include "AmaranthVoice.h"
 
-AmaranthVoice::AmaranthVoice() {}
+AmaranthVoice::AmaranthVoice (juce::AudioProcessorValueTreeState& inAPVTS) : apvts (inAPVTS) {}
 
 AmaranthVoice::~AmaranthVoice() {}
 
@@ -9,43 +9,50 @@ bool AmaranthVoice::canPlaySound (juce::SynthesiserSound* sound)
     return dynamic_cast<juce::SynthesiserSound*>(sound) != nullptr;
 }
 
-void AmaranthVoice::startNote (int midiNoteNumber,
-                               [[maybe_unused]] float velocity,
-                               [[maybe_unused]] juce::SynthesiserSound *sound,
-                               [[maybe_unused]] int currentPitchWheelPosition)
+void AmaranthVoice::startNote (int midiNoteNumber, float /*velocity*/, juce::SynthesiserSound* /*sound*/, int /*currentPitchWheelPosition*/)
 {
     auto frequency = static_cast<float>(juce::MidiMessage::getMidiNoteInHertz(midiNoteNumber));
-    osc.setOscFreq (frequency);
-    osc.startNote();
+    updateOscillators (frequency);
+    adsr.noteOn();
 }
 
-void AmaranthVoice::stopNote ([[maybe_unused]] float velocity, bool allowTailOff)
+void AmaranthVoice::updateOscillators (float currentFrequency)
 {
-    osc.stopNote();
+    oscOne.setFreq (currentFrequency);
+    oscTwo.setFreq (currentFrequency);
+}
+
+void AmaranthVoice::stopNote (float /*velocity*/, bool allowTailOff)
+{
+    adsr.noteOff();
     
-    if(!allowTailOff || !osc.getIsActive())
+    if (!allowTailOff || !adsr.isActive())
         clearCurrentNote();
 }
 
-void AmaranthVoice::controllerMoved ([[maybe_unused]] int controllerNumber, [[maybe_unused]] int newControllerValue) {}
+void AmaranthVoice::controllerMoved (int /*controllerNumber*/, int /*newControllerValue*/) {}
 
-void AmaranthVoice::pitchWheelMoved ([[maybe_unused]] int newPitchWheelValue) {}
+void AmaranthVoice::pitchWheelMoved (int /*newPitchWheelValue*/) {}
 
-void AmaranthVoice::prepare (double inSampleRate, int inSamplesPerBlock, int inNumChannels)
+void AmaranthVoice::prepare (juce::dsp::ProcessSpec& spec)
 {
-    juce::dsp::ProcessSpec spec;
-    spec.sampleRate       = inSampleRate;
-    spec.numChannels      = static_cast<juce::uint32> (inNumChannels);
-    spec.maximumBlockSize = static_cast<juce::uint32> (inSamplesPerBlock);
+    adsr.setSampleRate (spec.sampleRate);
     
-    osc.setOscFunction ( [](float x) { return std::sinf(x); } );
-    osc.prepareOsc (spec);
+    juce::ADSR::Parameters adsrParams;
+    adsrParams.attack  = 0.0f;
+    adsrParams.decay   = 0.0f;
+    adsrParams.sustain = 1.0f;
+    adsrParams.release = 1.0f;
+    adsr.setParameters (adsrParams);
+    
+    oscOne.prepare (spec, [](float x) { return x <= 0.5f ? 1.0f : -1.0f; });
+    oscTwo.prepare (spec, [](float x) { return x <= 0.5f ? 1.0f : -1.0f; });
 }
 
-void AmaranthVoice::updateParameters ([[maybe_unused]] juce::AudioProcessorValueTreeState& apvt)
+void AmaranthVoice::updateParameters()
 {
-    auto oscGain = apvt.getRawParameterValue(ID::OSC_ONE_GAIN)->load();
-    osc.updateParameters (oscGain, 0.8f, 0.8f, 1.0f, 1.5f);
+    oscOne.updateParameters();
+    oscTwo.updateParameters();
 }
 
 void AmaranthVoice::renderNextBlock (juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples)
@@ -56,16 +63,40 @@ void AmaranthVoice::renderNextBlock (juce::AudioBuffer<float>& outputBuffer, int
     synthBuffer.setSize (outputBuffer.getNumChannels(), numSamples, false, false, true);
     synthBuffer.clear();
     
-    juce::dsp::AudioBlock<float> audioBlock { synthBuffer };
-    juce::dsp::ProcessContextReplacing<float> context (audioBlock);
+    oscOneBuffer.setSize (outputBuffer.getNumChannels(), numSamples, false, false, true);
+    oscOneBuffer.clear();
     
-    osc.processOsc (context, synthBuffer);
+    oscTwoBuffer.setSize (outputBuffer.getNumChannels(), numSamples, false, false, true);
+    oscTwoBuffer.clear();
+    
+    oscOne.process (oscOneBuffer);
+    oscTwo.process (oscTwoBuffer);
+    
+    sumOscillators();
+    
+    adsr.applyEnvelopeToBuffer (synthBuffer, 0, synthBuffer.getNumSamples());
     
     for (int channel = 0; channel < outputBuffer.getNumChannels(); channel++)
     {
         outputBuffer.addFrom (channel, startSample, synthBuffer, channel, 0, numSamples);
         
-        if (!osc.getIsActive())
+        if (!adsr.isActive())
             clearCurrentNote();
+    }
+}
+
+void AmaranthVoice::sumOscillators()
+{
+    for (int channel = 0; channel < oscOneBuffer.getNumChannels(); channel++)
+    {
+        for (int i = 0; i < oscOneBuffer.getNumSamples(); i++)
+        {
+            float one = oscOneBuffer.getSample (channel, i);
+            float two = oscTwoBuffer.getSample (channel, i);
+            
+            float outSample = one + two;
+            
+            synthBuffer.setSample (channel, i, outSample);
+        }
     }
 }
