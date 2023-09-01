@@ -34,7 +34,7 @@ private:
     
     OscillatorComponent oscillator_1 { processor, ID::Oscillator::One };
     OscillatorComponent oscillator_2 { processor, ID::Oscillator::Two };
-    FilterComponent filterComponent;
+    FilterComponent filterComponent { processor };
     ADSRComponent envelopeComponent { processor };
     
     DistortionComponent distortionComponent;
