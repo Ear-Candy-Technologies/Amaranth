@@ -24,8 +24,8 @@ void AmaranthAudioProcessor::prepareSynth()
     synth.addSound (new AmaranthSound());
     
     /** Add number of voices the synth will have */
-    synth.addVoice (new AmaranthVoice (apvts));
-    //synth.addVoice (new AmaranthVoice (apvts));
+    for (int i = 0; i < NUM_VOICES; i++)
+        synth.addVoice (new AmaranthVoice (apvts));
 }
 
 const juce::String AmaranthAudioProcessor::getName() const
@@ -131,10 +131,10 @@ void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
-    updateParameters();
-    
-    synth.renderNextBlock               (buffer, midiMessages, 0, buffer.getNumSamples());
     keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
+    
+    updateParameters();
+    synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
 }
 
 void AmaranthAudioProcessor::updateParameters()
