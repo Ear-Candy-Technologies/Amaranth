@@ -13,12 +13,12 @@
 Reverb::Reverb() {}
 Reverb::~Reverb() {}
 
-void Reverb::setReverbParamters(float roomSize, float damping, float wetLevel, float dryLevel, float width, float freezeMode)
+void Reverb::setReverbParamters(float roomSize, float damping, float mix, float width, float freezeMode)
 {
     reverbParameters.roomSize = roomSize;
     reverbParameters.damping = damping;
-    reverbParameters.wetLevel = wetLevel;
-    reverbParameters.dryLevel = dryLevel;
+    reverbParameters.wetLevel = mix;
+    reverbParameters.dryLevel = 1.0f - mix;
     reverbParameters.width = width;
     reverbParameters.freezeMode = freezeMode;
 }

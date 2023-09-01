@@ -16,8 +16,7 @@ public:
     ~Reverb();
     void setReverbParamters (float roomSize   = 0.5f,
                              float damping    = 0.5f,
-                             float wetLevel   = 0.33f,
-                             float dryLevel   = 0.4f,
+                             float mix        = 0.33f,
                              float width      = 1.0f,
                              float freezeMode = 0.0f);
 
