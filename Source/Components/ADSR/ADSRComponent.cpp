@@ -1,13 +1,13 @@
-#include "EnvelopeComponent.h"
+#include "ADSRComponent.h"
 
-EnvelopeComponent::EnvelopeComponent()
+ADSRComponent::ADSRComponent()
 {
     
 }
 
-EnvelopeComponent::~EnvelopeComponent() {}
+ADSRComponent::~ADSRComponent() {}
 
-void EnvelopeComponent::paint (juce::Graphics& g)
+void ADSRComponent::paint (juce::Graphics& g)
 {
     g.fillAll              (juce::Colours::darkviolet.contrasting());
     g.drawRoundedRectangle (5, 5, getWidth() - 10, getHeight() - 10, 10, 1);
@@ -19,4 +19,4 @@ void EnvelopeComponent::paint (juce::Graphics& g)
     g.drawFittedText ("Envelope", title, juce::Justification::left, 1);
 }
 
-void EnvelopeComponent::resized() {}
+void ADSRComponent::resized() {}

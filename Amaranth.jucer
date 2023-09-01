@@ -57,11 +57,10 @@
         <FILE id="mHDLQF" name="OscillatorComponent.h" compile="0" resource="0"
               file="Source/Components/Oscillator/OscillatorComponent.h"/>
       </GROUP>
-      <GROUP id="{32FFCB18-4523-CE12-1EA0-37D3BC189D51}" name="Envelope">
-        <FILE id="RiFpdf" name="EnvelopeComponent.cpp" compile="1" resource="0"
-              file="Source/Components/Envelope/EnvelopeComponent.cpp"/>
-        <FILE id="hktWhH" name="EnvelopeComponent.h" compile="0" resource="0"
-              file="Source/Components/Envelope/EnvelopeComponent.h"/>
+      <GROUP id="{32FFCB18-4523-CE12-1EA0-37D3BC189D51}" name="ADSR">
+        <FILE id="rKuXom" name="ADSRComponent.cpp" compile="1" resource="0"
+              file="Source/Components/ADSR/ADSRComponent.cpp"/>
+        <FILE id="IxCWDS" name="ADSRComponent.h" compile="0" resource="0" file="Source/Components/ADSR/ADSRComponent.h"/>
       </GROUP>
       <GROUP id="{22395A7D-0EB4-0BBE-275D-F963F81F08F2}" name="Filter">
         <FILE id="HLlfGH" name="FilterComponent.cpp" compile="1" resource="0"

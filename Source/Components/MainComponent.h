@@ -4,7 +4,7 @@
 #include "Header/HeaderComponent.h"
 #include "Oscillator/OscillatorComponent.h"
 #include "Filter/FilterComponent.h"
-#include "Envelope/EnvelopeComponent.h"
+#include "ADSR/ADSRComponent.h"
 #include "Delay/DelayComponent.h"
 #include "Distortion/DistortionComponent.h"
 #include "Reverb/ReverbComponent.h"
@@ -35,7 +35,7 @@ private:
     OscillatorComponent oscillator_1    { processor, ID::Oscillator::One };
     OscillatorComponent oscillator_2    { processor, ID::Oscillator::Two };
     FilterComponent filterComponent;
-    EnvelopeComponent envelopeComponent;
+    ADSRComponent envelopeComponent;
     
     DistortionComponent distortionComponent;
     ReverbComponent reverbComponent     { processor };

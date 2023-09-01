@@ -11,12 +11,12 @@
 #pragma once
 #include <JuceHeader.h>
 
-class EnvelopeComponent : public juce::Component
+class ADSRComponent : public juce::Component
 {
 public:
     
-    EnvelopeComponent();
-    ~EnvelopeComponent() override;
+    ADSRComponent();
+    ~ADSRComponent() override;
 
     void paint (juce::Graphics&) override;
     void resized() override;
@@ -25,5 +25,5 @@ private:
     
     
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EnvelopeComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ADSRComponent)
 };
