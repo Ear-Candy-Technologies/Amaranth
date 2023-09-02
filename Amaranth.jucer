@@ -3,7 +3,7 @@
 <JUCERPROJECT id="BTROpz" name="Amaranth" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="Ear Candy Technologies"
               companyWebsite="earcandytech.com" companyEmail="info@earcandytech.com"
-              version="0.0.1" pluginFormats="buildAU,buildStandalone,buildVST,buildVST3"
+              version="1.0.0" pluginFormats="buildAU,buildStandalone,buildVST3"
               pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn"
               cppLanguageStandard="17" displaySplashScreen="1">
   <MAINGROUP id="alCdbK" name="Amaranth">
