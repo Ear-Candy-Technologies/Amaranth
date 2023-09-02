@@ -27,10 +27,29 @@ Algunos recursos de introducción que te pueden funcionar:
 1. Xcode (MacOs): descargar desde App Store https://apps.apple.com/us/app/xcode/id497799835?mt=12
 2. Visual Studio (Windows): puedes descargarlo desde la web oficial https://visualstudio.microsoft.com/es/ (recuerda descargar las herramientas de C++ al momento de configurar el instalador).
 3. Descargar JUCE.
-3. Clona este repositorio `git clone https://github.com/Ear-Candy-Technologies/Amaranth.git`.
+3. Clona este repositorio ([Como clonar repositorio](#como-clonar)).
 4. El proyecto se ejecuta mediante el Projucer por lo que simplemente al dar doble click al archivo `Amaranth.jucer` podrás acceder a el. 
 5. Selecciona tu IDE con base en tu sistema operativo y abre el proyecto con el.
 6. ¡Diviértete y ayudanos!
+
+## Como-clonar
+
+HTTPS
+```
+git clone --recurse-submodules https://github.com/Ear-Candy-Technologies/Amaranth.git
+```
+
+SSH
+```
+git clone --recurse-submodules git@github.com:Ear-Candy-Technologies/Amaranth.git
+```
+
+Si lo has clonado sin `--recurse-submodule`
+
+```bash
+cd Amaranth
+git submodule update --init --recursive
+```
 
 ## Desarrollo
 
@@ -69,13 +88,30 @@ Some introductory resources that may work for you (Videos are in Spanish):
 1. Xcode (MacOs): just download from App Store https://apps.apple.com/us/app/xcode/id497799835?mt=12
 2. Visual Studio (Windows): You can download it from the official website https://visualstudio.microsoft.com/es/ (remember to download the C++ tools when configuring the installer).
 3. Download JUCE.
-3. Clone this repository `git clone https://github.com/Ear-Candy-Technologies/Amaranth.git`.
+3. Clone this repository [How to clone section](#How-to-clone).
 4. The project is executed by the projucer so simply by double clicking the file `Amaranth.jucer` you'll be able to access to it. 
 5. Select your IDE based on your operating system and open the project in it.
 6. Have fun and help us!
 
 ## Developing
+## How-to-clone
 
+HTTPS
+```
+git clone --recurse-submodules https://github.com/Ear-Candy-Technologies/Amaranth.git
+```
+
+SSH
+```
+git clone --recurse-submodules git@github.com:Ear-Candy-Technologies/Amaranth.git
+```
+
+If already cloned without `--recurse-submodule`
+
+```bash
+cd Amaranth
+git submodule update --init --recursive
+```
 In the next document you will find the guidelines to start contribuiting to Amaranth Synth.
 
 [Developer Guide](https://github.com/Ear-Candy-Technologies/Amaranth/blob/main/DeveloperGuide.md) (read before you start developing)
