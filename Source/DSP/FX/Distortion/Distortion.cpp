@@ -12,9 +12,8 @@
 Distortion::Distortion() {}
 Distortion::~Distortion() {}
 
-void Distortion::setInput (float inInput) {input = inInput;}
 void Distortion::setDrive (float inDrive) {drive = inDrive;}
-void Distortion::setTone  (float inTone)  {tone = inTone;}
+void Distortion::setMix (float inMix) {mix = inMix;}
 void Distortion::setDistortionIndex (int inDistortionIndex) {distortionIndex = inDistortionIndex;}
 
 float Distortion::softClipping (float inSample)
@@ -45,6 +44,39 @@ float Distortion::bitCrusher(float inSample)
 {
     int BitDepth = 4;
     int max = (int)powf(2, BitDepth) - 1;
-    float bitCrushSample = round((inSample + 1.0) * max) / max - 1.0;
-    return bitCrushSample;
+    double bitCrushSample = round((inSample + 1.0) * max) / max - 1.0f;
+    return (float)bitCrushSample;
+}
+
+void Distortion::process (juce::AudioBuffer<float> &buffer)
+{
+    for (int channel = 0; channel < buffer.getNumChannels(); channel++)
+    {
+        for (int i = 0; i < buffer.getNumSamples();  i++)
+        {
+            auto sample = buffer.getSample (channel, i);
+            float processedSample;
+            
+            switch (distortionIndex)
+            {
+                case 0:
+                    processedSample = softClipping (sample);
+                    break;
+                
+                case 1:
+                    processedSample = hardClipping (sample);
+                    break;
+                    
+                case 2:
+                    processedSample = bitCrusher (sample);
+                    break;
+                    
+                default:
+                    processedSample = sample;
+                    break;
+            }
+            
+            buffer.setSample (channel, i, processedSample);
+        }
+    }
 }

@@ -18,9 +18,8 @@ public:
     Distortion();
     ~Distortion();
     
-    void setInput (float inInput);
     void setDrive (float inDrive);
-    void setTone  (float inTone);
+    void setMix (float inMix);
     
     void setDistortionIndex (int inDistortionIndex);
     
@@ -32,9 +31,8 @@ public:
 
 private:
     int distortionIndex { 0 };
-    float input { 1.0f };
     float drive { 1.0f };
-    float tone  { 0.5f };
+    float mix { 1.0f };
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Distortion)
 };

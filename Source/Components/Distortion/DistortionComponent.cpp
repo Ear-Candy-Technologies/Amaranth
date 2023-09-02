@@ -2,9 +2,9 @@
 
 DistortionComponent::DistortionComponent (AmaranthAudioProcessor& p) : processor (p)
 {
-    prepareSlider (inputSlider,  ID::FX_DEL_TIME,        inputAttach, inputLabel, "Input");
-    prepareSlider (driveSlider,  ID::FX_DEL_FEEDBACK,    driveAttach, driveLabel, "Drive");
-    prepareSlider (toneSlider,   ID::FX_DEL_MIX,         toneAttach,  toneLabel,  "Tone");
+    prepareSlider (typeSlider,  ID::FX_DST_TYPE,   typeAttach, typeLabel, "Type");
+    prepareSlider (driveSlider,  ID::FX_DST_DRIVE,  driveAttach, driveLabel, "Drive");
+    prepareSlider (mixSlider,   ID::FX_DST_MIX,    mixAttach,  mixLabel,  "Mix");
 }
 
 DistortionComponent::~DistortionComponent() {}
@@ -23,9 +23,9 @@ void DistortionComponent::paint (juce::Graphics& g)
 
 void DistortionComponent::resized()
 {
-    inputSlider.setBoundsRelative (0.0f, 0.22f, 1.0f, 0.15f);
+    typeSlider.setBoundsRelative (0.0f, 0.22f, 1.0f, 0.15f);
     driveSlider.setBoundsRelative (0.0f, 0.47f, 1.0f, 0.15f);
-    toneSlider.setBoundsRelative  (0.0f, 0.72f,  1.0f, 0.15f);
+    mixSlider.setBoundsRelative  (0.0f, 0.72f,  1.0f, 0.15f);
 }
 
 void DistortionComponent::prepareSlider (juce::Slider& slider, juce::String sliderID, std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>& attach,
@@ -41,5 +41,5 @@ void DistortionComponent::prepareSlider (juce::Slider& slider, juce::String slid
     label.setColour             (juce::Label::ColourIds::textColourId, juce::Colours::black);
     addAndMakeVisible           (label);
     
-    //attach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (processor.apvts, sliderID, slider);
+    attach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (processor.apvts, sliderID, slider);
 }

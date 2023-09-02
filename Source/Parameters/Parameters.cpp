@@ -25,6 +25,11 @@ juce::AudioProcessorValueTreeState::ParameterLayout createParameters()
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::RELEASE,  1),   ID::RELEASE,  ID::adsrRange, ID::adsrDefault));
     
     /** FX */
+    /** Distortion */
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_DST_TYPE,   1), ID::FX_DST_TYPE,   ID::fxDstTypeRange,   ID::fxDstTypeDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_DST_DRIVE,   1), ID::FX_DST_DRIVE,   ID::fxDstDriveRange,   ID::fxDstDriveDefault));
+    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_DST_MIX,   1), ID::FX_DST_MIX,   ID::fxDstMixRange,   ID::fxDstMixDefault));
+    
     /** Reverb */
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_RB_ROOM_SIZE,   1), ID::FX_RB_ROOM_SIZE,   ID::fxRbRoomSizeRange,   ID::fxRbRoomSizeDefault));
     params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (ID::FX_RB_DAMPING,   1), ID::FX_RB_DAMPING,   ID::fxRbDampingRange,   ID::fxRbDampingDefault));

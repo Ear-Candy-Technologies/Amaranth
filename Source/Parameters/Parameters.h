@@ -66,6 +66,19 @@ namespace ID
     static constexpr float phaseDefault  { 0.0f };
 
     /** FX */
+    /** Distortion */
+    static const juce::String FX_DST_DRIVE   = "DSTDrive";
+    static const juce::String FX_DST_MIX     = "DSTMix";
+    static const juce::String FX_DST_TYPE    = "DSTType";
+    
+    static const juce::NormalisableRange<float> fxDstDriveRange (0.0f,  2.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxDstMixRange   (0.0f,  1.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxDstTypeRange  (-1.0f,  2.0f,  1.0f, 1.0f);
+
+    static constexpr float fxDstDriveDefault { 1.0f };
+    static constexpr float fxDstMixDefault   { 1.0f };
+    static constexpr float fxDstTypeDefault  { -1.0f };
+    
     /** Reverb */
     static const juce::String FX_RB_ROOM_SIZE    = "RoomSize";
     static const juce::String FX_RB_DAMPING      = "Damping";
@@ -75,7 +88,7 @@ namespace ID
 
     static const juce::NormalisableRange<float> fxRbRoomSizeRange (0.0f,  1.0f,  0.01f, 1.0f);
     static const juce::NormalisableRange<float> fxRbDampingRange  (0.0f,  1.0f,  0.01f, 1.0f);
-    static const juce::NormalisableRange<float> fxRbMixRange   (0.0f,  1.0f,  0.01f, 1.0f);
+    static const juce::NormalisableRange<float> fxRbMixRange      (0.0f,  1.0f,  0.01f, 1.0f);
     static const juce::NormalisableRange<float> fxRbWidthRange    (0.0f,  1.0f,  0.01f, 1.0f);
     static const juce::NormalisableRange<float> fxRbFeedbackRange (0.0f,  1.0f,  0.01f, 1.0f);
 

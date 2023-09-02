@@ -10,6 +10,8 @@
 
 #include "DSP/FX/Reverb/Reverb.h"
 #include "DSP/FX/Delay/Delay.h"
+#include "DSP/FX/Distortion/Distortion.h"
+
 
 #include "DSP/Analyzers/LevelMeterAnalyzer.h"
 
@@ -61,6 +63,8 @@ private:
     // FX stage
     Reverb reverb;
     Delay delay;
+    Distortion distortion;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthAudioProcessor)
 };

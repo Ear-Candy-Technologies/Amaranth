@@ -144,6 +144,7 @@ void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
   
     // FX Stage
+    distortion.process (buffer);
     reverb.process (buffer);
     delay.process  (buffer);
     

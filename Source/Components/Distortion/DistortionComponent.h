@@ -29,17 +29,17 @@ private:
     
     AmaranthAudioProcessor& processor;
     
-    juce::Slider inputSlider;
+    juce::Slider typeSlider;
     juce::Slider driveSlider;
-    juce::Slider toneSlider;
+    juce::Slider mixSlider;
     
-    juce::Label inputLabel;
+    juce::Label typeLabel;
     juce::Label driveLabel;
-    juce::Label toneLabel;
+    juce::Label mixLabel;
     
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> inputAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> typeAttach;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> driveAttach;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> toneAttach;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> mixAttach;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DistortionComponent)
 };
