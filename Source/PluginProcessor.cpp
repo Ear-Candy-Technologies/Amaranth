@@ -144,6 +144,7 @@ void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
     synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
   
     // FX Stage
+    distortion.process (buffer);
     reverb.process (buffer);
     delay.process  (buffer);
     
@@ -166,6 +167,14 @@ void AmaranthAudioProcessor::updateParameters()
     }
     
     /** FX Stage **/
+    /** Distortion **/
+    int dstType = (int) *apvts.getRawParameterValue (ID::FX_DST_TYPE);
+    float dstDrive = *apvts.getRawParameterValue (ID::FX_DST_DRIVE);
+    float dstMix = *apvts.getRawParameterValue (ID::FX_DST_MIX);
+    distortion.setDistortionIndex (dstType);
+    distortion.setDrive           (dstDrive);
+    distortion.setMix             (dstMix);
+    
     /** Reverb **/
     float rbRoomSize = *apvts.getRawParameterValue (ID::FX_RB_ROOM_SIZE);
     float rbDamping  = *apvts.getRawParameterValue (ID::FX_RB_DAMPING);

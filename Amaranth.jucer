@@ -22,6 +22,10 @@
         <FILE id="LxJ21y" name="Filters.h" compile="0" resource="0" file="Source/DSP/Filters/Filters.h"/>
       </GROUP>
       <GROUP id="{DCA38940-AE4B-4C0D-8091-0E0FE31831FD}" name="FX">
+        <GROUP id="{0516A2C1-5B29-1CE6-2E86-EFE3B2BBA590}" name="Distortion">
+          <FILE id="vGtw95" name="Distortion.cpp" compile="1" resource="0" file="Source/DSP/FX/Distortion/Distortion.cpp"/>
+          <FILE id="zjkFSB" name="Distortion.h" compile="0" resource="0" file="Source/DSP/FX/Distortion/Distortion.h"/>
+        </GROUP>
         <GROUP id="{E5F15D71-34BD-F9E2-EAB0-F241D5DBD93A}" name="Reverb">
           <FILE id="MlqHp7" name="Reverb.cpp" compile="1" resource="0" file="Source/DSP/FX/Reverb/Reverb.cpp"/>
           <FILE id="JcecwA" name="Reverb.h" compile="0" resource="0" file="Source/DSP/FX/Reverb/Reverb.h"/>
