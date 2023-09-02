@@ -48,8 +48,25 @@ float Distortion::bitCrusher(float inSample)
     return (float)bitCrushSample;
 }
 
+void Distortion::processDryWet (juce::AudioBuffer<float>& inDryBuffer,
+                                juce::AudioBuffer<float>& inWetBuffer)
+{
+    for (int channel = 0; channel < inDryBuffer.getNumChannels(); ++channel)
+    {
+        for (int i = 0; i < inDryBuffer.getNumSamples(); i++)
+        {
+            float wet = inWetBuffer.getSample (channel, i);
+            float dry = inDryBuffer.getSample (channel, i);
+            float out = dry * (1.0f - mix) + (mix * wet);
+            
+            inWetBuffer.setSample (channel, i, out);
+        }
+    }
+}
+
 void Distortion::process (juce::AudioBuffer<float> &buffer)
 {
+    dryBuffer.makeCopyOf (buffer);
     for (int channel = 0; channel < buffer.getNumChannels(); channel++)
     {
         for (int i = 0; i < buffer.getNumSamples();  i++)
@@ -79,4 +96,5 @@ void Distortion::process (juce::AudioBuffer<float> &buffer)
             buffer.setSample (channel, i, processedSample);
         }
     }
+    processDryWet(dryBuffer, buffer);
 }

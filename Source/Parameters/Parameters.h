@@ -76,7 +76,7 @@ namespace ID
     static const juce::NormalisableRange<float> fxDstTypeRange  (-1.0f,  2.0f,  1.0f, 1.0f);
 
     static constexpr float fxDstDriveDefault { 1.0f };
-    static constexpr float fxDstMixDefault   { 1.0f };
+    static constexpr float fxDstMixDefault   { 0.0f };
     static constexpr float fxDstTypeDefault  { -1.0f };
     
     /** Reverb */

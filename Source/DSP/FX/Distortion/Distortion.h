@@ -30,6 +30,10 @@ public:
     void process (juce::AudioBuffer<float>& buffer);
 
 private:
+    void processDryWet (juce::AudioBuffer<float>& inDryBuffer,
+                        juce::AudioBuffer<float>& inWetBuffer);
+    juce::AudioBuffer<float> dryBuffer;
+    
     int distortionIndex { 0 };
     float drive { 1.0f };
     float mix { 1.0f };
