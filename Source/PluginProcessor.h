@@ -2,16 +2,26 @@
 
 #include <JuceHeader.h>
 
-#include "./Helpers/ParamsHelper.h"
-#include "./DSP/Synth/SynthSound.h"
-#include "./DSP/Synth/SynthVoice.h"
+#include "Parameters/Parameters.h"
+#include "Helpers/Globals.h"
 
-class AmaranthAudioProcessor  : public juce::AudioProcessor
+#include "DSP/Synth/AmaranthSound.h"
+#include "DSP/Synth/AmaranthVoice.h"
+
+#include "DSP/FX/Reverb/Reverb.h"
+#include "DSP/FX/Delay/Delay.h"
+#include "DSP/FX/Distortion/Distortion.h"
+
+
+#include "DSP/Analyzers/LevelMeterAnalyzer.h"
+
+class AmaranthAudioProcessor : public juce::AudioProcessor
 {
 public:
     
     AmaranthAudioProcessor();
     ~AmaranthAudioProcessor() override;
+    
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
    #ifndef JucePlugin_PreferredChannelConfigurations
@@ -33,17 +43,28 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     
-    // Prepare Synth
     void prepareSynth();
+    void updateParameters();
     
-    // Audio Parameters APVTS
+    /** Audio Parameters */
     juce::AudioProcessorValueTreeState apvts;
-    juce::AudioProcessorValueTreeState::ParameterLayout createAPVTS();
+    
+    /** Keyboard state */
+    juce::MidiKeyboardState keyboardState;
+    
+    // Analyzer
+    LevelMeterAnalyzer levelMeterAnalyzer;
+    juce::AudioBuffer<float> helperBuffer;
 
 private:
     
-    // Global synth class
     juce::Synthesiser synth;
+    
+    // FX stage
+    Reverb reverb;
+    Delay delay;
+    Distortion distortion;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmaranthAudioProcessor)
 };

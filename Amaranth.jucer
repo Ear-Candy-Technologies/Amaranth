@@ -3,8 +3,8 @@
 <JUCERPROJECT id="BTROpz" name="Amaranth" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="Ear Candy Technologies"
               companyWebsite="earcandytech.com" companyEmail="info@earcandytech.com"
-              version="0.0.1" pluginFormats="buildAU,buildStandalone,buildVST,buildVST3"
-              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              version="1.0.0" pluginFormats="buildAU,buildStandalone,buildVST3"
+              pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn"
               cppLanguageStandard="17" displaySplashScreen="1">
   <MAINGROUP id="alCdbK" name="Amaranth">
     <GROUP id="{94DE3D09-3F2D-6F9B-DF54-4B874861E430}" name="Source">
@@ -17,26 +17,123 @@
       <FILE id="Yf3x8T" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
     <GROUP id="{AD4778D4-80C8-371D-10BF-8A686916065A}" name="DSP">
-      <GROUP id="{6328ECBD-BBB6-DA3F-1A35-EDC033F236B0}" name="Synth">
-        <FILE id="ox2QCA" name="SynthSound.cpp" compile="1" resource="0" file="Source/DSP/Synth/SynthSound.cpp"/>
-        <FILE id="W9oDB4" name="SynthSound.h" compile="0" resource="0" file="Source/DSP/Synth/SynthSound.h"/>
-        <FILE id="K9vWtg" name="SynthVoice.cpp" compile="1" resource="0" file="Source/DSP/Synth/SynthVoice.cpp"/>
-        <FILE id="QQAyR2" name="SynthVoice.h" compile="0" resource="0" file="Source/DSP/Synth/SynthVoice.h"/>
+      <GROUP id="{B3C010EE-96F7-2C1D-C90F-D904486F1C7B}" name="Filters">
+        <FILE id="n5gK0K" name="Filters.cpp" compile="1" resource="0" file="Source/DSP/Filters/Filters.cpp"/>
+        <FILE id="LxJ21y" name="Filters.h" compile="0" resource="0" file="Source/DSP/Filters/Filters.h"/>
       </GROUP>
-      <FILE id="aYaELU" name="Oscillator.cpp" compile="1" resource="0" file="Source/DSP/Oscillator.cpp"/>
-      <FILE id="Q443ah" name="Oscillator.h" compile="0" resource="0" file="Source/DSP/Oscillator.h"/>
+      <GROUP id="{DCA38940-AE4B-4C0D-8091-0E0FE31831FD}" name="FX">
+        <GROUP id="{0516A2C1-5B29-1CE6-2E86-EFE3B2BBA590}" name="Distortion">
+          <FILE id="vGtw95" name="Distortion.cpp" compile="1" resource="0" file="Source/DSP/FX/Distortion/Distortion.cpp"/>
+          <FILE id="zjkFSB" name="Distortion.h" compile="0" resource="0" file="Source/DSP/FX/Distortion/Distortion.h"/>
+        </GROUP>
+        <GROUP id="{E5F15D71-34BD-F9E2-EAB0-F241D5DBD93A}" name="Reverb">
+          <FILE id="MlqHp7" name="Reverb.cpp" compile="1" resource="0" file="Source/DSP/FX/Reverb/Reverb.cpp"/>
+          <FILE id="JcecwA" name="Reverb.h" compile="0" resource="0" file="Source/DSP/FX/Reverb/Reverb.h"/>
+        </GROUP>
+        <GROUP id="{966D6C93-295F-CEC7-5A02-56607FBB00F9}" name="Delay">
+          <FILE id="j3Lbxr" name="Delay.cpp" compile="1" resource="0" file="Source/DSP/FX/Delay/Delay.cpp"/>
+          <FILE id="UIbXiv" name="Delay.h" compile="0" resource="0" file="Source/DSP/FX/Delay/Delay.h"/>
+        </GROUP>
+      </GROUP>
+      <GROUP id="{6328ECBD-BBB6-DA3F-1A35-EDC033F236B0}" name="Synth">
+        <FILE id="ox2QCA" name="AmaranthSound.cpp" compile="1" resource="0"
+              file="Source/DSP/Synth/AmaranthSound.cpp"/>
+        <FILE id="W9oDB4" name="AmaranthSound.h" compile="0" resource="0" file="Source/DSP/Synth/AmaranthSound.h"/>
+        <FILE id="K9vWtg" name="AmaranthVoice.cpp" compile="1" resource="0"
+              file="Source/DSP/Synth/AmaranthVoice.cpp"/>
+        <FILE id="QQAyR2" name="AmaranthVoice.h" compile="0" resource="0" file="Source/DSP/Synth/AmaranthVoice.h"/>
+      </GROUP>
+      <GROUP id="{3E1A1BEB-E9DD-99CA-FD99-B1D88CCD240F}" name="Oscillator">
+        <FILE id="w4eqBw" name="Oscillator.cpp" compile="1" resource="0" file="Source/DSP/Oscillator/Oscillator.cpp"/>
+        <FILE id="TQlpY1" name="Oscillator.h" compile="0" resource="0" file="Source/DSP/Oscillator/Oscillator.h"/>
+        <FILE id="gfMS8B" name="Pan.h" compile="0" resource="0" file="Source/DSP/Oscillator/Pan.h"/>
+        <FILE id="Ke6yGm" name="StereoWidth.h" compile="0" resource="0" file="Source/DSP/Oscillator/StereoWidth.h"/>
+      </GROUP>
+      <GROUP id="{D4FEEC46-C006-B7DB-76DD-2720C7CFC295}" name="Analyzers">
+        <FILE id="IAlThh" name="LevelMeterAnalyzer.h" compile="0" resource="0"
+              file="Source/DSP/Analyzers/LevelMeterAnalyzer.h"/>
+      </GROUP>
     </GROUP>
-    <GROUP id="{FCAC4495-61AA-EC8E-8CAB-F49C3028E5E4}" name="GUI">
-      <FILE id="qE1u6s" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/GUI/MainComponent.cpp"/>
-      <FILE id="I9NVIU" name="MainComponent.h" compile="0" resource="0" file="Source/GUI/MainComponent.h"/>
-      <FILE id="nnSp2G" name="OscillatorComponent.cpp" compile="1" resource="0"
-            file="Source/GUI/OscillatorComponent.cpp"/>
-      <FILE id="jz7Dvx" name="OscillatorComponent.h" compile="0" resource="0"
-            file="Source/GUI/OscillatorComponent.h"/>
+    <GROUP id="{F206067C-741E-664C-F6F9-B408CDFEC3ED}" name="Components">
+      <GROUP id="{0562825A-DA4D-016E-83E0-0DF4A9A8FA17}" name="Header">
+        <FILE id="y5mgUc" name="HeaderComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Header/HeaderComponent.cpp"/>
+        <FILE id="kFhtw6" name="HeaderComponent.h" compile="0" resource="0"
+              file="Source/Components/Header/HeaderComponent.h"/>
+      </GROUP>
+      <GROUP id="{982CF549-925A-8461-BB58-7454DB049D60}" name="Keyboard">
+        <FILE id="RjJ4hn" name="KeyboardComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Keyboard/KeyboardComponent.cpp"/>
+        <FILE id="wS9f5M" name="KeyboardComponent.h" compile="0" resource="0"
+              file="Source/Components/Keyboard/KeyboardComponent.h"/>
+      </GROUP>
+      <GROUP id="{34304406-2E89-2CCE-F0C4-5288CC53AF9D}" name="Oscillator">
+        <FILE id="SWBBtg" name="OscillatorComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Oscillator/OscillatorComponent.cpp"/>
+        <FILE id="mHDLQF" name="OscillatorComponent.h" compile="0" resource="0"
+              file="Source/Components/Oscillator/OscillatorComponent.h"/>
+      </GROUP>
+      <GROUP id="{32FFCB18-4523-CE12-1EA0-37D3BC189D51}" name="ADSR">
+        <FILE id="rKuXom" name="ADSRComponent.cpp" compile="1" resource="0"
+              file="Source/Components/ADSR/ADSRComponent.cpp"/>
+        <FILE id="IxCWDS" name="ADSRComponent.h" compile="0" resource="0" file="Source/Components/ADSR/ADSRComponent.h"/>
+      </GROUP>
+      <GROUP id="{22395A7D-0EB4-0BBE-275D-F963F81F08F2}" name="Filter">
+        <FILE id="HLlfGH" name="FilterComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Filter/FilterComponent.cpp"/>
+        <FILE id="J2tuvz" name="FilterComponent.h" compile="0" resource="0"
+              file="Source/Components/Filter/FilterComponent.h"/>
+      </GROUP>
+      <GROUP id="{56D151A9-90F0-7224-E719-4374A9014F17}" name="Delay">
+        <FILE id="ksx2cu" name="DelayComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Delay/DelayComponent.cpp"/>
+        <FILE id="sRgu4J" name="DelayComponent.h" compile="0" resource="0"
+              file="Source/Components/Delay/DelayComponent.h"/>
+      </GROUP>
+      <GROUP id="{D27BD668-C0AA-8F58-8543-D86105AD4296}" name="Distortion">
+        <FILE id="WIjVci" name="DistortionComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Distortion/DistortionComponent.cpp"/>
+        <FILE id="Opeb31" name="DistortionComponent.h" compile="0" resource="0"
+              file="Source/Components/Distortion/DistortionComponent.h"/>
+      </GROUP>
+      <GROUP id="{A2B7D785-E444-3B45-B1A3-CD091AD761BE}" name="Reverb">
+        <FILE id="fkrMuD" name="ReverbComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Reverb/ReverbComponent.cpp"/>
+        <FILE id="yu9tl5" name="ReverbComponent.h" compile="0" resource="0"
+              file="Source/Components/Reverb/ReverbComponent.h"/>
+      </GROUP>
+      <GROUP id="{4415E153-8500-720F-543D-5F9C01AC7347}" name="Master">
+        <FILE id="v7UAv5" name="MasterComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Master/MasterComponent.cpp"/>
+        <FILE id="Y1XrWE" name="MasterComponent.h" compile="0" resource="0"
+              file="Source/Components/Master/MasterComponent.h"/>
+      </GROUP>
+      <GROUP id="{DF145EEC-77C2-5676-71A6-7FC8DDA88E5D}" name="Meters">
+        <FILE id="gAzlqi" name="LevelMeter.cpp" compile="1" resource="0" file="Source/Components/Meters/LevelMeter.cpp"/>
+        <FILE id="LuyWMs" name="LevelMeter.h" compile="0" resource="0" file="Source/Components/Meters/LevelMeter.h"/>
+        <FILE id="AgkAgz" name="MetersComponent.cpp" compile="1" resource="0"
+              file="Source/Components/Meters/MetersComponent.cpp"/>
+        <FILE id="akc7lw" name="MetersComponent.h" compile="0" resource="0"
+              file="Source/Components/Meters/MetersComponent.h"/>
+      </GROUP>
+      <FILE id="ZLIp8Z" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/Components/MainComponent.cpp"/>
+      <FILE id="Im7GaY" name="MainComponent.h" compile="0" resource="0" file="Source/Components/MainComponent.h"/>
+    </GROUP>
+    <GROUP id="{2BBA755B-60FB-7F55-1443-641DD5424AF1}" name="Parameters">
+      <FILE id="bhvDPt" name="Parameters.cpp" compile="1" resource="0" file="Source/Parameters/Parameters.cpp"/>
+      <FILE id="Zhxhqx" name="Parameters.h" compile="0" resource="0" file="Source/Parameters/Parameters.h"/>
+    </GROUP>
+    <GROUP id="{1E8187D9-377C-8183-B150-40D9D6277EA7}" name="LookAndFeel">
+      <FILE id="HICzHv" name="FilmStripKnob.h" compile="0" resource="0" file="Source/LookAndFeel/FilmStripKnob.h"/>
     </GROUP>
     <GROUP id="{40D322C5-F9F8-9487-C505-19A88A627800}" name="Helpers">
-      <FILE id="FGDZAn" name="ParamsHelper.h" compile="0" resource="0" file="Source/Helpers/ParamsHelper.h"/>
+      <FILE id="FQuWmq" name="Globals.h" compile="0" resource="0" file="Source/Helpers/Globals.h"/>
+      <FILE id="YuJYIN" name="Sizes.h" compile="0" resource="0" file="Source/Helpers/Sizes.h"/>
+    </GROUP>
+    <GROUP id="{C29AB5A7-3707-392F-2442-E76E42B60061}" name="Assets">
+      <FILE id="szcF5T" name="Clean_Small_BW_Knob.png" compile="0" resource="1"
+            file="Assets/Clean_Small_BW_Knob.png"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
@@ -44,7 +141,7 @@
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="Amaranth" recommendedWarnings="LLVM"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="Amaranth"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="Amaranth" recommendedWarnings="LLVM"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="Modules/JUCE/modules"/>
@@ -68,42 +165,21 @@
         <CONFIGURATION isDebug="0" name="Release" enablePluginBinaryCopyStep="1"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_core" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="/Users/jsvaldezv/Documents/Programming/JUCE/modules"/>
-        <MODULEPATH id="juce_dsp" path="../../../Programming/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="Modules/JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="Modules/JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
-    <VS2019 targetFolder="Builds/VisualStudio2019">
-      <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" enablePluginBinaryCopyStep="1"/>
-        <CONFIGURATION isDebug="0" name="Release" enablePluginBinaryCopyStep="1"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_devices" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_formats" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_processors" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_utils" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_core" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_data_structures" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_events" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_graphics" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_basics" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_extra" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_dsp" path="../../../Programming/JUCE/modules"/>
-      </MODULEPATHS>
-    </VS2019>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>

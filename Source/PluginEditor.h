@@ -1,7 +1,9 @@
 #pragma once
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "GUI/MainComponent.h"
+
+#include "Helpers/Sizes.h"
+#include "Components/MainComponent.h"
 
 class AmaranthAudioProcessorEditor : public juce::AudioProcessorEditor
 {
@@ -14,6 +16,7 @@ public:
     void resized() override;
 
 private:
+    
     AmaranthAudioProcessor& audioProcessor;
     
     MainComponent mainComponent { audioProcessor };

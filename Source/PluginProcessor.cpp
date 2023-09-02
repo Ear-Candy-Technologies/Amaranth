@@ -1,4 +1,3 @@
-
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -11,7 +10,7 @@ AmaranthAudioProcessor::AmaranthAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       ), apvts (*this, nullptr, "Parameters", createAPVTS())
+                       ), apvts (*this, nullptr, "Parameters", createParameters())
 #endif
 {
     prepareSynth();
@@ -21,22 +20,12 @@ AmaranthAudioProcessor::~AmaranthAudioProcessor() {}
 
 void AmaranthAudioProcessor::prepareSynth()
 {
-    // Add sound to synth
-    synth.addSound (new SynthSound());
+    /** Add sound to synth */
+    synth.addSound (new AmaranthSound());
     
-    // Add number of voices the synth will have
-    for (auto i = 0; i < NUM_VOICES; i++)
-        synth.addVoice (new SynthVoice());
-}
-
-// Parameters user can move
-juce::AudioProcessorValueTreeState::ParameterLayout AmaranthAudioProcessor::createAPVTS()
-{
-    juce::AudioProcessorValueTreeState::ParameterLayout params;
-    
-    params.add (std::make_unique<juce::AudioParameterFloat> (juce::ParameterID (GAIN_OSC_ID, 1), GAIN_OSC_NAME, 0.0f, 1.0f, 0.5f));
-    
-    return params;
+    /** Add number of voices the synth will have */
+    for (int i = 0; i < NUM_VOICES; i++)
+        synth.addVoice (new AmaranthVoice (apvts));
 }
 
 const juce::String AmaranthAudioProcessor::getName() const
@@ -95,16 +84,28 @@ const juce::String AmaranthAudioProcessor::getProgramName ([[maybe_unused]] int 
 
 void AmaranthAudioProcessor::changeProgramName ([[maybe_unused]] int index, [[maybe_unused]] const juce::String& newName) {}
 
-void AmaranthAudioProcessor::prepareToPlay (double sampleRate, [[maybe_unused]] int samplesPerBlock)
+void AmaranthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    synth.setCurrentPlaybackSampleRate(sampleRate);
+    juce::dsp::ProcessSpec spec;
+    spec.sampleRate       = sampleRate;
+    spec.numChannels      = static_cast<juce::uint32> (getTotalNumOutputChannels());
+    spec.maximumBlockSize = static_cast<juce::uint32> (samplesPerBlock);
     
-    // Prepare objects inside main synth class per voice
-    for(int i = 0; i < synth.getNumVoices(); i++)
+    synth.setCurrentPlaybackSampleRate (sampleRate);
+    
+    /** Prepare objects inside main synth class per voice */
+    for (int i = 0; i < synth.getNumVoices(); i++)
     {
-        if(auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
-            voice->prepare(sampleRate, samplesPerBlock, getTotalNumInputChannels());
+        if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
+            voice->prepare (spec);
     }
+
+    // FX Stage
+    reverb.prepare      (spec);
+    delay.setSampleRate ((float) sampleRate);
+    
+    // Analyzer
+    levelMeterAnalyzer.prepare (samplesPerBlock, sampleRate, getTotalNumOutputChannels(), 0.5f, -60.0f);
 }
 
 void AmaranthAudioProcessor::releaseResources() {}
@@ -128,7 +129,7 @@ bool AmaranthAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts)
 }
 #endif
 
-void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<float>& buffer, [[maybe_unused]] juce::MidiBuffer& midiMessages)
+void AmaranthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
@@ -137,15 +138,57 @@ void AmaranthAudioProcessor::processBlock ([[maybe_unused]] juce::AudioBuffer<fl
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
-    // Update synth parameters per voice
+    keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
+    
+    updateParameters();
+    synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
+  
+    // FX Stage
+    distortion.process (buffer);
+    reverb.process (buffer);
+    delay.process  (buffer);
+    
+    // Master
+    float masterValue = *apvts.getRawParameterValue (ID::MASTER);
+    buffer.applyGain (juce::Decibels::decibelsToGain (masterValue));
+    
+    // Analyzers
+    levelMeterAnalyzer.process (buffer);
+    helperBuffer.makeCopyOf    (buffer);
+}
+
+void AmaranthAudioProcessor::updateParameters()
+{
+    /** Update synth parameters per voice */
     for(int i = 0; i < synth.getNumVoices(); i++)
     {
-        if (auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))
-            voice->updateParameters (apvts);
+        if (auto voice = dynamic_cast<AmaranthVoice*> (synth.getVoice(i)))
+            voice->updateParameters();
     }
     
-    // Synth DSP
-    synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
+    /** FX Stage **/
+    /** Distortion **/
+    int dstType = (int) *apvts.getRawParameterValue (ID::FX_DST_TYPE);
+    float dstDrive = *apvts.getRawParameterValue (ID::FX_DST_DRIVE);
+    float dstMix = *apvts.getRawParameterValue (ID::FX_DST_MIX);
+    distortion.setDistortionIndex (dstType);
+    distortion.setDrive           (dstDrive);
+    distortion.setMix             (dstMix);
+    
+    /** Reverb **/
+    float rbRoomSize = *apvts.getRawParameterValue (ID::FX_RB_ROOM_SIZE);
+    float rbDamping  = *apvts.getRawParameterValue (ID::FX_RB_DAMPING);
+    float rbMix      = *apvts.getRawParameterValue (ID::FX_RB_MIX);
+    float rbWidth    = *apvts.getRawParameterValue (ID::FX_RB_WIDTH);
+    float rbFeedback = *apvts.getRawParameterValue (ID::FX_RB_FEEDBACK);
+    
+    reverb.setReverbParamters (rbRoomSize, rbDamping, rbMix, rbWidth, rbFeedback);
+    
+    /** Delay **/
+    float delMix      = *apvts.getRawParameterValue (ID::FX_DEL_MIX);
+    float delTime     = *apvts.getRawParameterValue (ID::FX_DEL_TIME);
+    float delFeedback = *apvts.getRawParameterValue (ID::FX_DEL_FEEDBACK);
+    delay.updateParameter (delTime, delFeedback, delMix);
 }
 
 bool AmaranthAudioProcessor::hasEditor() const
