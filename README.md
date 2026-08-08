@@ -42,7 +42,3 @@ git submodule update --init --recursive
 In the next document you will find the guidelines to start contribuiting to Amaranth Synth.
 
 [Developer Guide](https://github.com/Ear-Candy-Technologies/Amaranth/blob/main/DeveloperGuide.md) (read before you start developing)
-
-[Amaranth: Guía de desarrollo](https://youtu.be/oAkASvtDke0) (see before you start developing)
-
-[Amaranth: Estructura de proyecto](https://youtu.be/fEX1hlQyEW4) (see before you start developing)
